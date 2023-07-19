@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+import '../../../utils/constant.dart';
+
+class HoverColorText extends StatefulWidget {
+  final bool active;
+  final String text;
+  final TextStyle style;
+  final Color defaultColor;
+  final Color hoverColor;
+
+  const HoverColorText({
+    super.key,
+    required this.text,
+    required this.style,
+    this.defaultColor = Colors.white,
+    this.hoverColor = kGreenColor,
+    this.active = false,
+  });
+
+  @override
+  State<HoverColorText> createState() => _HoverColorTextState();
+}
+
+class _HoverColorTextState extends State<HoverColorText> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) {
+        setState(() {
+          _isHovered = true;
+        });
+      },
+      onExit: (_) {
+        setState(() {
+          _isHovered = false;
+        });
+      },
+      child: Text(
+        widget.text,
+        style: widget.style.copyWith(
+          color: _isHovered | widget.active
+              ? widget.hoverColor
+              : widget.defaultColor,
+        ),
+      ),
+    );
+  }
+}
