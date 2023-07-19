@@ -1,7 +1,14 @@
 import 'package:benji_frontend/utils/constant.dart';
+import 'package:benji_frontend/widget/fancy_text.dart';
+import 'package:benji_frontend/widget/hero.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../utils/constant.dart' as constant;
+import '../../widget/button.dart';
+import '../../widget/circle_card.dart';
+import '../../widget/image_card.dart';
+import '../../widget/product_card.dart';
 import '../responsive/appbar/l_appbar.dart';
 import '../responsive/appbar/m_appbar.dart';
 import '../responsive/appbar/t_appbar.dart';
@@ -23,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     final media = MediaQuery.of(context).size;
     return Scaffold(
       drawerScrimColor: Colors.transparent,
-      backgroundColor: Colors.green[100],
+      backgroundColor: const Color(0xfffafafc),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, media.height * 0.11),
         child: const MyLayout(
@@ -33,93 +40,230 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: CarouselSlider(
-          carouselController: buttonCarouselController,
-          options: CarouselOptions(
-            autoPlay: true,
-            height: media.width > 1000
-                ? media.height
-                : media.width > 400
-                    ? media.width * 0.75
-                    : media.width * 1.2,
-            viewportFraction: 1.0,
-            padEnds: false,
-          ),
-          items: [1, 2, 3].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                    width: media.width,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/hero/slider-$i.png'),
-                          fit: BoxFit.cover),
+        child: ListView(
+          children: [
+            CarouselSlider(
+              carouselController: buttonCarouselController,
+              options: CarouselOptions(
+                autoPlay: true,
+                height: media.width > 1000
+                    ? media.height
+                    : media.width > 600
+                        ? media.width * 0.70
+                        : media.width * 0.90,
+                viewportFraction: 1.0,
+                padEnds: false,
+              ),
+              items: [
+                MyHero(
+                  image: 'assets/hero/slider-1.png',
+                  text1: 'Start Your Grocery Business',
+                  text2: 'Stay Home & Delivered Your Daily Needs',
+                  buttonCarouselController: buttonCarouselController,
+                ),
+                MyHero(
+                  image: 'assets/hero/slider-2.png',
+                  text1: 'Save up to 50% off on your first order',
+                  text2: 'Don\'t Miss Amazing Grocery Deals',
+                  buttonCarouselController: buttonCarouselController,
+                ),
+                MyHero(
+                  image: 'assets/hero/slider-3.png',
+                  text1: 'Save upto 30% off',
+                  text2: 'Buy Fresh Groceries & Organic food',
+                  buttonCarouselController: buttonCarouselController,
+                  hasExplore: false,
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: constant.breakPoint(media.width, 25, 100, 100),
+                  vertical: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      scrollPhysics: const BouncingScrollPhysics(),
+                      // autoPlay: true,
+                      height: MediaQuery.of(context).size.width *
+                          constant.breakPoint(media.width, 0.3, 0.22, 0.16),
+                      viewportFraction:
+                          constant.breakPoint(media.width, 0.5, 0.5, 0.3333),
+                      padEnds: false,
                     ),
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: media.width > 800
-                              ? 90
-                              : media.width > 400
-                                  ? 10
-                                  : 0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: () =>
-                                  buttonCarouselController.previousPage(
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.linear,
-                              ),
-                              icon: const Icon(
-                                Icons.arrow_back_ios_outlined,
-                                color: Colors.white70,
-                                size: 30,
-                              ),
-                            ),
-                            const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Start Your Grocery Business',
-                                  style: TextStyle(
-                                    color: kGreenColor,
-                                    fontSize: 50,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                Text(
-                                  'Stay Home & Delivered Your Daily Needs',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 70,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                )
-                              ],
-                            ),
-                            IconButton(
-                              onPressed: () =>
-                                  buttonCarouselController.nextPage(
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.linear,
-                              ),
-                              icon: const Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                color: Colors.white70,
-                                size: 30,
-                              ),
-                            ),
-                          ],
-                        ),
+                    items: const [
+                      MyImageCard(
+                        image: 'assets/sale/banner-1.png',
                       ),
-                    ));
+                      MyImageCard(image: 'assets/sale/banner-2.png'),
+                      MyImageCard(image: 'assets/sale/banner-3.png'),
+                    ],
+                  ),
+                  kSizedBox,
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      MyFancyText(text: 'Categories'),
+                      MyOutlinedButton(),
+                    ],
+                  ),
+                  kSizedBox,
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      // enableInfiniteScroll: false,
+                      scrollPhysics: const BouncingScrollPhysics(),
+                      // autoPlay: true,
+                      // height: ,
+                      aspectRatio:
+                          constant.breakPoint(media.width, 16 / 9, 3.5, 5.4),
+                      viewportFraction:
+                          constant.breakPoint(media.width, 1 / 2, 1 / 4, 1 / 6),
+                      padEnds: false,
+                    ),
+                    items: const [
+                      MyCicleCard(
+                          image: 'assets/circle_card/category-1.jpg',
+                          text: 'Snacks'),
+                      MyCicleCard(
+                          image: 'assets/circle_card/category-2.jpg',
+                          text: 'Snacks'),
+                      MyCicleCard(
+                          image: 'assets/circle_card/category-3.jpg',
+                          text: 'Snacks'),
+                      MyCicleCard(
+                          image: 'assets/circle_card/category-4.jpg',
+                          text: 'Snacks'),
+                      MyCicleCard(
+                          image: 'assets/circle_card/category-5.jpg',
+                          text: 'Snacks'),
+                      MyCicleCard(
+                          image: 'assets/circle_card/category-6.jpg',
+                          text: 'Snacks'),
+                    ],
+                  ),
+                  kSizedBox,
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      MyFancyText(text: 'Trending'),
+                      MyOutlinedButton(),
+                    ],
+                  ),
+                  kSizedBox,
+                  LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      return GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount:
+                              constant.breakPoint(media.width, 1, 2, 4).toInt(),
+                          childAspectRatio: constant.breakPoint(
+                              media.width,
+                              0.65,
+                              0.60,
+                              0.55), // Number of columns in the grid
+                        ),
+                        itemBuilder: (BuildContext context, int index) {
+                          return const MyCard(); // Replace with your actual card widget
+                        },
+                        itemCount: 8, // Total number of items in the grid
+                        shrinkWrap: true,
+                        physics:
+                            const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+            AspectRatio(
+              aspectRatio: 5,
+              child: Image.asset(
+                'assets/banner/banner-1.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+            kSizedBox,
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  MyFancyText(text: 'Today\'s Special'),
+                  MyOutlinedButton(),
+                ],
+              ),
+            ),
+            kSizedBox,
+            LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:
+                        constant.breakPoint(media.width, 1, 2, 4).toInt(),
+                    childAspectRatio: constant.breakPoint(media.width, 0.65,
+                        0.60, 0.55), // Number of columns in the grid
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return const MyCard(); // Replace with your actual card widget
+                  },
+                  itemCount: 8, // Total number of items in the grid
+                  shrinkWrap: true,
+                  physics:
+                      const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                );
               },
-            );
-          }).toList(),
+            ),
+            kSizedBox,
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+              ),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  scrollPhysics: const BouncingScrollPhysics(),
+                  // autoPlay: true,
+                  height: MediaQuery.of(context).size.width *
+                      constant.breakPoint(media.width, 0.5, 0.44, 0.24),
+                  viewportFraction:
+                      constant.breakPoint(media.width, 0.5, 0.5, 1 / 4),
+                  padEnds: false,
+                ),
+                items: const [
+                  MyImageCard(
+                    image: 'assets/mid_paragraph/banner-1.png',
+                  ),
+                  MyImageCard(image: 'assets/mid_paragraph/banner-2.png'),
+                  MyImageCard(image: 'assets/mid_paragraph/banner-3.png'),
+                  MyImageCard(image: 'assets/mid_paragraph/banner-3.png'),
+                ],
+              ),
+            ),
+            kSizedBox,
+            kSizedBox,
+            AspectRatio(
+              aspectRatio: 5,
+              child: Image.asset(
+                'assets/banner/banner-2.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              height: 700,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/paragraph_bg/mobile_app_bg.png'),
+                    fit: BoxFit.cover),
+              ),
+            ),
+          ],
         ),
       ),
       endDrawer: const MyDrawer(),

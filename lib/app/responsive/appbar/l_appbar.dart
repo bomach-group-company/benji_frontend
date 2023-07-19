@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
 import '../../../widget/drop.dart';
-import '../../../widget/text.dart';
+import '../../../widget/hover_text.dart';
 
 class MyLAppBar extends StatelessWidget {
   const MyLAppBar({super.key});

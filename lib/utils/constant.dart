@@ -23,3 +23,13 @@ const kHalfSizedBox = SizedBox(
 const kHalfWidthSizedBox = SizedBox(
   width: kDefaultPadding / 2,
 );
+
+double breakPoint(double size, double mobile, double tablet, double laptop) {
+  if (size <= mobileSize) {
+    return mobile;
+  } else if (size <= laptopSize) {
+    return tablet;
+  } else {
+    return laptop;
+  }
+}

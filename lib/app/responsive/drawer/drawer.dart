@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
-import '../../../widget/text.dart';
+import '../../../widget/hover_text.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
