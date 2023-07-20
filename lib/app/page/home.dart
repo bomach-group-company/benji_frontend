@@ -9,9 +9,9 @@ import '../../widget/button.dart';
 import '../../widget/circle_card.dart';
 import '../../widget/image_card.dart';
 import '../../widget/product_card.dart';
-import '../responsive/appbar/l_appbar.dart';
-import '../responsive/appbar/m_appbar.dart';
-import '../responsive/appbar/t_appbar.dart';
+import '../responsive/appbar/laptop_appbar.dart';
+import '../responsive/appbar/mobile_appbar.dart';
+import '../responsive/appbar/tablet_appbar.dart';
 import '../responsive/drawer/drawer.dart';
 import '../responsive/layout.dart';
 
@@ -24,6 +24,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   CarouselController buttonCarouselController = CarouselController();
+  bool visible = true;
+
+  final List items = [
+    'Meat',
+    'Beverage',
+    'Vegetables',
+    'Beverage',
+    'Meat',
+    'Vegetables',
+    'Meat',
+    'Beverage'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +46,9 @@ class _HomePageState extends State<HomePage> {
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, media.height * 0.11),
         child: const MyLayout(
-          mobile: MyMAppBar(),
-          tablet: MyTAppBar(),
-          laptop: MyLAppBar(),
+          mobile: MyMobileAppBar(),
+          tablet: MyTabletAppBar(),
+          laptop: MyLaptopAppBar(),
         ),
       ),
       body: SafeArea(
@@ -76,6 +88,37 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            kSizedBox,
+            kSizedBox,
+            kSizedBox,
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: constant.breakPoint(
+                  media.width,
+                  25 - 13,
+                  100 - 15,
+                  100 - 15,
+                ),
+              ),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  scrollPhysics: const BouncingScrollPhysics(),
+                  // autoPlay: true,
+                  height: MediaQuery.of(context).size.width *
+                      constant.breakPoint(media.width, 0.3, 0.22, 0.16),
+                  viewportFraction:
+                      constant.breakPoint(media.width, 0.5, 0.5, 0.3333),
+                  padEnds: false,
+                ),
+                items: const [
+                  MyImageCard(
+                    image: 'assets/sale/banner-1.png',
+                  ),
+                  MyImageCard(image: 'assets/sale/banner-2.png'),
+                  MyImageCard(image: 'assets/sale/banner-3.png'),
+                ],
+              ),
+            ),
             Container(
               margin: EdgeInsets.symmetric(
                   horizontal: constant.breakPoint(media.width, 25, 100, 100),
@@ -84,25 +127,6 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      scrollPhysics: const BouncingScrollPhysics(),
-                      // autoPlay: true,
-                      height: MediaQuery.of(context).size.width *
-                          constant.breakPoint(media.width, 0.3, 0.22, 0.16),
-                      viewportFraction:
-                          constant.breakPoint(media.width, 0.5, 0.5, 0.3333),
-                      padEnds: false,
-                    ),
-                    items: const [
-                      MyImageCard(
-                        image: 'assets/sale/banner-1.png',
-                      ),
-                      MyImageCard(image: 'assets/sale/banner-2.png'),
-                      MyImageCard(image: 'assets/sale/banner-3.png'),
-                    ],
-                  ),
-                  kSizedBox,
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,29 +179,21 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   kSizedBox,
-                  LayoutBuilder(
-                    builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      return GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount:
-                              constant.breakPoint(media.width, 1, 2, 4).toInt(),
-                          childAspectRatio: constant.breakPoint(
-                              media.width,
-                              0.65,
-                              0.60,
-                              0.55), // Number of columns in the grid
-                        ),
-                        itemBuilder: (BuildContext context, int index) {
-                          return const MyCard(); // Replace with your actual card widget
-                        },
-                        itemCount: 8, // Total number of items in the grid
-                        shrinkWrap: true,
-                        physics:
-                            const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
-                      );
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount:
+                          constant.breakPoint(media.width, 1, 2, 4).toInt(),
+                      childAspectRatio: constant.breakPoint(media.width, 0.65,
+                          0.60, 0.55), // Number of columns in the grid
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return const MyCard(); // Replace with your actual card widget
                     },
-                  )
+                    itemCount: 8, // Total number of items in the grid
+                    shrinkWrap: true,
+                    physics:
+                        const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                  ),
                 ],
               ),
             ),
@@ -189,36 +205,41 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             kSizedBox,
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: constant.breakPoint(media.width, 25, 100, 100),
+              ),
+              child: Column(
                 children: [
-                  MyFancyText(text: 'Today\'s Special'),
-                  MyOutlinedButton(),
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MyFancyText(text: 'Today\'s Special'),
+                        MyOutlinedButton(),
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount:
+                          constant.breakPoint(media.width, 1, 2, 4).toInt(),
+                      childAspectRatio: constant.breakPoint(media.width, 0.65,
+                          0.60, 0.55), // Number of columns in the grid
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return const MyCard(); // Replace with your actual card widget
+                    },
+                    itemCount: 8, // Total number of items in the grid
+                    shrinkWrap: true,
+                    physics:
+                        const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                  ),
                 ],
               ),
-            ),
-            kSizedBox,
-            LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constraints) {
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount:
-                        constant.breakPoint(media.width, 1, 2, 4).toInt(),
-                    childAspectRatio: constant.breakPoint(media.width, 0.65,
-                        0.60, 0.55), // Number of columns in the grid
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return const MyCard(); // Replace with your actual card widget
-                  },
-                  itemCount: 8, // Total number of items in the grid
-                  shrinkWrap: true,
-                  physics:
-                      const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
-                );
-              },
             ),
             kSizedBox,
             Container(
@@ -247,6 +268,44 @@ class _HomePageState extends State<HomePage> {
             ),
             kSizedBox,
             kSizedBox,
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: constant.breakPoint(media.width, 25, 100, 100),
+              ),
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MyFancyText(text: 'Recommended'),
+                        MyOutlinedButton(),
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount:
+                          constant.breakPoint(media.width, 1, 2, 4).toInt(),
+                      childAspectRatio: constant.breakPoint(media.width, 0.65,
+                          0.60, 0.55), // Number of columns in the grid
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return const MyCard(); // Replace with your actual card widget
+                    },
+                    itemCount: 8, // Total number of items in the grid
+                    shrinkWrap: true,
+                    physics:
+                        const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                  ),
+                ],
+              ),
+            ),
+            kSizedBox,
+            kSizedBox,
             AspectRatio(
               aspectRatio: 5,
               child: Image.asset(
@@ -255,12 +314,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              height: 700,
+              padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 0),
               width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/paragraph_bg/mobile_app_bg.png'),
                     fit: BoxFit.cover),
+              ),
+              child: SizedBox(
+                height: 500,
+                child: GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisSpacing: 1,
+                  mainAxisSpacing: 2,
+                  crossAxisCount: 2,
+                  children: [
+                    Image.asset(
+                      'assets/device/mobile_app_1.png',
+                      fit: BoxFit.cover,
+                    ),
+                    const Text('please work'),
+                  ],
+                ),
               ),
             ),
           ],

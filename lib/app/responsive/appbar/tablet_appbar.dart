@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
 
-class MyMAppBar extends StatelessWidget {
-  const MyMAppBar({super.key});
+class MyTabletAppBar extends StatelessWidget {
+  const MyTabletAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
+
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+      padding:
+          EdgeInsets.symmetric(vertical: 12, horizontal: media.width * 0.1),
       decoration: const BoxDecoration(
         color: Colors.black,
         border: Border(

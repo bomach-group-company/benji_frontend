@@ -4,8 +4,26 @@ import '../../../utils/constant.dart';
 import '../../../widget/drop.dart';
 import '../../../widget/hover_text.dart';
 
-class MyLAppBar extends StatelessWidget {
-  const MyLAppBar({super.key});
+class MyLaptopAppBar extends StatefulWidget {
+  const MyLaptopAppBar({super.key});
+
+  @override
+  State<MyLaptopAppBar> createState() => _MyLaptopAppBarState();
+}
+
+class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
+  bool visible = false;
+
+  final List items = [
+    'Meat',
+    'Beverage',
+    'Vegetables',
+    'Beverage',
+    'Meat',
+    'Vegetables',
+    'Meat',
+    'Beverage'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +31,7 @@ class MyLAppBar extends StatelessWidget {
 
     return Container(
       padding:
-          EdgeInsets.symmetric(vertical: 12, horizontal: media.width * 0.08),
+          EdgeInsets.symmetric(vertical: 12, horizontal: media.width * 0.07),
       decoration: const BoxDecoration(
         color: Colors.black,
         border: Border(
@@ -28,11 +46,11 @@ class MyLAppBar extends StatelessWidget {
             'assets/brand/logo.png',
             fit: BoxFit.cover,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              HoverColorText(
+              const HoverColorText(
                 text: 'Home',
                 style: TextStyle(
                   color: Colors.white,
@@ -48,22 +66,31 @@ class MyLAppBar extends StatelessWidget {
                 children: [
                   HoverColorText(
                     text: 'Menu',
-                    style: TextStyle(
+                    isDrop: true,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w200,
                       fontSize: 16,
                     ),
+                    onTap: () {
+                      setState(() {
+                        visible = !visible;
+                      });
+                    },
                   ),
                   Positioned(
                     top: 40,
                     left: -20,
-                    child: MyDropDown(),
+                    child: MyDropDown(
+                      visible: visible,
+                      items: items,
+                    ),
                   ),
                 ],
               ),
               kWidthSizedBox,
               kWidthSizedBox,
-              HoverColorText(
+              const HoverColorText(
                 text: 'Help & Contact Us',
                 style: TextStyle(
                   color: Colors.white,

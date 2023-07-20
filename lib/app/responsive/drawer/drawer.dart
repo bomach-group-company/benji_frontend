@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
+import '../../../widget/drop.dart';
 import '../../../widget/hover_text.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  bool visible = false;
+
+  final List items = [
+    'Meat',
+    'Beverage',
+    'Vegetables',
+    'Beverage',
+    'Meat',
+    'Vegetables',
+    'Meat',
+    'Beverage'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +82,34 @@ class MyDrawer extends StatelessWidget {
                             fontWeight: FontWeight.w200,
                             fontSize: 18,
                           ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HoverColorText(
+                              text: 'Menu',
+                              isDrop: true,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w200,
+                                fontSize: 18,
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  visible = !visible;
+                                });
+                              },
+                            ),
+                            kHalfSizedBox,
+                            MyDropDown(
+                              visible: visible,
+                              items: items,
+                            ),
+                          ],
                         ),
                       ),
                       Container(
