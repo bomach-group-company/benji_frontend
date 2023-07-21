@@ -46,14 +46,10 @@ class _MyCardState extends State<MyCard> {
               color: Colors.grey.withOpacity(0.4),
               spreadRadius: 1,
               blurRadius: blurRadius,
-              offset: const Offset(0, 3), // changes the position of the shadow
+              offset: const Offset(0, 3),
             ),
           ],
         ),
-        // margin: const EdgeInsets.symmetric(
-        //   vertical: 8,
-        //   horizontal: 15,
-        // ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,

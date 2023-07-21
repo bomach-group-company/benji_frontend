@@ -1,12 +1,15 @@
-import 'package:benji_frontend/utils/constant.dart';
 import 'package:benji_frontend/widget/fancy_text.dart';
 import 'package:benji_frontend/widget/hero.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../../utils/constant.dart' as constant;
+import '../../utils/constant.dart';
+import '../../widget/blog_card.dart';
+import '../../widget/border_card.dart';
 import '../../widget/button.dart';
 import '../../widget/circle_card.dart';
+import '../../widget/footer.dart';
 import '../../widget/image_card.dart';
 import '../../widget/product_card.dart';
 import '../responsive/appbar/laptop_appbar.dart';
@@ -93,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             kSizedBox,
             Container(
               margin: EdgeInsets.symmetric(
-                horizontal: constant.breakPoint(
+                horizontal: breakPoint(
                   media.width,
                   25 - 13,
                   100 - 15,
@@ -105,9 +108,8 @@ class _HomePageState extends State<HomePage> {
                   scrollPhysics: const BouncingScrollPhysics(),
                   // autoPlay: true,
                   height: MediaQuery.of(context).size.width *
-                      constant.breakPoint(media.width, 0.3, 0.22, 0.16),
-                  viewportFraction:
-                      constant.breakPoint(media.width, 0.5, 0.5, 0.3333),
+                      breakPoint(media.width, 0.3, 0.22, 0.16),
+                  viewportFraction: breakPoint(media.width, 0.5, 0.5, 0.3333),
                   padEnds: false,
                 ),
                 items: const [
@@ -121,7 +123,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               margin: EdgeInsets.symmetric(
-                  horizontal: constant.breakPoint(media.width, 25, 100, 100),
+                  horizontal: breakPoint(media.width, 25, 100, 100),
                   vertical: 50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,10 +144,9 @@ class _HomePageState extends State<HomePage> {
                       scrollPhysics: const BouncingScrollPhysics(),
                       // autoPlay: true,
                       // height: ,
-                      aspectRatio:
-                          constant.breakPoint(media.width, 16 / 9, 3.5, 5.4),
+                      aspectRatio: breakPoint(media.width, 16 / 9, 3.5, 5.4),
                       viewportFraction:
-                          constant.breakPoint(media.width, 1 / 2, 1 / 4, 1 / 6),
+                          breakPoint(media.width, 1 / 2, 1 / 4, 1 / 6),
                       padEnds: false,
                     ),
                     items: const [
@@ -179,21 +180,30 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   kSizedBox,
-                  GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          constant.breakPoint(media.width, 1, 2, 4).toInt(),
-                      childAspectRatio: constant.breakPoint(media.width, 0.65,
-                          0.60, 0.55), // Number of columns in the grid
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return const MyCard(); // Replace with your actual card widget
-                    },
-                    itemCount: 8, // Total number of items in the grid
-                    shrinkWrap: true,
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
-                  ),
+                  LayoutGrid(
+                    columnSizes: breakPointDynamic(media.width, [1.fr],
+                        [1.fr, 1.fr], [1.fr, 1.fr, 1.fr, 1.fr]),
+                    rowSizes: const [
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto
+                    ],
+                    children: const [
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -207,7 +217,7 @@ class _HomePageState extends State<HomePage> {
             kSizedBox,
             Container(
               margin: EdgeInsets.symmetric(
-                horizontal: constant.breakPoint(media.width, 25, 100, 100),
+                horizontal: breakPoint(media.width, 25, 100, 100),
               ),
               child: Column(
                 children: [
@@ -223,20 +233,29 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   kSizedBox,
-                  GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          constant.breakPoint(media.width, 1, 2, 4).toInt(),
-                      childAspectRatio: constant.breakPoint(media.width, 0.65,
-                          0.60, 0.55), // Number of columns in the grid
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return const MyCard(); // Replace with your actual card widget
-                    },
-                    itemCount: 8, // Total number of items in the grid
-                    shrinkWrap: true,
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                  LayoutGrid(
+                    columnSizes: breakPointDynamic(media.width, [1.fr],
+                        [1.fr, 1.fr], [1.fr, 1.fr, 1.fr, 1.fr]),
+                    rowSizes: const [
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto
+                    ],
+                    children: const [
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                    ],
                   ),
                 ],
               ),
@@ -251,9 +270,8 @@ class _HomePageState extends State<HomePage> {
                   scrollPhysics: const BouncingScrollPhysics(),
                   // autoPlay: true,
                   height: MediaQuery.of(context).size.width *
-                      constant.breakPoint(media.width, 0.5, 0.44, 0.24),
-                  viewportFraction:
-                      constant.breakPoint(media.width, 0.5, 0.5, 1 / 4),
+                      breakPoint(media.width, 0.5, 0.44, 0.24),
+                  viewportFraction: breakPoint(media.width, 0.5, 0.5, 1 / 4),
                   padEnds: false,
                 ),
                 items: const [
@@ -270,7 +288,7 @@ class _HomePageState extends State<HomePage> {
             kSizedBox,
             Container(
               margin: EdgeInsets.symmetric(
-                horizontal: constant.breakPoint(media.width, 25, 100, 100),
+                horizontal: breakPoint(media.width, 25, 100, 100),
               ),
               child: Column(
                 children: [
@@ -286,20 +304,29 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   kSizedBox,
-                  GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          constant.breakPoint(media.width, 1, 2, 4).toInt(),
-                      childAspectRatio: constant.breakPoint(media.width, 0.65,
-                          0.60, 0.55), // Number of columns in the grid
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return const MyCard(); // Replace with your actual card widget
-                    },
-                    itemCount: 8, // Total number of items in the grid
-                    shrinkWrap: true,
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Prevent scrolling of the grid
+                  LayoutGrid(
+                    columnSizes: breakPointDynamic(media.width, [1.fr],
+                        [1.fr, 1.fr], [1.fr, 1.fr, 1.fr, 1.fr]),
+                    rowSizes: const [
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto
+                    ],
+                    children: const [
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                      MyCard(),
+                    ],
                   ),
                 ],
               ),
@@ -314,30 +341,127 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 0),
+              padding: EdgeInsets.symmetric(
+                horizontal: breakPoint(media.width, 25, 50, 50),
+                vertical: 60,
+              ),
               width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/paragraph_bg/mobile_app_bg.png'),
-                    fit: BoxFit.cover),
+                  image: AssetImage('assets/paragraph_bg/mobile_app_bg.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: SizedBox(
-                height: 500,
-                child: GridView.count(
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: 1,
-                  mainAxisSpacing: 2,
-                  crossAxisCount: 2,
-                  children: [
-                    Image.asset(
+              child: LayoutGrid(
+                columnSizes: breakPointDynamic(
+                    media.width, [1.fr], [1.fr], [1.fr, 1.fr]),
+                rowSizes: const [auto, auto],
+                // rowGap: 40,
+                // columnGap: 24,
+                children: [
+                  SizedBox(
+                    child: Image.asset(
                       'assets/device/mobile_app_1.png',
                       fit: BoxFit.cover,
                     ),
-                    const Text('please work'),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        kSizedBox,
+                        kSizedBox,
+                        const MyFancyText(text: 'Single Groecry Ordering App'),
+                        kSizedBox,
+                        kSizedBox,
+                        const Text(
+                          'Experience the Revolutionised & user-friendly Top online Grocery Store ordering system to skyrocket Groceries sales.',
+                          style: TextStyle(fontSize: 25, color: Colors.black54),
+                        ),
+                        kSizedBox,
+                        kHalfSizedBox,
+                        Row(
+                          children: [
+                            Image.asset('assets/store/playstore.png'),
+                            kWidthSizedBox,
+                            Image.asset('assets/store/playstore.png'),
+                          ],
+                        ),
+                        kSizedBox,
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
+            kSizedBox,
+            Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: breakPoint(media.width, 25, 100, 100),
+                  vertical: 50),
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MyFancyText(text: 'Latest Blogs'),
+                        MyOutlinedButton(),
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  kSizedBox,
+                  LayoutGrid(
+                    columnSizes: breakPointDynamic(
+                        media.width, [1.fr], [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
+                    rowSizes: const [auto, auto, auto],
+                    children: const [MyBlogCard(), MyBlogCard(), MyBlogCard()],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: breakPoint(media.width, 25, 120, 120),
+              ),
+              child: const Wrap(
+                spacing: 15,
+                runSpacing: 10,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.center,
+                children: [
+                  MyBorderCard(),
+                  MyBorderCard(),
+                  MyBorderCard(),
+                ],
+              ),
+            ),
+            // Container(
+            //   margin: EdgeInsets.symmetric(
+            //     horizontal: breakPoint(media.width, 25, 120, 120),
+            //   ),
+            //   height: 100,
+            //   child: GridView(
+            //     shrinkWrap: true,
+            //     physics: const NeverScrollableScrollPhysics(),
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //       crossAxisCount: breakPoint(media.width, 1, 1, 3).toInt(),
+            //       childAspectRatio: 4.5,
+            //     ),
+            //     children: const [
+            //       MyBorderCard(),
+            //       MyBorderCard(),
+            //       MyBorderCard(),
+            //     ],
+            //   ),
+            // ),
+            kSizedBox,
+            kSizedBox,
+            const Footer(),
           ],
         ),
       ),
