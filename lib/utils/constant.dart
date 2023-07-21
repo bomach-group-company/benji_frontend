@@ -5,7 +5,8 @@ const double laptopSize = 992;
 const double tabletSize = 768;
 const double mobileSize = 576;
 
-const kGreenColor = Color(0xff059542);
+// const kGreenColor = Color(0xff059542);
+const kGreenColor = Color(0xFFEC2623);
 
 const kDefaultPadding = 20.0;
 

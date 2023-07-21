@@ -76,6 +76,7 @@ class MyHero extends StatelessWidget {
                     ),
                   ),
                 ),
+                kHalfSizedBox,
                 Visibility(
                   visible: hasExplore,
                   child: ElevatedButton(

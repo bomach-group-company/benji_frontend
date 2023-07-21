@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
-import '../../../widget/drop.dart';
 import '../../../widget/hover_text.dart';
 
 class MyLaptopAppBar extends StatefulWidget {
@@ -61,33 +60,93 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
               ),
               kWidthSizedBox,
               kWidthSizedBox,
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  HoverColorText(
+              PopupMenuButton(
+                constraints:
+                    const BoxConstraints(maxHeight: 170, maxWidth: 200),
+                tooltip: '',
+                position: PopupMenuPosition.under,
+                elevation: 0,
+                splashRadius: 0,
+                child: const Center(
+                  child: HoverColorText(
                     text: 'Menu',
                     isDrop: true,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w200,
                       fontSize: 16,
                     ),
-                    onTap: () {
-                      setState(() {
-                        visible = !visible;
-                      });
-                    },
                   ),
-                  Positioned(
-                    top: 40,
-                    left: -20,
-                    child: MyDropDown(
-                      visible: visible,
-                      items: items,
+                ),
+                itemBuilder: (context) {
+                  return [
+                    const PopupMenuItem<int>(
+                      value: 0,
+                      child: Text("My Account"),
                     ),
-                  ),
-                ],
+                    const PopupMenuItem<int>(
+                      value: 1,
+                      child: Text("Settings"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Logout"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Login"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Profile"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Signup"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Register"),
+                    ),
+                  ];
+                },
+                onSelected: (value) {
+                  if (value == 0) {
+                    print("My account menu is selected.");
+                  } else if (value == 1) {
+                    print("Settings menu is selected.");
+                  } else if (value == 2) {
+                    print("Logout menu is selected.");
+                  }
+                },
               ),
+              // Stack(
+              //   clipBehavior: Clip.none,
+              //   children: [
+              //     HoverColorText(
+              //       text: 'Menu',
+              //       isDrop: true,
+              //       style: const TextStyle(
+              //         color: Colors.white,
+              //         fontWeight: FontWeight.w200,
+              //         fontSize: 16,
+              //       ),
+              //       onTap: () {
+              //         setState(() {
+              //           visible = !visible;
+              //         });
+              //       },
+              //     ),
+              //     Positioned(
+              //       top: 40,
+              //       left: -20,
+              //       child: MyDropDown(
+              //         visible: visible,
+              //         items: items,
+              //       ),
+              //     ),
+              //   ],
+              // ),
               kWidthSizedBox,
               kWidthSizedBox,
               const HoverColorText(
