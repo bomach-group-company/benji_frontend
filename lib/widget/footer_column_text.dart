@@ -1,10 +1,11 @@
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constant.dart';
 
 class FooterColumnText extends StatelessWidget {
   final String head;
-  final List<String> items;
+  final List items;
   const FooterColumnText({super.key, required this.head, required this.items});
 
   @override
@@ -12,9 +13,9 @@ class FooterColumnText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'About Us',
-          style: TextStyle(
+        Text(
+          head,
+          style: const TextStyle(
             color: kGreenColor,
             fontSize: 20,
           ),
@@ -24,11 +25,15 @@ class FooterColumnText extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: items.map((item) {
-            return Text(
-              item,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+            return MyClickable(
+              navigate: item[1],
+              child: Text(
+                item[0],
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  height: 2,
+                ),
               ),
             );
           }).toList(),

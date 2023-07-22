@@ -1,3 +1,4 @@
+import 'package:benji_frontend/app/page/home.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
@@ -51,6 +52,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
             children: [
               const HoverColorText(
                 text: 'Home',
+                navigate: HomePage(),
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w200,

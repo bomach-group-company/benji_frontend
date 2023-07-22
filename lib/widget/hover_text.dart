@@ -1,3 +1,4 @@
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
@@ -10,6 +11,7 @@ class HoverColorText extends StatefulWidget {
   final Color defaultColor;
   final Color hoverColor;
   final Function()? onTap;
+  final Widget? navigate;
 
   const HoverColorText({
     super.key,
@@ -20,6 +22,7 @@ class HoverColorText extends StatefulWidget {
     this.active = false,
     this.onTap,
     this.isDrop = false,
+    this.navigate,
   });
 
   @override
@@ -47,12 +50,15 @@ class _HoverColorTextState extends State<HoverColorText> {
         onTap: widget.onTap,
         child: Row(
           children: [
-            Text(
-              widget.text,
-              style: widget.style.copyWith(
-                color: _isHovered | widget.active
-                    ? widget.hoverColor
-                    : widget.defaultColor,
+            MyClickable(
+              navigate: widget.navigate,
+              child: Text(
+                widget.text,
+                style: widget.style.copyWith(
+                  color: _isHovered | widget.active
+                      ? widget.hoverColor
+                      : widget.defaultColor,
+                ),
               ),
             ),
             widget.isDrop

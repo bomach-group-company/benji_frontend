@@ -2,7 +2,14 @@ import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 class MyBorderCard extends StatefulWidget {
-  const MyBorderCard({super.key});
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  const MyBorderCard(
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.icon});
 
   @override
   State<MyBorderCard> createState() => _MyBorderCardState();
@@ -23,16 +30,10 @@ class _MyBorderCardState extends State<MyBorderCard> {
               media.width * 0.25,
               media.width * 0.25,
             ]),
-
-      // margin: const EdgeInsets.symmetric(
-      //   horizontal: 10,
-      // ),
       padding: const EdgeInsets.symmetric(
         vertical: 20,
         horizontal: 10,
       ),
-      // height: 100,
-      // width: 250,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
@@ -41,12 +42,12 @@ class _MyBorderCardState extends State<MyBorderCard> {
         ),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(
-            Icons.car_crash_outlined,
+            widget.icon,
             color: kGreenColor,
             size: 50,
           ),
@@ -56,9 +57,9 @@ class _MyBorderCardState extends State<MyBorderCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Live Order Tracking',
+                widget.title,
                 maxLines: 2,
-                style: TextStyle(
+                style: const TextStyle(
                   overflow: TextOverflow.ellipsis,
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
@@ -67,9 +68,9 @@ class _MyBorderCardState extends State<MyBorderCard> {
               SizedBox(
                 width: 150,
                 child: Text(
-                  'Live Order Tracking Lorem ipsum dolor sit amet, consectetur',
+                  widget.subtitle,
                   maxLines: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.grey,
                     overflow: TextOverflow.ellipsis,
                     fontSize: 14,

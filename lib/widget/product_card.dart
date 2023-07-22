@@ -2,7 +2,16 @@ import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 class MyCard extends StatefulWidget {
-  const MyCard({super.key});
+  final String image;
+  final String title;
+  final String sub;
+  final String price;
+  const MyCard(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.sub,
+      required this.price});
 
   @override
   State<MyCard> createState() => _MyCardState();
@@ -56,7 +65,7 @@ class _MyCardState extends State<MyCard> {
           children: [
             Expanded(
               flex: 2,
-              child: Center(child: Image.asset('assets/product/item-3.png')),
+              child: Center(child: Image.asset(widget.image)),
             ),
             Expanded(
               flex: 1,
@@ -76,12 +85,12 @@ class _MyCardState extends State<MyCard> {
                           ),
                         ),
                         kHalfWidthSizedBox,
-                        const Expanded(
+                        Expanded(
                           child: Text(
-                            'Keya Italian Pizza Oregano',
+                            widget.title,
                             softWrap: false,
                             maxLines: 1,
-                            style: TextStyle(
+                            style: const TextStyle(
                               overflow: TextOverflow.ellipsis,
                               fontSize: 17,
                               fontWeight: FontWeight.bold,
@@ -91,12 +100,12 @@ class _MyCardState extends State<MyCard> {
                         )
                       ],
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Text(
-                          'Vegetable',
+                          widget.sub,
                           textAlign: TextAlign.start,
-                          style: TextStyle(
+                          style: const TextStyle(
                               overflow: TextOverflow.ellipsis,
                               color: kGreenColor,
                               fontSize: 13,
@@ -109,9 +118,9 @@ class _MyCardState extends State<MyCard> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
-                          '\$50.00',
-                          style: TextStyle(
+                        Text(
+                          '\$${widget.price}',
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 1.2,

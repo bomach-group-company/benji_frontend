@@ -1,0 +1,104 @@
+import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/widget/breadcrumb.dart';
+import 'package:flutter/material.dart';
+
+import '../../utils/constant.dart';
+import '../../widget/footer.dart';
+import '../responsive/drawer/drawer.dart';
+
+class ContactUs extends StatefulWidget {
+  const ContactUs({super.key});
+
+  @override
+  State<ContactUs> createState() => _ContactUsState();
+}
+
+class _ContactUsState extends State<ContactUs> {
+  bool _showBackToTopButton = false;
+
+  // scroll controller
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController.offset >= 400) {
+            _showBackToTopButton = true;
+          } else {
+            _showBackToTopButton = false;
+          }
+        });
+      });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(0,
+        duration: const Duration(seconds: 1), curve: Curves.linear);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
+
+    return Scaffold(
+      drawerScrimColor: Colors.transparent,
+      backgroundColor: const Color(0xfffafafc),
+      appBar: PreferredSize(
+        preferredSize: Size(double.infinity, media.height * 0.11),
+        child: const MyAppbar(),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const MyBreadcrumb(text: 'Help & Contact Us'),
+              kSizedBox,
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 50),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [],
+                ),
+              ),
+              kSizedBox,
+              kSizedBox,
+              kSizedBox,
+              const Footer(),
+            ],
+          ),
+        ),
+      ),
+      endDrawer: const MyDrawer(),
+      floatingActionButton: _showBackToTopButton == false
+          ? null
+          : OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  padding: const EdgeInsets.all(0),
+                  minimumSize: const Size(45, 45),
+                  foregroundColor: kGreenColor,
+                  side: const BorderSide(color: kGreenColor)),
+              onPressed: _scrollToTop,
+              child: const Icon(
+                Icons.arrow_upward,
+                size: 20,
+                // color: Colors.white,
+              ),
+            ),
+    );
+  }
+}

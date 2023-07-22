@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../app/page/about.dart';
 import 'footer_column_text.dart';
 
 class Footer extends StatelessWidget {
@@ -50,9 +51,9 @@ class Footer extends StatelessWidget {
                     Text(
                       'The Best Grocery Store in Your Town.',
                       style: GoogleFonts.oleoScript(
-                        color: Colors.white,
-                        fontSize: media.width * 0.035 + 20,
-                      ),
+                          color: Colors.white,
+                          fontSize: media.width * 0.035 + 20,
+                          height: 1),
                     ),
                     kSizedBox,
                     const Text(
@@ -60,6 +61,7 @@ class Footer extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
+                        height: 1.5,
                       ),
                     ),
                   ],
@@ -79,23 +81,28 @@ class Footer extends StatelessWidget {
                         FooterColumnText(
                           head: 'About Us',
                           items: [
-                            'About',
-                            'Our Team',
-                            'Testimonials',
-                            'Today\'s Special'
+                            ['About', AboutPage()],
+                            ['Our Team', null],
+                            ['Testimonials', null],
+                            ['Today\'s Special', null]
                           ],
                         ),
                         FooterColumnText(
                           head: 'Legal',
                           items: [
-                            'Privacy Policy',
-                            'Terms & Conditions',
-                            'Refund Policy',
+                            ['Privacy Policy', null],
+                            ['Terms & Conditions', null],
+                            ['Refund Policy', null],
                           ],
                         ),
                         FooterColumnText(
                           head: 'Other pages',
-                          items: ['FAQs', 'Gallery', 'Contact us', 'Blogs'],
+                          items: [
+                            ['FAQs', null],
+                            ['Gallery', null],
+                            ['Contact us', null],
+                            ['Blogs', null]
+                          ],
                         ),
                       ],
                     ),
@@ -105,7 +112,7 @@ class Footer extends StatelessWidget {
                       children: [
                         Image.asset('assets/store/playstore.png'),
                         kWidthSizedBox,
-                        Image.asset('assets/store/playstore.png'),
+                        Image.asset('assets/store/appstore.png'),
                       ],
                     ),
                     kSizedBox,
@@ -144,7 +151,7 @@ class Footer extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
-              fontSize: breakPoint(media.width, 15, 17, 20),
+              fontSize: breakPoint(media.width, 14, 15, 17),
             ),
           ),
         ],
