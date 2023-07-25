@@ -1,8 +1,21 @@
+import 'package:benji_frontend/utils/constant.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 
 class MyBreadcrumb extends StatefulWidget {
   final String text;
-  const MyBreadcrumb({super.key, required this.text});
+  final bool hasBeadcrumb;
+  final String? back;
+  final Widget? backNav;
+  final String? current;
+  const MyBreadcrumb({
+    super.key,
+    required this.text,
+    this.hasBeadcrumb = false,
+    this.current,
+    this.back,
+    this.backNav,
+  });
 
   @override
   State<MyBreadcrumb> createState() => _MyBreadcrumbState();
@@ -21,13 +34,58 @@ class _MyBreadcrumbState extends State<MyBreadcrumb> {
         ),
       ),
       child: Center(
-        child: Text(
-          widget.text,
-          style: const TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.w900,
-            color: Color(0xff2d2942),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              widget.text,
+              style: const TextStyle(
+                fontSize: 48,
+                fontWeight: FontWeight.w600,
+                color: kBlueColor,
+              ),
+            ),
+            widget.hasBeadcrumb
+                ? Column(
+                    children: [
+                      kSizedBox,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          MyClickable(
+                            navigate: widget.backNav,
+                            child: Text(
+                              widget.back ?? "home",
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          kHalfWidthSizedBox,
+                          const Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            color: Colors.grey,
+                            size: 12,
+                          ),
+                          kHalfWidthSizedBox,
+                          Text(
+                            widget.current ?? "Home",
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                : const SizedBox(),
+          ],
         ),
       ),
     );

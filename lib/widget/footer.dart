@@ -4,6 +4,10 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../app/page/about.dart';
+import '../app/page/blogs.dart';
+import '../app/page/faqs.dart';
+import '../app/page/privacy_policy.dart';
+import '../app/page/term_condition.dart';
 import 'footer_column_text.dart';
 
 class Footer extends StatelessWidget {
@@ -90,18 +94,18 @@ class Footer extends StatelessWidget {
                         FooterColumnText(
                           head: 'Legal',
                           items: [
-                            ['Privacy Policy', null],
-                            ['Terms & Conditions', null],
+                            ['Privacy Policy', PrivacyPolicyPage()],
+                            ['Terms & Conditions', TermConditionPage()],
                             ['Refund Policy', null],
                           ],
                         ),
                         FooterColumnText(
                           head: 'Other pages',
                           items: [
-                            ['FAQs', null],
+                            ['FAQs', FAQsPage()],
                             ['Gallery', null],
                             ['Contact us', null],
-                            ['Blogs', null]
+                            ['Blogs', BlogsPage()]
                           ],
                         ),
                       ],

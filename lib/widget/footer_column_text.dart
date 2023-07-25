@@ -10,35 +10,41 @@ class FooterColumnText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          head,
-          style: const TextStyle(
-            color: kGreenColor,
-            fontSize: 20,
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            head,
+            style: const TextStyle(
+              color: kGreenColor,
+              fontSize: 20,
+            ),
           ),
-        ),
-        kSizedBox,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: items.map((item) {
-            return MyClickable(
-              navigate: item[1],
-              child: Text(
-                item[0],
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  height: 2,
-                ),
-              ),
-            );
-          }).toList(),
-        ),
-      ],
+          kSizedBox,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: items.map((item) {
+              return Column(
+                children: [
+                  MyClickable(
+                    navigate: item[1],
+                    child: Text(
+                      item[0],
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  kHalfSizedBox,
+                ],
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 }

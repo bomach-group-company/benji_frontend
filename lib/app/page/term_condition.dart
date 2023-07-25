@@ -6,14 +6,14 @@ import '../../utils/constant.dart';
 import '../../widget/footer.dart';
 import '../responsive/drawer/drawer.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+class TermConditionPage extends StatefulWidget {
+  const TermConditionPage({super.key});
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  State<TermConditionPage> createState() => _TermConditionPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _TermConditionPageState extends State<TermConditionPage> {
   bool _showBackToTopButton = false;
 
   // scroll controller
@@ -64,7 +64,7 @@ class _AboutPageState extends State<AboutPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const MyBreadcrumb(text: 'About Us'),
+              const MyBreadcrumb(text: 'Terms & Conditions'),
               kSizedBox,
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 50),
@@ -73,12 +73,11 @@ class _AboutPageState extends State<AboutPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Lorem is About content',
+                      'Lorem is Terms & Conditions',
                       style: TextStyle(
                         fontSize: 20,
                         color: Color(0xff2d2942),
                         fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
                       ),
                     ),
                     kSizedBox,

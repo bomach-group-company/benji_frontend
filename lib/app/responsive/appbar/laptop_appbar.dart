@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
 import '../../../widget/hover_text.dart';
+import '../../page/category.dart';
 
 class MyLaptopAppBar extends StatefulWidget {
   const MyLaptopAppBar({super.key});
@@ -84,41 +85,42 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                   return [
                     const PopupMenuItem<int>(
                       value: 0,
-                      child: Text("My Account"),
+                      child: Text("Meat"),
                     ),
                     const PopupMenuItem<int>(
                       value: 1,
-                      child: Text("Settings"),
+                      child: Text("Rice"),
                     ),
                     const PopupMenuItem<int>(
                       value: 2,
-                      child: Text("Logout"),
+                      child: Text("Bread"),
                     ),
                     const PopupMenuItem<int>(
-                      value: 2,
-                      child: Text("Login"),
+                      value: 3,
+                      child: Text("Groceries"),
                     ),
                     const PopupMenuItem<int>(
-                      value: 2,
-                      child: Text("Profile"),
+                      value: 4,
+                      child: Text("Yam"),
                     ),
                     const PopupMenuItem<int>(
-                      value: 2,
-                      child: Text("Signup"),
+                      value: 5,
+                      child: Text("Beans"),
                     ),
                     const PopupMenuItem<int>(
-                      value: 2,
-                      child: Text("Register"),
+                      value: 6,
+                      child: Text("Ice cream"),
                     ),
                   ];
                 },
                 onSelected: (value) {
                   if (value == 0) {
-                    print("My account menu is selected.");
-                  } else if (value == 1) {
-                    print("Settings menu is selected.");
-                  } else if (value == 2) {
-                    print("Logout menu is selected.");
+                    print('in here now');
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const CategoryPage(),
+                      ),
+                    );
                   }
                 },
               ),

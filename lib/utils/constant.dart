@@ -5,8 +5,11 @@ const double laptopSize = 992;
 const double tabletSize = 768;
 const double mobileSize = 576;
 
-// const kGreenColor = Color(0xff059542);
+// nice looking red but not our red 0xff059542
+// nice looking blue but not our blue 0xff2d2942
+
 const kGreenColor = Color(0xFFEC2623);
+const kBlueColor = Color(0xFF0003C4);
 
 const kDefaultPadding = 20.0;
 

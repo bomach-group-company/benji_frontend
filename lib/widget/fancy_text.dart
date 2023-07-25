@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../utils/constant.dart';
+
 class MyFancyText extends StatelessWidget {
   final String text;
   const MyFancyText({super.key, required this.text});
@@ -12,7 +14,7 @@ class MyFancyText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.oleoScript(
-        color: const Color(0xff2d2942),
+        color: kBlueColor,
         fontSize: media.width * 0.035 + 20,
         fontWeight: FontWeight.bold,
       ),
