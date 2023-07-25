@@ -5,6 +5,10 @@ const double laptopSize = 992;
 const double tabletSize = 768;
 const double mobileSize = 576;
 
+const double laptopContainer = 50;
+const double tabletContainer = 50;
+const double mobileContainer = 25;
+
 // nice looking red but not our red 0xff059542
 // nice looking blue but not our blue 0xff2d2942
 
