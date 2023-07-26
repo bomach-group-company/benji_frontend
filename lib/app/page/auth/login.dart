@@ -13,7 +13,8 @@ class _LoginPageState extends State<LoginPage> {
     final media = MediaQuery.of(context).size;
 
     return Container(
-      decoration: BoxDecoration(image: DecorationImage(image: AssetImage(''))),
+      decoration:
+          const BoxDecoration(image: DecorationImage(image: AssetImage(''))),
     );
   }
 }

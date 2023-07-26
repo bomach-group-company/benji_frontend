@@ -1,9 +1,12 @@
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
+import '../app/page/store/category.dart';
+
 class MyDropDown extends StatefulWidget {
   final bool visible;
   final List items;
+
   const MyDropDown({super.key, required this.visible, required this.items});
 
   @override
@@ -17,7 +20,7 @@ class _MyDropDownState extends State<MyDropDown> {
   @override
   void initState() {
     super.initState();
-    isHoverList = widget.items.map((e) => false).toList();
+    isHoverList = List.generate(widget.items.length, (_) => false);
   }
 
   @override
@@ -60,12 +63,23 @@ class _MyDropDownState extends State<MyDropDown> {
                         horizontal: 15,
                         vertical: 8,
                       ),
-                      child: Text(
-                        widget.items[index - 1],
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w100,
-                          fontSize: 16,
-                          letterSpacing: 1,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const CategoryPage();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          widget.items[index - 1],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w100,
+                            fontSize: 16,
+                            letterSpacing: 1,
+                          ),
                         ),
                       ),
                     ),

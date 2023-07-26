@@ -1,3 +1,6 @@
+import 'package:benji_frontend/app/page/main/about.dart';
+import 'package:benji_frontend/app/page/main/contact_us.dart';
+import 'package:benji_frontend/app/page/main/home.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
@@ -66,6 +69,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       Container(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: const HoverColorText(
+                          navigate: HomePage(),
                           text: 'Home',
                           style: TextStyle(
                             color: Colors.white,
@@ -77,6 +81,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       Container(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: const HoverColorText(
+                          navigate: AboutPage(),
                           text: 'About',
                           style: TextStyle(
                             color: Colors.white,
@@ -142,29 +147,8 @@ class _MyDrawerState extends State<MyDrawer> {
                       Container(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: const HoverColorText(
+                          navigate: ContactUs(),
                           text: 'Help & Contact Us',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w200,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: const HoverColorText(
-                          text: 'Cart',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w200,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: const HoverColorText(
-                          text: 'Search',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w200,
