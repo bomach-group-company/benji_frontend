@@ -4,16 +4,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/blog_card.dart';
-import '../../widget/border_card.dart';
-import '../../widget/button.dart';
-import '../../widget/circle_card.dart';
-import '../../widget/footer.dart';
-import '../../widget/image_card.dart';
-import '../../widget/product_card.dart';
-import '../responsive/appbar/appbar.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/blog_card.dart';
+import '../../../widget/border_card.dart';
+import '../../../widget/button.dart';
+import '../../../widget/circle_card.dart';
+import '../../../widget/footer.dart';
+import '../../../widget/image_card.dart';
+import '../../../widget/product_card.dart';
+import '../../responsive/appbar/appbar.dart';
+import '../../responsive/drawer/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

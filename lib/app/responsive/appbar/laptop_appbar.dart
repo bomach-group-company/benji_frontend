@@ -1,9 +1,10 @@
-import 'package:benji_frontend/app/page/home.dart';
+import 'package:benji_frontend/app/page/main/home.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
 import '../../../widget/hover_text.dart';
-import '../../page/category.dart';
+import '../../page/main/contact_us.dart';
+import '../../page/store/category.dart';
 
 class MyLaptopAppBar extends StatefulWidget {
   const MyLaptopAppBar({super.key});
@@ -14,6 +15,7 @@ class MyLaptopAppBar extends StatefulWidget {
 
 class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
   bool visible = false;
+  bool isHovered = false;
 
   final List items = [
     'Meat',
@@ -70,15 +72,35 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                 position: PopupMenuPosition.under,
                 elevation: 0,
                 splashRadius: 0,
-                child: const Center(
-                  child: HoverColorText(
-                    text: 'Menu',
-                    isDrop: true,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w200,
-                      fontSize: 16,
-                    ),
+                child: Center(
+                  child: Row(
+                    children: [
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        onEnter: (_) {
+                          setState(() {
+                            isHovered = true;
+                          });
+                        },
+                        onExit: (_) {
+                          setState(() {
+                            isHovered = false;
+                          });
+                        },
+                        child: Text(
+                          'Menu',
+                          style: TextStyle(
+                            color: isHovered ? kGreenColor : Colors.white,
+                            fontWeight: FontWeight.w200,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_drop_down,
+                        color: isHovered ? kGreenColor : Colors.white,
+                      )
+                    ],
                   ),
                 ),
                 itemBuilder: (context) {
@@ -115,7 +137,6 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                 },
                 onSelected: (value) {
                   if (value == 0) {
-                    print('in here now');
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) => const CategoryPage(),
@@ -124,36 +145,10 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                   }
                 },
               ),
-              // Stack(
-              //   clipBehavior: Clip.none,
-              //   children: [
-              //     HoverColorText(
-              //       text: 'Menu',
-              //       isDrop: true,
-              //       style: const TextStyle(
-              //         color: Colors.white,
-              //         fontWeight: FontWeight.w200,
-              //         fontSize: 16,
-              //       ),
-              //       onTap: () {
-              //         setState(() {
-              //           visible = !visible;
-              //         });
-              //       },
-              //     ),
-              //     Positioned(
-              //       top: 40,
-              //       left: -20,
-              //       child: MyDropDown(
-              //         visible: visible,
-              //         items: items,
-              //       ),
-              //     ),
-              //   ],
-              // ),
               kWidthSizedBox,
               kWidthSizedBox,
               const HoverColorText(
+                navigate: ContactUs(),
                 text: 'Help & Contact Us',
                 style: TextStyle(
                   color: Colors.white,

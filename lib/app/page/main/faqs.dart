@@ -2,9 +2,9 @@ import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/footer.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/footer.dart';
+import '../../responsive/drawer/drawer.dart';
 
 class FAQsPage extends StatefulWidget {
   const FAQsPage({super.key});

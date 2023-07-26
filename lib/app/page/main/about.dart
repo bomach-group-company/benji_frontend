@@ -2,18 +2,18 @@ import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/footer.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/footer.dart';
+import '../../responsive/drawer/drawer.dart';
 
-class PrivacyPolicyPage extends StatefulWidget {
-  const PrivacyPolicyPage({super.key});
+class AboutPage extends StatefulWidget {
+  const AboutPage({super.key});
 
   @override
-  State<PrivacyPolicyPage> createState() => _PrivacyPolicyPageState();
+  State<AboutPage> createState() => _AboutPageState();
 }
 
-class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
+class _AboutPageState extends State<AboutPage> {
   bool _showBackToTopButton = false;
 
   // scroll controller
@@ -64,7 +64,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const MyBreadcrumb(text: 'Privacy Policy'),
+              const MyBreadcrumb(text: 'About Us'),
               kSizedBox,
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 50),
@@ -73,11 +73,12 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Lorem is PrivacyPolicy',
+                      'Lorem is About content',
                       style: TextStyle(
                         fontSize: 20,
                         color: Color(0xff2d2942),
                         fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
                       ),
                     ),
                     kSizedBox,

@@ -1,17 +1,27 @@
+import 'package:benji_frontend/app/page/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
+
+import '../app/page/store/product.dart';
+import 'clickable.dart';
 
 class MyCard extends StatefulWidget {
   final String image;
   final String title;
   final String sub;
   final String price;
-  const MyCard(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.sub,
-      required this.price});
+  final Widget? navigate;
+  final Widget? navigateCategory;
+
+  const MyCard({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.sub,
+    required this.price,
+    this.navigate = const ProductPage(),
+    this.navigateCategory = const CategoryPage(),
+  });
 
   @override
   State<MyCard> createState() => _MyCardState();
@@ -65,7 +75,10 @@ class _MyCardState extends State<MyCard> {
           children: [
             Expanded(
               flex: 2,
-              child: Center(child: Image.asset(widget.image)),
+              child: MyClickable(
+                navigate: widget.navigate,
+                child: Center(child: Image.asset(widget.image)),
+              ),
             ),
             Expanded(
               flex: 1,
@@ -86,15 +99,18 @@ class _MyCardState extends State<MyCard> {
                         ),
                         kHalfWidthSizedBox,
                         Expanded(
-                          child: Text(
-                            widget.title,
-                            softWrap: false,
-                            maxLines: 1,
-                            style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1.2,
+                          child: MyClickable(
+                            navigate: widget.navigate,
+                            child: Text(
+                              widget.title,
+                              softWrap: false,
+                              maxLines: 1,
+                              style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1.2,
+                              ),
                             ),
                           ),
                         )
@@ -102,14 +118,17 @@ class _MyCardState extends State<MyCard> {
                     ),
                     Row(
                       children: [
-                        Text(
-                          widget.sub,
-                          textAlign: TextAlign.start,
-                          style: const TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              color: kGreenColor,
-                              fontSize: 13,
-                              height: 2),
+                        MyClickable(
+                          navigate: widget.navigateCategory,
+                          child: Text(
+                            widget.sub,
+                            textAlign: TextAlign.start,
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                color: kGreenColor,
+                                fontSize: 13,
+                                height: 2),
+                          ),
                         ),
                       ],
                     ),

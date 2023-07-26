@@ -2,10 +2,10 @@ import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/footer.dart';
-import '../../widget/simple_card.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/footer.dart';
+import '../../../widget/simple_card.dart';
+import '../../responsive/drawer/drawer.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({super.key});

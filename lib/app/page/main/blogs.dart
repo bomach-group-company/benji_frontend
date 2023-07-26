@@ -3,10 +3,10 @@ import 'package:benji_frontend/widget/breadcrumb.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/blog_card.dart';
-import '../../widget/footer.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/blog_card.dart';
+import '../../../widget/footer.dart';
+import '../../responsive/drawer/drawer.dart';
 
 class BlogsPage extends StatefulWidget {
   const BlogsPage({super.key});

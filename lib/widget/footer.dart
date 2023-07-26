@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../app/page/about.dart';
-import '../app/page/blogs.dart';
-import '../app/page/faqs.dart';
-import '../app/page/privacy_policy.dart';
-import '../app/page/term_condition.dart';
+import '../app/page/main/about.dart';
+import '../app/page/main/blogs.dart';
+import '../app/page/main/contact_us.dart';
+import '../app/page/main/faqs.dart';
+import '../app/page/main/privacy_policy.dart';
+import '../app/page/main/term_condition.dart';
 import 'footer_column_text.dart';
 
 class Footer extends StatelessWidget {
@@ -104,7 +105,7 @@ class Footer extends StatelessWidget {
                           items: [
                             ['FAQs', FAQsPage()],
                             ['Gallery', null],
-                            ['Contact us', null],
+                            ['Contact us', ContactUs()],
                             ['Blogs', BlogsPage()]
                           ],
                         ),

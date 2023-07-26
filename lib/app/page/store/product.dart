@@ -1,10 +1,15 @@
+import 'package:benji_frontend/app/page/store/category.dart';
 import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/footer.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/button.dart';
+import '../../../widget/fancy_text.dart';
+import '../../../widget/footer.dart';
+import '../../../widget/product_card.dart';
+import '../../responsive/drawer/drawer.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -16,9 +21,12 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   bool _showBackToTopButton = false;
   late ScrollController _scrollController;
+  int? _selectedRadioValue;
+  double price = 40.00;
 
   @override
   void initState() {
+    _selectedRadioValue = 1;
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -42,6 +50,15 @@ class _ProductPageState extends State<ProductPage> {
   void _scrollToTop() {
     _scrollController.animateTo(0,
         duration: const Duration(seconds: 1), curve: Curves.linear);
+  }
+
+  void _handleRadioValueChanged(int? value) {
+    if (value != null) {
+      setState(() {
+        price = price == 40.00 ? 20.00 : price;
+        _selectedRadioValue = value;
+      });
+    }
   }
 
   @override
@@ -78,7 +95,8 @@ class _ProductPageState extends State<ProductPage> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          right: breakPoint(media.width, 0, 20, 20)),
+                        right: breakPoint(media.width, 0, 20, 20),
+                      ),
                       height: media.height * 0.5,
                       decoration: BoxDecoration(
                           image: const DecorationImage(
@@ -118,12 +136,15 @@ class _ProductPageState extends State<ProductPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              child: Text(
-                                'Meat',
-                                style: TextStyle(
-                                  color: kBlueColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
+                              child: MyClickable(
+                                navigate: CategoryPage(),
+                                child: Text(
+                                  'Meat',
+                                  style: TextStyle(
+                                    color: kBlueColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
@@ -141,12 +162,12 @@ class _ProductPageState extends State<ProductPage> {
                           ],
                         ),
                         kSizedBox,
-                        const Row(
+                        Row(
                           children: [
                             Expanded(
                               child: Text(
-                                '\$20.00',
-                                style: TextStyle(
+                                '\$$price',
+                                style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -169,27 +190,75 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                           ],
                         ),
-                        const Row(
+                        Row(
                           children: [
-                            Expanded(
-                              child: Text(
-                                'dummy',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w700,
+                            SizedBox(
+                              width: breakPoint(
+                                media.width,
+                                media.width * 0.35,
+                                media.width * 0.26,
+                                media.width * 0.15,
+                              ),
+                              child: RadioListTile(
+                                activeColor: kBlueColor,
+                                splashRadius: 0,
+                                toggleable: true,
+                                contentPadding: EdgeInsets.zero,
+                                value: 1,
+                                groupValue: _selectedRadioValue,
+                                onChanged: _handleRadioValueChanged,
+                                title: const Row(
+                                  children: [
+                                    Text(
+                                      '1kg : ',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '\$40.00',
+                                      style: TextStyle(
+                                        color: Colors.black45,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        const Row(
+                        Row(
                           children: [
-                            Expanded(
-                              child: Text(
-                                'dummy',
-                                style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w700,
+                            SizedBox(
+                              width: breakPoint(
+                                media.width,
+                                media.width * 0.35,
+                                media.width * 0.26,
+                                media.width * 0.15,
+                              ),
+                              child: RadioListTile(
+                                activeColor: kBlueColor,
+                                splashRadius: 0,
+                                toggleable: true,
+                                contentPadding: EdgeInsets.zero,
+                                value: 2,
+                                groupValue: _selectedRadioValue,
+                                onChanged: _handleRadioValueChanged,
+                                title: const Row(
+                                  children: [
+                                    Text(
+                                      '500g : ',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      '\$20.00',
+                                      style: TextStyle(
+                                        color: Colors.black45,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -233,6 +302,89 @@ class _ProductPageState extends State<ProductPage> {
                         ),
                       ],
                     )
+                  ],
+                ),
+              ),
+              kSizedBox,
+              kSizedBox,
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: breakPoint(media.width, 25, 50, 50),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Description',
+                      style: TextStyle(
+                        color: kBlueColor,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    kSizedBox,
+                    const Text(
+                      '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.''',
+                      style: TextStyle(
+                        color: Colors.black45,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    kSizedBox,
+                    kSizedBox,
+                    Column(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              MyFancyText(text: 'Today\'s Special'),
+                              MyOutlinedButton(),
+                            ],
+                          ),
+                        ),
+                        kSizedBox,
+                        LayoutGrid(
+                          columnSizes: breakPointDynamic(media.width, [1.fr],
+                              [1.fr, 1.fr], [1.fr, 1.fr, 1.fr, 1.fr]),
+                          rowSizes: const [
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                          ],
+                          children: const [
+                            MyCard(
+                              image: 'assets/product/item-1.jpg',
+                              title: 'Parle Rusk, Elaichi',
+                              sub: 'Vegetable',
+                              price: '50.00',
+                            ),
+                            MyCard(
+                              image: 'assets/product/item-2.png',
+                              title: 'Parle Rusk, Elaichi',
+                              sub: 'Vegetable',
+                              price: '50.00',
+                            ),
+                            MyCard(
+                              image: 'assets/product/item-1.jpg',
+                              title: 'Parle Rusk, Elaichi',
+                              sub: 'Vegetable',
+                              price: '50.00',
+                            ),
+                            MyCard(
+                              image: 'assets/product/item-3.png',
+                              title: 'Parle Rusk, Elaichi',
+                              sub: 'Vegetable',
+                              price: '50.00',
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

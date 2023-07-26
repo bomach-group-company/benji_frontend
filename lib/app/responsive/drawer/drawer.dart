@@ -13,6 +13,7 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   bool visible = false;
+  bool isHovered = false;
 
   final List items = [
     'Meat',
@@ -76,7 +77,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       Container(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: const HoverColorText(
-                          text: 'Menu',
+                          text: 'About',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w200,
@@ -90,19 +91,45 @@ class _MyDrawerState extends State<MyDrawer> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            HoverColorText(
-                              text: 'Menu',
-                              isDrop: true,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w200,
-                                fontSize: 18,
-                              ),
-                              onTap: () {
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              onEnter: (_) {
                                 setState(() {
-                                  visible = !visible;
+                                  isHovered = true;
                                 });
                               },
+                              onExit: (_) {
+                                setState(() {
+                                  isHovered = false;
+                                });
+                              },
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    visible = !visible;
+                                  });
+                                },
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Menu',
+                                      style: TextStyle(
+                                        color: isHovered
+                                            ? kGreenColor
+                                            : Colors.white,
+                                        fontWeight: FontWeight.w200,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_drop_down,
+                                      color: isHovered
+                                          ? kGreenColor
+                                          : Colors.white,
+                                    )
+                                  ],
+                                ),
+                              ),
                             ),
                             kHalfSizedBox,
                             MyDropDown(

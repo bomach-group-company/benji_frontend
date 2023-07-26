@@ -1,3 +1,4 @@
+import 'package:benji_frontend/app/page/main/home.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class MyBreadcrumb extends StatefulWidget {
     this.hasBeadcrumb = false,
     this.current,
     this.back,
-    this.backNav,
+    this.backNav = const HomePage(),
   });
 
   @override

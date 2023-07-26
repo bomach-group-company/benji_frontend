@@ -5,7 +5,6 @@ import '../../../utils/constant.dart';
 
 class HoverColorText extends StatefulWidget {
   final bool active;
-  final bool isDrop;
   final String text;
   final TextStyle style;
   final Color defaultColor;
@@ -21,7 +20,6 @@ class HoverColorText extends StatefulWidget {
     this.hoverColor = kGreenColor,
     this.active = false,
     this.onTap,
-    this.isDrop = false,
     this.navigate,
   });
 
@@ -48,28 +46,16 @@ class _HoverColorTextState extends State<HoverColorText> {
       },
       child: GestureDetector(
         onTap: widget.onTap,
-        child: Row(
-          children: [
-            MyClickable(
-              navigate: widget.navigate,
-              child: Text(
-                widget.text,
-                style: widget.style.copyWith(
-                  color: _isHovered | widget.active
-                      ? widget.hoverColor
-                      : widget.defaultColor,
-                ),
-              ),
+        child: MyClickable(
+          navigate: widget.navigate,
+          child: Text(
+            widget.text,
+            style: widget.style.copyWith(
+              color: _isHovered | widget.active
+                  ? widget.hoverColor
+                  : widget.defaultColor,
             ),
-            widget.isDrop
-                ? Icon(
-                    Icons.arrow_drop_down,
-                    color: _isHovered | widget.active
-                        ? widget.hoverColor
-                        : widget.defaultColor,
-                  )
-                : const SizedBox(),
-          ],
+          ),
         ),
       ),
     );

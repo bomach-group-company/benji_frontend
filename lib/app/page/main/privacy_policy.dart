@@ -2,18 +2,18 @@ import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/constant.dart';
-import '../../widget/footer.dart';
-import '../responsive/drawer/drawer.dart';
+import '../../../utils/constant.dart';
+import '../../../widget/footer.dart';
+import '../../responsive/drawer/drawer.dart';
 
-class TermConditionPage extends StatefulWidget {
-  const TermConditionPage({super.key});
+class PrivacyPolicyPage extends StatefulWidget {
+  const PrivacyPolicyPage({super.key});
 
   @override
-  State<TermConditionPage> createState() => _TermConditionPageState();
+  State<PrivacyPolicyPage> createState() => _PrivacyPolicyPageState();
 }
 
-class _TermConditionPageState extends State<TermConditionPage> {
+class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   bool _showBackToTopButton = false;
 
   // scroll controller
@@ -64,7 +64,7 @@ class _TermConditionPageState extends State<TermConditionPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const MyBreadcrumb(text: 'Terms & Conditions'),
+              const MyBreadcrumb(text: 'Privacy Policy'),
               kSizedBox,
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 50),
@@ -73,7 +73,7 @@ class _TermConditionPageState extends State<TermConditionPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Lorem is Terms & Conditions',
+                      'Lorem is PrivacyPolicy',
                       style: TextStyle(
                         fontSize: 20,
                         color: Color(0xff2d2942),
