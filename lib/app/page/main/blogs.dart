@@ -1,12 +1,12 @@
-import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
-import 'package:benji_frontend/widget/breadcrumb.dart';
+import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../../utils/constant.dart';
-import '../../../widget/blog_card.dart';
-import '../../../widget/footer.dart';
-import '../../responsive/drawer/drawer.dart';
+import '../../utils/constant.dart';
+import '../../widget/cards/blog_card.dart';
+import '../../widget/section/footer.dart';
+import '../../widget/drawer/drawer.dart';
 
 class BlogsPage extends StatefulWidget {
   const BlogsPage({super.key});

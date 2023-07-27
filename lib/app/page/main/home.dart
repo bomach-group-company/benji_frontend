@@ -1,19 +1,20 @@
-import 'package:benji_frontend/widget/fancy_text.dart';
-import 'package:benji_frontend/widget/hero.dart';
+import 'package:benji_frontend/widget/text/fancy_text.dart';
+import 'package:benji_frontend/widget/section/hero.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../../utils/constant.dart';
-import '../../../widget/blog_card.dart';
-import '../../../widget/border_card.dart';
-import '../../../widget/button.dart';
-import '../../../widget/circle_card.dart';
-import '../../../widget/footer.dart';
-import '../../../widget/image_card.dart';
-import '../../../widget/product_card.dart';
-import '../../responsive/appbar/appbar.dart';
-import '../../responsive/drawer/drawer.dart';
+import '../../utils/constant.dart';
+import '../../widget/cards/blog_card.dart';
+import '../../widget/cards/border_card.dart';
+import '../../widget/button.dart';
+import '../../widget/cards/circle_card.dart';
+import '../../widget/end_to_end_row.dart';
+import '../../widget/section/footer.dart';
+import '../../widget/cards/image_card.dart';
+import '../../widget/cards/product_card.dart';
+import '../../widget/responsive/appbar/appbar.dart';
+import '../../widget/drawer/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -156,13 +157,9 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        MyFancyText(text: 'Categories'),
-                        MyOutlinedButton(),
-                      ],
+                    const EndToEndRow(
+                      widget1: MyFancyText(text: 'Categories'),
+                      widget2: MyOutlinedButton(),
                     ),
                     kSizedBox,
                     CarouselSlider(
@@ -198,13 +195,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     kSizedBox,
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        MyFancyText(text: 'Trending'),
-                        MyOutlinedButton(),
-                      ],
+                    const EndToEndRow(
+                      widget1: MyFancyText(text: 'Trending'),
+                      widget2: MyOutlinedButton(),
                     ),
                     kSizedBox,
                     LayoutGrid(
@@ -290,13 +283,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          MyFancyText(text: 'Today\'s Special'),
-                          MyOutlinedButton(),
-                        ],
+                      child: EndToEndRow(
+                        widget1: MyFancyText(text: 'Today\'s Special'),
+                        widget2: MyOutlinedButton(),
                       ),
                     ),
                     kSizedBox,
@@ -400,16 +389,11 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          MyFancyText(text: 'Recommended'),
-                          MyOutlinedButton(),
-                        ],
-                      ),
-                    ),
+                        padding: EdgeInsets.all(15.0),
+                        child: EndToEndRow(
+                          widget1: MyFancyText(text: 'Recommended'),
+                          widget2: MyOutlinedButton(),
+                        )),
                     kSizedBox,
                     LayoutGrid(
                       columnSizes: breakPointDynamic(media.width, [1.fr],
@@ -535,9 +519,20 @@ class _HomePageState extends State<HomePage> {
                           kHalfSizedBox,
                           Row(
                             children: [
-                              Image.asset('assets/store/playstore.png'),
+                              Container(
+                                constraints: BoxConstraints.loose(
+                                  const Size(100, 50),
+                                ),
+                                child:
+                                    Image.asset('assets/store/playstore.png'),
+                              ),
                               kWidthSizedBox,
-                              Image.asset('assets/store/appstore.png'),
+                              Container(
+                                constraints: BoxConstraints.loose(
+                                  const Size(100, 30),
+                                ),
+                                child: Image.asset('assets/store/appstore.png'),
+                              ),
                             ],
                           ),
                           kSizedBox,
@@ -556,13 +551,9 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const Padding(
                       padding: EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          MyFancyText(text: 'Latest Blogs'),
-                          MyOutlinedButton(),
-                        ],
+                      child: EndToEndRow(
+                        widget1: MyFancyText(text: 'Latest Blogs'),
+                        widget2: MyOutlinedButton(),
                       ),
                     ),
                     kSizedBox,
@@ -632,25 +623,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              // Container(
-              //   margin: EdgeInsets.symmetric(
-              //     horizontal: breakPoint(media.width, 25, 120, 120),
-              //   ),
-              //   height: 100,
-              //   child: GridView(
-              //     shrinkWrap: true,
-              //     physics: const NeverScrollableScrollPhysics(),
-              //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: breakPoint(media.width, 1, 1, 3).toInt(),
-              //       childAspectRatio: 4.5,
-              //     ),
-              //     children: const [
-              //       MyBorderCard(),
-              //       MyBorderCard(),
-              //       MyBorderCard(),
-              //     ],
-              //   ),
-              // ),
               kSizedBox,
               kSizedBox,
               const Footer(),
@@ -672,7 +644,6 @@ class _HomePageState extends State<HomePage> {
               child: const Icon(
                 Icons.arrow_upward,
                 size: 20,
-                // color: Colors.white,
               ),
             ),
     );

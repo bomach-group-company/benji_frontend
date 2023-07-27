@@ -1,10 +1,10 @@
-import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
-import 'package:benji_frontend/widget/breadcrumb.dart';
+import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/constant.dart';
-import '../../../widget/footer.dart';
-import '../../responsive/drawer/drawer.dart';
+import '../../utils/constant.dart';
+import '../../widget/section/footer.dart';
+import '../../widget/drawer/drawer.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -64,10 +64,17 @@ class _AboutPageState extends State<AboutPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const MyBreadcrumb(text: 'About Us'),
+              const MyBreadcrumb(
+                text: 'About Us',
+                current: 'About Us',
+                hasBeadcrumb: true,
+                back: 'home',
+              ),
               kSizedBox,
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 50),
+                margin: EdgeInsets.symmetric(
+                  horizontal: breakPoint(media.width, 25, 50, 50),
+                ),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +123,6 @@ Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy tex
               child: const Icon(
                 Icons.arrow_upward,
                 size: 20,
-                // color: Colors.white,
               ),
             ),
     );

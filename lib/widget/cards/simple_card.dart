@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/constant.dart';
+import '../../utils/constant.dart';
 
 class SimpleCard extends StatelessWidget {
   final String title;
@@ -24,7 +24,7 @@ class SimpleCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         boxShadow: const [
           BoxShadow(
-            blurRadius: 15,
+            blurRadius: 5,
             blurStyle: BlurStyle.outer,
             color: Colors.grey,
             offset: Offset(0, 4),

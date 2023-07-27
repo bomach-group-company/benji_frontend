@@ -1,11 +1,11 @@
-import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
-import 'package:benji_frontend/widget/breadcrumb.dart';
+import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/constant.dart';
-import '../../../widget/footer.dart';
-import '../../../widget/simple_card.dart';
-import '../../responsive/drawer/drawer.dart';
+import '../../utils/constant.dart';
+import '../../widget/section/footer.dart';
+import '../../widget/cards/simple_card.dart';
+import '../../widget/drawer/drawer.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({super.key});
@@ -111,13 +111,16 @@ class _ContactUsState extends State<ContactUs> {
                     kSizedBox,
                     Container(
                       width: media.width,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 50),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: breakPoint(media.width, 25, 50, 50),
+                        vertical: 50,
+                      ),
                       decoration: BoxDecoration(
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
                         boxShadow: const [
                           BoxShadow(
-                            blurRadius: 15,
+                            blurRadius: 5,
                             blurStyle: BlurStyle.outer,
                             color: Colors.grey,
                             offset: Offset(0, 4),

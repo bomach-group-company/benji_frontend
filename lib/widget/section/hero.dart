@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart' as hero_carousel;
 import 'package:flutter/material.dart';
 
-import '../utils/constant.dart';
+import '../../utils/constant.dart';
 
 class MyHero extends StatelessWidget {
   final hero_carousel.CarouselController buttonCarouselController;

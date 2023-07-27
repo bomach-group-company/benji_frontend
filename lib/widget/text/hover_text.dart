@@ -1,10 +1,11 @@
 import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../utils/constant.dart';
+import '../../../../utils/constant.dart';
 
 class HoverColorText extends StatefulWidget {
   final bool active;
+  final bool noHover;
   final String text;
   final TextStyle style;
   final Color defaultColor;
@@ -19,6 +20,7 @@ class HoverColorText extends StatefulWidget {
     this.defaultColor = Colors.white,
     this.hoverColor = kGreenColor,
     this.active = false,
+    this.noHover = false,
     this.onTap,
     this.navigate,
   });
@@ -35,14 +37,18 @@ class _HoverColorTextState extends State<HoverColorText> {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (_) {
-        setState(() {
-          _isHovered = true;
-        });
+        if (!widget.noHover) {
+          setState(() {
+            _isHovered = true;
+          });
+        }
       },
       onExit: (_) {
-        setState(() {
-          _isHovered = false;
-        });
+        if (!widget.noHover) {
+          setState(() {
+            _isHovered = false;
+          });
+        }
       },
       child: GestureDetector(
         onTap: widget.onTap,

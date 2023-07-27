@@ -1,10 +1,11 @@
-import 'package:benji_frontend/app/page/main/home.dart';
+import 'package:benji_frontend/page/main/home.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constant.dart';
-import '../../../widget/hover_text.dart';
-import '../../page/main/contact_us.dart';
-import '../../page/store/category.dart';
+import '../../text/hover_text.dart';
+import '../../../page/auth/login.dart';
+import '../../../page/main/contact_us.dart';
+import '../../../page/store/category.dart';
 
 class MyLaptopAppBar extends StatefulWidget {
   const MyLaptopAppBar({super.key});
@@ -205,7 +206,15 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: kGreenColor,
                     fixedSize: const Size(80, 35)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const LoginPage();
+                      },
+                    ),
+                  );
+                },
                 child: const Text('Login'),
               ),
             ],

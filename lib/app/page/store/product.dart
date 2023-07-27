@@ -1,15 +1,15 @@
-import 'package:benji_frontend/app/page/store/category.dart';
-import 'package:benji_frontend/app/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/page/store/category.dart';
+import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import '../../../utils/constant.dart';
-import '../../../widget/button.dart';
-import '../../../widget/fancy_text.dart';
-import '../../../widget/footer.dart';
-import '../../../widget/product_card.dart';
-import '../../responsive/drawer/drawer.dart';
+import '../../utils/constant.dart';
+import '../../widget/button.dart';
+import '../../widget/text/fancy_text.dart';
+import '../../widget/section/footer.dart';
+import '../../widget/cards/product_card.dart';
+import '../../widget/drawer/drawer.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});

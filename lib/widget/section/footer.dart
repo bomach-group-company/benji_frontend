@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../app/page/main/about.dart';
-import '../app/page/main/blogs.dart';
-import '../app/page/main/contact_us.dart';
-import '../app/page/main/faqs.dart';
-import '../app/page/main/privacy_policy.dart';
-import '../app/page/main/term_condition.dart';
-import 'footer_column_text.dart';
+import '../../page/main/about.dart';
+import '../../page/main/blogs.dart';
+import '../../page/main/contact_us.dart';
+import '../../page/main/faqs.dart';
+import '../../page/main/privacy_policy.dart';
+import '../../page/main/term_condition.dart';
+import '../footer_column_text.dart';
 
 class Footer extends StatelessWidget {
   const Footer({super.key});
@@ -115,9 +115,19 @@ class Footer extends StatelessWidget {
                     kSizedBox,
                     Row(
                       children: [
-                        Image.asset('assets/store/playstore.png'),
+                        Container(
+                          constraints: BoxConstraints.loose(
+                            const Size(90, 50),
+                          ),
+                          child: Image.asset('assets/store/playstore.png'),
+                        ),
                         kWidthSizedBox,
-                        Image.asset('assets/store/appstore.png'),
+                        Container(
+                          constraints: BoxConstraints.loose(
+                            const Size(90, 30),
+                          ),
+                          child: Image.asset('assets/store/appstore.png'),
+                        ),
                       ],
                     ),
                     kSizedBox,

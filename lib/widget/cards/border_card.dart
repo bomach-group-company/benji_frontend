@@ -22,7 +22,13 @@ class _MyBorderCardState extends State<MyBorderCard> {
 
     return Container(
       width: deviceType(media.width) <= 2
-          ? media.width * 0.9
+          ? responsiveNumberSize(media.width, [
+              media.width * 0.70,
+              media.width * 0.75,
+              media.width * 0.80,
+              media.width * 0.85,
+              media.width * 0.90,
+            ])
           : responsiveNumberSize(media.width, [
               media.width * 0.30,
               media.width * 0.30,
@@ -52,22 +58,23 @@ class _MyBorderCardState extends State<MyBorderCard> {
             size: 50,
           ),
           kHalfWidthSizedBox,
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.title,
-                maxLines: 2,
-                style: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+          SizedBox(
+            width: breakPoint(
+                media.width, 110, media.width * 0.45, media.width * 0.2),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.title,
+                  maxLines: 2,
+                  style: const TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 150,
-                child: Text(
+                Text(
                   widget.subtitle,
                   maxLines: 2,
                   style: const TextStyle(
@@ -77,8 +84,8 @@ class _MyBorderCardState extends State<MyBorderCard> {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),
