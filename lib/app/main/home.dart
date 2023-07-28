@@ -25,7 +25,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final bool _isLoading = true;
+  final bool _isLoading = false;
 
   CarouselController buttonCarouselController = CarouselController();
 
