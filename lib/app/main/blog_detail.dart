@@ -1,3 +1,4 @@
+import 'package:benji_frontend/app/main/blogs.dart';
 import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +68,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                 current: 'Blog Details',
                 hasBeadcrumb: true,
                 back: 'Blog',
+                backNav: BlogsPage(),
               ),
               kSizedBox,
               Container(
@@ -91,7 +93,7 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                               fit: BoxFit.cover,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],

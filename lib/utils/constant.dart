@@ -1,6 +1,9 @@
 //default value
 import 'package:flutter/material.dart';
 
+const String baseUrl =
+    'https://benji-app-one-9146d01ad651.herokuapp.com/api/v1/frontend/';
+
 const double laptopSize = 992;
 const double tabletSize = 768;
 const double mobileSize = 576;

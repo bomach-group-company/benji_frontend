@@ -1,3 +1,4 @@
+import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -8,6 +9,7 @@ import '../../app/main/blogs.dart';
 import '../../app/main/contact_us.dart';
 import '../../app/main/faqs.dart';
 import '../../app/main/privacy_policy.dart';
+import '../../app/main/refund_policy.dart';
 import '../../app/main/term_condition.dart';
 import '../footer_column_text.dart';
 
@@ -89,7 +91,7 @@ class Footer extends StatelessWidget {
                             ['About', AboutPage()],
                             ['Our Team', null],
                             ['Testimonials', null],
-                            ['Today\'s Special', null]
+                            ['Products', CategoryPage()]
                           ],
                         ),
                         FooterColumnText(
@@ -97,7 +99,7 @@ class Footer extends StatelessWidget {
                           items: [
                             ['Privacy Policy', PrivacyPolicyPage()],
                             ['Terms & Conditions', TermConditionPage()],
-                            ['Refund Policy', null],
+                            ['Refund Policy', RefundPolicyPage()],
                           ],
                         ),
                         FooterColumnText(
