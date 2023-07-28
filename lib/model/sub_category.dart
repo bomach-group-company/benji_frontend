@@ -26,7 +26,7 @@ class SubCategory {
       name: json['name'],
       description: json['description'],
       category: json['category'],
-      isActive: json['isActive'],
+      isActive: json['is_active'],
     );
   }
 }

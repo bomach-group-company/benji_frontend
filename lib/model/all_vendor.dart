@@ -1,38 +1,36 @@
 import 'dart:convert';
 
-import 'package:benji_frontend/model/vendor.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/constant.dart';
 
 class AllVendor {
-  final List<Vendor> items;
+  final List<dynamic> items;
   final int total;
-  final String per_page;
+  final int perPage;
 
   const AllVendor({
     required this.items,
     required this.total,
-    required this.per_page,
+    required this.perPage,
   });
 
   factory AllVendor.fromJson(Map<String, dynamic> json) {
     return AllVendor(
       items: json['items'],
       total: json['total'],
-      per_page: json['per_page'],
+      perPage: json['per_page'],
     );
   }
 }
 
-Future<Map> fetchAllVendor(final int skip) async {
+Future<AllVendor> fetchAllVendor(final int skip) async {
   final response =
       await http.get(Uri.parse('${baseUrl}products/getAllVendor?skip=$skip'));
 
   if (response.statusCode == 200) {
-    print(jsonDecode(response.body));
-    return jsonDecode(response.body);
+    return AllVendor.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load all vendors');
+    throw Exception('Failed to load vendors');
   }
 }

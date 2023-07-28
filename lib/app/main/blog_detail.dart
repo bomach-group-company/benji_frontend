@@ -48,6 +48,14 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
+    const String image = 'assets/blog/blog-1.jpeg';
+    const String date = '1 July 2022';
+    const String from = 'Admin';
+    const String title =
+        'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese';
+    const String description = ''';
+    final String description =  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese';
+    final String description =  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy''';
 
     return Scaffold(
       drawerScrimColor: Colors.transparent,
@@ -79,22 +87,81 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: [
-                        Container(
-                          height: 500,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(50),
-                              topRight: Radius.circular(50),
-                            ),
-                            image: DecorationImage(
-                              image: AssetImage('assets/hero/slider-1.png'),
-                              fit: BoxFit.cover,
-                            ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
+                          image: DecorationImage(
+                            image: AssetImage(image),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                      ],
+                        width: double.infinity,
+                      ),
+                    ),
+                    kSizedBox,
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 22),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(date),
+                                Expanded(
+                                  child: Text(
+                                    'Post by: $from',
+                                    textAlign: TextAlign.end,
+                                    softWrap: false,
+                                    maxLines: 3,
+                                    style: TextStyle(
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            kHalfSizedBox,
+                            SizedBox(
+                              width: double.infinity,
+                              child: Text(
+                                title,
+                                softWrap: false,
+                                maxLines: 2,
+                                style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            kSizedBox,
+                            SizedBox(
+                              width: double.infinity,
+                              child: Text(
+                                description,
+                                softWrap: false,
+                                maxLines: 5,
+                                style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            kSizedBox,
+                            kSizedBox,
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),

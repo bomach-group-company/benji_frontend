@@ -22,7 +22,7 @@ class Category {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      isActive: json['isActive'],
+      isActive: json['is_active'],
     );
   }
 }

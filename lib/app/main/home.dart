@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../model/all_vendor.dart';
 import '../../utils/constant.dart';
 import '../../widget/button.dart';
 import '../../widget/cards/blog_card.dart';
@@ -26,7 +25,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _isLoading = true;
+  final bool _isLoading = true;
 
   CarouselController buttonCarouselController = CarouselController();
 
@@ -49,26 +48,26 @@ class _HomePageState extends State<HomePage> {
       });
 
     super.initState();
-    _getData();
+    // _getData();
   }
 
-  late Future<Map> data;
+  // late Future<AllProduct> data;
 
-  _getData() async {
-    // fake wait
-    // await Future.delayed(const Duration(seconds: 3));
-    try {
-      data = fetchAllVendor(9);
-      setState(() {
-        _isLoading = false;
-      });
-    } catch (e) {
-      debugPrint(e.toString());
-      setState(() {
-        _isLoading = false;
-      });
-    }
-  }
+  // _getData() async {
+  //   // fake wait
+  //   // await Future.delayed(const Duration(seconds: 3));
+  //   try {
+  //     data = fetchAllProduct(9);
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   } catch (e) {
+  //     debugPrint(e.toString());
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   }
+  // }
 
   @override
   void dispose() {

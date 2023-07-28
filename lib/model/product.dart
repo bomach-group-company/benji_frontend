@@ -1,55 +1,55 @@
 import 'dart:convert';
 
-import 'package:benji_frontend/model/category.dart';
+import 'package:benji_frontend/model/sub_category.dart';
+import 'package:benji_frontend/model/vendor.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/constant.dart';
 
-class SubCategory {
+class Product {
   final String id;
   final String name;
   final String description;
-  final Category category;
-  final bool isActive;
+  final Vendor vendorId;
+  final SubCategory subCategoryId;
+  final int price;
+  final bool isAvailable;
+  final bool isTrending;
+  final bool isRecommended;
 
-  const SubCategory({
+  const Product({
     required this.id,
     required this.name,
     required this.description,
-    required this.category,
-    required this.isActive,
+    required this.vendorId,
+    required this.subCategoryId,
+    required this.price,
+    required this.isAvailable,
+    required this.isTrending,
+    required this.isRecommended,
   });
 
-  factory SubCategory.fromJson(Map<String, dynamic> json) {
-    return SubCategory(
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      category: json['category'],
-      isActive: json['isActive'],
+      vendorId: json['vendor_id'],
+      subCategoryId: json['sub_category_id'],
+      price: json['price'],
+      isAvailable: json['is_available'],
+      isTrending: json['is_trending'],
+      isRecommended: json['is_recommended'],
     );
   }
 }
 
-Future<List<SubCategory>> fetchCategories() async {
-  final response = await http.get(Uri.parse('${baseUrl}sub_categories/list'));
+Future<Product> fetchProduct(id) async {
+  final response = await http.get(Uri.parse('${baseUrl}products/product/$id'));
 
   if (response.statusCode == 200) {
-    return (jsonDecode(response.body) as List)
-        .map((item) => SubCategory.fromJson(item))
-        .toList();
+    return Product.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to load sub categories');
-  }
-}
-
-Future<SubCategory> fetchSubCategory(id) async {
-  final response =
-      await http.get(Uri.parse('${baseUrl}sub_categories/category/$id'));
-
-  if (response.statusCode == 200) {
-    return SubCategory.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed to load sub category');
+    throw Exception('Failed to load product');
   }
 }
