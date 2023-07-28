@@ -1,4 +1,4 @@
-import 'package:benji_frontend/app/main/home.dart';
+import 'package:benji_frontend/app/auth/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Benji',
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
