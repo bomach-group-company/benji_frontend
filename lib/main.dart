@@ -1,5 +1,6 @@
-import 'package:benji_frontend/app/page/main/home.dart';
 import 'package:flutter/material.dart';
+
+import 'app/main/blog_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Benji',
-      home: HomePage(),
+      home: BlogDetailsPage(),
     );
   }
 }

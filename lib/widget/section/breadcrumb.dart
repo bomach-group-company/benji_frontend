@@ -1,4 +1,4 @@
-import 'package:benji_frontend/page/main/home.dart';
+import 'package:benji_frontend/app/main/home.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';

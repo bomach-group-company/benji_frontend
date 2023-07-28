@@ -60,7 +60,7 @@ class _MyBorderCardState extends State<MyBorderCard> {
           kHalfWidthSizedBox,
           SizedBox(
             width: breakPoint(
-                media.width, 110, media.width * 0.45, media.width * 0.2),
+                media.width, 110, media.width * 0.45, media.width * 0.15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,

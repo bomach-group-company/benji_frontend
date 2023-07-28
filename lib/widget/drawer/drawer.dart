@@ -1,12 +1,12 @@
-import 'package:benji_frontend/page/main/about.dart';
-import 'package:benji_frontend/page/main/contact_us.dart';
-import 'package:benji_frontend/page/main/home.dart';
+import 'package:benji_frontend/app/main/about.dart';
+import 'package:benji_frontend/app/main/contact_us.dart';
+import 'package:benji_frontend/app/main/home.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
 import '../drop.dart';
 import '../text/hover_text.dart';
-import '../../page/auth/login.dart';
+import '../../app/auth/login.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});

@@ -1,15 +1,16 @@
-import 'package:benji_frontend/page/store/category.dart';
-import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
+import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/widget/clickable.dart';
+import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../utils/constant.dart';
 import '../../widget/button.dart';
-import '../../widget/text/fancy_text.dart';
-import '../../widget/section/footer.dart';
 import '../../widget/cards/product_card.dart';
 import '../../widget/drawer/drawer.dart';
+import '../../widget/end_to_end_row.dart';
+import '../../widget/section/footer.dart';
+import '../../widget/text/fancy_text.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -337,13 +338,9 @@ class _ProductPageState extends State<ProductPage> {
                       children: [
                         const Padding(
                           padding: EdgeInsets.all(15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              MyFancyText(text: 'Today\'s Special'),
-                              MyOutlinedButton(),
-                            ],
+                          child: EndToEndRow(
+                            widget1: MyFancyText(text: 'Related'),
+                            widget2: MyOutlinedButton(),
                           ),
                         ),
                         kSizedBox,

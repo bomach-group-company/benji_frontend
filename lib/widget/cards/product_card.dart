@@ -1,8 +1,8 @@
-import 'package:benji_frontend/page/store/category.dart';
+import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
-import '../../page/store/product.dart';
+import '../../app/store/product.dart';
 import '../clickable.dart';
 
 class MyCard extends StatefulWidget {

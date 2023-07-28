@@ -1,11 +1,11 @@
-import 'package:benji_frontend/page/main/home.dart';
+import 'package:benji_frontend/app/main/home.dart';
 import 'package:flutter/material.dart';
 
+import '../../../app/auth/login.dart';
+import '../../../app/main/contact_us.dart';
+import '../../../app/store/category.dart';
 import '../../../utils/constant.dart';
 import '../../text/hover_text.dart';
-import '../../../page/auth/login.dart';
-import '../../../page/main/contact_us.dart';
-import '../../../page/store/category.dart';
 
 class MyLaptopAppBar extends StatefulWidget {
   const MyLaptopAppBar({super.key});
@@ -62,7 +62,6 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                   fontWeight: FontWeight.w200,
                   fontSize: 16,
                 ),
-                active: true,
               ),
               kWidthSizedBox,
               kWidthSizedBox,

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../page/main/about.dart';
-import '../../page/main/blogs.dart';
-import '../../page/main/contact_us.dart';
-import '../../page/main/faqs.dart';
-import '../../page/main/privacy_policy.dart';
-import '../../page/main/term_condition.dart';
+import '../../app/main/about.dart';
+import '../../app/main/blogs.dart';
+import '../../app/main/contact_us.dart';
+import '../../app/main/faqs.dart';
+import '../../app/main/privacy_policy.dart';
+import '../../app/main/term_condition.dart';
 import '../footer_column_text.dart';
 
 class Footer extends StatelessWidget {
