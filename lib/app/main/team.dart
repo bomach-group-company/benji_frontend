@@ -1,25 +1,21 @@
 import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../utils/constant.dart';
+import '../../widget/cards/team_card.dart';
 import '../../widget/drawer/drawer.dart';
 import '../../widget/section/footer.dart';
 
-class FAQsPage extends StatefulWidget {
-  const FAQsPage({super.key});
+class TeamPage extends StatefulWidget {
+  const TeamPage({super.key});
 
   @override
-  State<FAQsPage> createState() => _FAQsPageState();
+  State<TeamPage> createState() => _TeamPageState();
 }
 
-class _FAQsPageState extends State<FAQsPage> {
-  List items = [
-    ['FAQs 1', 'Answer 1'],
-    ['FAQs 2', 'Answer 2'],
-    ['FAQs 3', 'Answer 3']
-  ];
-
+class _TeamPageState extends State<TeamPage> {
   bool _showBackToTopButton = false;
   late ScrollController _scrollController;
 
@@ -69,8 +65,8 @@ class _FAQsPageState extends State<FAQsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const MyBreadcrumb(
-                text: 'FAQs',
-                current: 'faqs',
+                text: 'Our Team',
+                current: 'Our Team',
                 hasBeadcrumb: true,
                 back: 'home',
               ),
@@ -83,50 +79,31 @@ class _FAQsPageState extends State<FAQsPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: items.map((e) {
-                        return Column(
-                          children: [
-                            Container(
-                              decoration: const BoxDecoration(boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 1,
-                                )
-                              ]),
-                              child: ExpansionTile(
-                                iconColor: Colors.black45,
-                                collapsedBackgroundColor: Colors.white,
-                                backgroundColor: Colors.white30,
-                                title: const Text(
-                                  "FAQ QUESTION ONE",
-                                  style: TextStyle(
-                                    color: kBlueColor,
-                                  ),
-                                ),
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                          width: 1,
-                                          color: Colors.black12,
-                                        ),
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.all(20),
-                                    width: double.infinity,
-                                    child:
-                                        const Text("Answers for Question One"),
-                                  )
-                                ],
-                              ),
-                            ),
-                            kSizedBox,
-                          ],
-                        );
-                      }).toList(),
+                    LayoutGrid(
+                      columnSizes: breakPointDynamic(media.width, [1.fr],
+                          [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
+                      rowSizes: const [
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto,
+                        auto
+                      ],
+                      children: const [
+                        MyTeamCard(),
+                        MyTeamCard(),
+                        MyTeamCard(),
+                        MyTeamCard(),
+                        MyTeamCard(),
+                        MyTeamCard(),
+                      ],
                     ),
                   ],
                 ),

@@ -56,7 +56,7 @@ class _ProductPageState extends State<ProductPage> {
   void _handleRadioValueChanged(int? value) {
     if (value != null) {
       setState(() {
-        price = price == 40.00 ? 20.00 : price;
+        price = price == 40.00 ? 20.00 : 40.00;
         _selectedRadioValue = value;
       });
     }

@@ -1,9 +1,11 @@
 import 'package:benji_frontend/app/main/home.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/auth/login.dart';
 import '../../../app/main/contact_us.dart';
 import '../../../app/store/category.dart';
+import '../../../app/store/search.dart';
 import '../../../utils/constant.dart';
 import '../../text/hover_text.dart';
 
@@ -162,9 +164,12 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
-                Icons.search,
-                color: Colors.white,
+              const MyClickable(
+                navigate: SearchPage(),
+                child: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
               ),
               kWidthSizedBox,
               const Text(

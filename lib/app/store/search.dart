@@ -6,21 +6,17 @@ import '../../utils/constant.dart';
 import '../../widget/drawer/drawer.dart';
 import '../../widget/section/footer.dart';
 
-class FAQsPage extends StatefulWidget {
-  const FAQsPage({super.key});
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
 
   @override
-  State<FAQsPage> createState() => _FAQsPageState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
-class _FAQsPageState extends State<FAQsPage> {
-  List items = [
-    ['FAQs 1', 'Answer 1'],
-    ['FAQs 2', 'Answer 2'],
-    ['FAQs 3', 'Answer 3']
-  ];
-
+class _SearchPageState extends State<SearchPage> {
   bool _showBackToTopButton = false;
+
+  // scroll controller
   late ScrollController _scrollController;
 
   @override
@@ -69,65 +65,66 @@ class _FAQsPageState extends State<FAQsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const MyBreadcrumb(
-                text: 'FAQs',
-                current: 'faqs',
+                text: 'Search',
+                current: 'Search',
                 hasBeadcrumb: true,
                 back: 'home',
               ),
               kSizedBox,
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: breakPoint(media.width, 25, 50, 50),
-                ),
+                margin: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: items.map((e) {
-                        return Column(
-                          children: [
-                            Container(
-                              decoration: const BoxDecoration(boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 1,
-                                )
-                              ]),
-                              child: ExpansionTile(
-                                iconColor: Colors.black45,
-                                collapsedBackgroundColor: Colors.white,
-                                backgroundColor: Colors.white30,
-                                title: const Text(
-                                  "FAQ QUESTION ONE",
-                                  style: TextStyle(
-                                    color: kBlueColor,
-                                  ),
-                                ),
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                          width: 1,
-                                          color: Colors.black12,
-                                        ),
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.all(20),
-                                    width: double.infinity,
-                                    child:
-                                        const Text("Answers for Question One"),
-                                  )
-                                ],
-                              ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 10,
+                                spreadRadius: 5,
+                                color: Colors.grey.shade300)
+                          ]),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 50),
+                      child: Row(
+                        children: [
+                          const Expanded(
+                            child: TextField(
+                              decoration:
+                                  InputDecoration(border: OutlineInputBorder()),
                             ),
-                            kSizedBox,
-                          ],
-                        );
-                      }).toList(),
+                          ),
+                          OutlinedButton.icon(
+                            label: const Text(''),
+                            style: OutlinedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                backgroundColor: Colors.grey[200],
+                                foregroundColor: Colors.black,
+                                minimumSize: const Size(60, 60)),
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.search,
+                              size: 30,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
+                    kSizedBox,
+                    kHalfSizedBox,
+                    Container(
+                      height: breakPoint(media.width, 400, 500, 700),
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/error/nodata.png'),
+                            fit: BoxFit.fitHeight),
+                      ),
+                    )
                   ],
                 ),
               ),

@@ -1,6 +1,5 @@
+import 'package:benji_frontend/app/main/home.dart';
 import 'package:flutter/material.dart';
-
-import 'app/main/home.dart';
 
 void main() {
   runApp(const MyApp());

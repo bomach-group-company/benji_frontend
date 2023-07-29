@@ -3,9 +3,9 @@ import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
-import '../../widget/section/footer.dart';
 import '../../widget/cards/simple_card.dart';
 import '../../widget/drawer/drawer.dart';
+import '../../widget/section/footer.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({super.key});
@@ -159,7 +159,12 @@ class _ContactUsState extends State<ContactUs> {
                                   children: [
                                     Expanded(
                                       child: TextFormField(
+                                        cursorColor: Colors.black,
+                                        cursorHeight: 20,
+                                        cursorWidth: 1,
                                         decoration: const InputDecoration(
+                                          fillColor: Colors.white,
+                                          filled: true,
                                           contentPadding: EdgeInsets.symmetric(
                                             horizontal: 16.0,
                                           ),
@@ -168,7 +173,7 @@ class _ContactUsState extends State<ContactUs> {
                                         ),
                                         validator: (value) {
                                           if (value == null) {
-                                            return 'Please enter your name';
+                                            return 'Please enter your First name';
                                           }
                                           return null;
                                         },
@@ -177,7 +182,12 @@ class _ContactUsState extends State<ContactUs> {
                                     kWidthSizedBox,
                                     Expanded(
                                       child: TextFormField(
+                                        cursorColor: Colors.black,
+                                        cursorHeight: 20,
+                                        cursorWidth: 1,
                                         decoration: const InputDecoration(
+                                          fillColor: Colors.white,
+                                          filled: true,
                                           contentPadding: EdgeInsets.symmetric(
                                             horizontal: 16.0,
                                           ),
@@ -186,7 +196,7 @@ class _ContactUsState extends State<ContactUs> {
                                         ),
                                         validator: (value) {
                                           if (value == null) {
-                                            return 'Please enter your name';
+                                            return 'Please enter your Last name';
                                           }
                                           return null;
                                         },
@@ -196,26 +206,42 @@ class _ContactUsState extends State<ContactUs> {
                                 ),
                                 kSizedBox,
                                 TextFormField(
+                                  cursorColor: Colors.black,
+                                  cursorHeight: 20,
+                                  cursorWidth: 1,
                                   decoration: const InputDecoration(
+                                    fillColor: Colors.white,
+                                    filled: true,
                                     hintText: 'Email',
                                     border: OutlineInputBorder(),
                                   ),
                                   validator: (value) {
                                     if (value == null) {
-                                      return 'Please enter your name';
+                                      return 'Please enter your Email';
                                     }
                                     return null;
                                   },
                                 ),
                                 kSizedBox,
-                                const TextField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Message',
-                                    border: OutlineInputBorder(),
-                                  ),
+                                TextFormField(
+                                  cursorColor: Colors.black,
+                                  cursorHeight: 20,
+                                  cursorWidth: 1,
                                   keyboardType: TextInputType.multiline,
                                   minLines: 4,
                                   maxLines: 20,
+                                  decoration: const InputDecoration(
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    hintText: 'Message',
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return 'Please enter your Email';
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 kSizedBox,
                                 Container(

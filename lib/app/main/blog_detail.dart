@@ -2,8 +2,10 @@ import 'package:benji_frontend/app/main/blogs.dart';
 import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../utils/constant.dart';
+import '../../widget/cards/blog_card.dart';
 import '../../widget/drawer/drawer.dart';
 import '../../widget/section/footer.dart';
 
@@ -53,9 +55,8 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
     const String from = 'Admin';
     const String title =
         'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese';
-    const String description = ''';
-    final String description =  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese';
-    final String description =  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy''';
+    const String description = '''
+final String description Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Chees final String description Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy''';
 
     return Scaffold(
       drawerScrimColor: Colors.transparent,
@@ -78,94 +79,139 @@ class _BlogDetailsPageState extends State<BlogDetailsPage> {
                 back: 'Blog',
                 backNav: BlogsPage(),
               ),
-              kSizedBox,
               Container(
                 margin: EdgeInsets.symmetric(
                   horizontal: breakPoint(media.width, 25, 50, 50),
                 ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 0.5),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),
-                          image: DecorationImage(
-                            image: AssetImage(image),
-                            fit: BoxFit.cover,
-                          ),
+                    Container(
+                      height: 500,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
                         ),
-                        width: double.infinity,
+                        image: DecorationImage(
+                          image: AssetImage(image),
+                          fit: BoxFit.cover,
+                        ),
                       ),
+                      width: double.infinity,
                     ),
-                    kSizedBox,
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 22),
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(date),
-                                Expanded(
-                                  child: Text(
-                                    'Post by: $from',
-                                    textAlign: TextAlign.end,
-                                    softWrap: false,
-                                    maxLines: 3,
-                                    style: TextStyle(
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 20),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(date),
+                              Expanded(
+                                child: Text(
+                                  'Post by: $from',
+                                  textAlign: TextAlign.end,
+                                  softWrap: false,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-                              ],
-                            ),
-                            kHalfSizedBox,
-                            SizedBox(
-                              width: double.infinity,
-                              child: Text(
-                                title,
-                                softWrap: false,
-                                maxLines: 2,
-                                style: TextStyle(
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              ),
+                            ],
+                          ),
+                          kHalfSizedBox,
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              title,
+                              softWrap: true,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                            kSizedBox,
-                            SizedBox(
-                              width: double.infinity,
-                              child: Text(
-                                description,
-                                softWrap: false,
-                                maxLines: 5,
-                                style: TextStyle(
-                                  overflow: TextOverflow.ellipsis,
-                                  fontSize: 16,
-                                ),
+                          ),
+                          kSizedBox,
+                          SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              description,
+                              softWrap: true,
+                              style: TextStyle(
+                                fontSize: 16,
                               ),
                             ),
-                            kSizedBox,
-                            kSizedBox,
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
+              kSizedBox,
+              kSizedBox,
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: breakPoint(media.width, 15, 40, 40),
+                ),
+                child: LayoutGrid(
+                  columnSizes: breakPointDynamic(
+                      media.width, [1.fr], [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
+                  rowSizes: const [
+                    auto,
+                    auto,
+                    auto,
+                  ],
+                  children: const [
+                    MyBlogCard(
+                      date: '1 July 2022',
+                      from: 'Admin',
+                      title:
+                          'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                      image: 'assets/blog/blog-1.jpeg',
+                      description:
+                          'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                    ),
+                    MyBlogCard(
+                      date: '1 July 2022',
+                      from: 'Admin',
+                      title:
+                          'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                      image: 'assets/blog/blog-2.jpeg',
+                      description:
+                          'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                    ),
+                    MyBlogCard(
+                      date: '1 July 2022',
+                      from: 'Admin',
+                      title:
+                          'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                      image: 'assets/blog/blog-1.jpeg',
+                      description:
+                          'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                    ),
+                  ],
+                ),
+              ),
+              kSizedBox,
               kSizedBox,
               kSizedBox,
               kSizedBox,
