@@ -1,0 +1,79 @@
+
+
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+const String baseUrl =
+    'https://benji-app-one-9146d01ad651.herokuapp.com/api/v1/frontend';
+
+Future fetchData(final String endpoint) async {
+  var apiUrl = '$baseUrl$endpoint';
+  try {
+    final response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      print(data);
+      return {'data': data, 'status': response.statusCode};
+    } else {
+      print('Request failed with status: ${response.statusCode}');
+      return {
+        'data': 'Request failed with status: ${response.statusCode}',
+        'status': response.statusCode
+      };
+    }
+  } catch (e) {
+    // Handle any errors that occurred during the HTTP request
+    print('Error: $e');
+    return {'data': 'Error: $e', 'status': -1};
+  }
+}
+
+
+              
+  Future<void> fetchData() async {
+    var apiUrl =
+        '${baseUrl}categories/list'; // Replace this with your API endpoint URL
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        setState(() {
+          _isLoading = false;
+          _data = jsonDecode(response.body);
+        });
+      } else {
+        // Request failed with an error status code
+        print('Request failed with status: ${response.statusCode}');
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      // Handle any errors that occurred during the HTTP request
+      print('Error: $e');
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+
+  DropdownButton(
+                style: const TextStyle(color: Colors.white),
+                underline: const SizedBox(),
+                value: 'hola',
+                items: const [
+                  DropdownMenuItem(
+                    value: 'hola',
+                    child: Text('hola'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'i am emma',
+                    child: Text('i am emma'),
+                  ),
+                ],
+                onChanged: (value) {},
+              ),
