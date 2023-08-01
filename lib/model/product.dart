@@ -52,11 +52,7 @@ class Product {
 
 Future<Product> fetchProduct(String id) async {
   String url = '${baseUrl}products/product/$id';
-  print('emma');
-  print(url);
   final response = await http.get(Uri.parse(url));
-  print(jsonDecode(response.body));
-  print(jsonDecode(url));
 
   if (response.statusCode == 200) {
     return Product.fromJson(jsonDecode(response.body));

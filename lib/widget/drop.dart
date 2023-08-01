@@ -31,7 +31,7 @@ class _MyDropDownState extends State<MyDropDown> {
       //   thumbVisibility: true,
       //   interactive: true,
       child: Container(
-        height: 170,
+        constraints: const BoxConstraints(maxHeight: 170),
         width: 200,
         decoration: BoxDecoration(
           color: Colors.white,

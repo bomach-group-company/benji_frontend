@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                             children: trendingProduct
                                 .map(
                                   (item) => MyCard(
-                                    navigate: ProductPage(product: item),
+                                    navigate: ProductPage(id: item.id),
                                     action: () {
                                       setState(() {
                                         showCard = true;
@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                             children: todayProduct
                                 .map(
                                   (item) => MyCard(
-                                    navigate: ProductPage(product: item),
+                                    navigate: ProductPage(id: item.id),
                                     action: () {
                                       setState(() {
                                         showCard = true;
@@ -376,7 +376,7 @@ class _HomePageState extends State<HomePage> {
                             children: recommendedProduct
                                 .map(
                                   (item) => MyCard(
-                                    navigate: ProductPage(product: item),
+                                    navigate: ProductPage(id: item.id),
                                     action: () {
                                       setState(() {
                                         showCard = true;
@@ -569,6 +569,7 @@ class _HomePageState extends State<HomePage> {
                   orElse: () => productsData!.items.first,
                 );
                 return MyCardLg(
+                  navigate: ProductPage(id: data.id),
                   visible: showCard,
                   close: () {
                     setState(() {
