@@ -14,7 +14,7 @@ class MyFancyText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.oleoScript(
-        color: kBlueColor,
+        color: kGreenColor,
         fontSize: media.width * 0.035 + 20,
         fontWeight: FontWeight.bold,
       ),

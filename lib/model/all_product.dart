@@ -1,15 +1,16 @@
 import 'dart:convert';
 
+import 'package:benji_frontend/model/product.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/constant.dart';
 
 class AllProduct {
-  final List<dynamic> items;
+  final List<Product> items;
   final int total;
   final int perPage;
 
-  const AllProduct({
+  AllProduct({
     required this.items,
     required this.total,
     required this.perPage,
@@ -17,7 +18,9 @@ class AllProduct {
 
   factory AllProduct.fromJson(Map<String, dynamic> json) {
     return AllProduct(
-      items: json['items'],
+      items: (json['items'] as List)
+          .map((item) => Product.fromJson(item))
+          .toList(),
       total: json['total'],
       perPage: json['per_page'],
     );

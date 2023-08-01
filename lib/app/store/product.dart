@@ -1,4 +1,5 @@
 import 'package:benji_frontend/app/store/category.dart';
+import 'package:benji_frontend/model/product.dart';
 import 'package:benji_frontend/widget/clickable.dart';
 import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ import '../../widget/section/footer.dart';
 import '../../widget/text/fancy_text.dart';
 
 class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+  final Product product;
+  const ProductPage({super.key, required this.product});
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -40,7 +42,19 @@ class _ProductPageState extends State<ProductPage> {
       });
 
     super.initState();
+    // _getData();
   }
+
+  // bool _isLoading = true;
+
+  // Product? product;
+  // _getData() async {
+  //   product = await fetchProduct('d177163c-3687-4798-9e61-6daeeb0a867e');
+  //   print(product);
+  //   setState(() {
+  //     _isLoading = false;
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -100,8 +114,9 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       height: media.height * 0.5,
                       decoration: BoxDecoration(
-                          image: const DecorationImage(
-                            image: AssetImage('assets/product/item-3.png'),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                '$mediaBaseUrl${widget.product.productImage}'),
                             fit: BoxFit.contain,
                           ),
                           border: Border.all(color: Colors.black12),
@@ -113,17 +128,17 @@ class _ProductPageState extends State<ProductPage> {
                         deviceType(media.width) == 1
                             ? kSizedBox
                             : const SizedBox(),
-                        const Row(
+                        Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.spa,
                               color: kGreenColor,
                             ),
                             kHalfWidthSizedBox,
                             Expanded(
                               child: Text(
-                                'Roast Beef Tenderloin',
-                                style: TextStyle(
+                                widget.product.name,
+                                style: const TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -132,16 +147,16 @@ class _ProductPageState extends State<ProductPage> {
                           ],
                         ),
                         kHalfSizedBox,
-                        const Row(
+                        Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: MyClickable(
-                                navigate: CategoryPage(),
+                                navigate: const CategoryPage(),
                                 child: Text(
-                                  'Meat',
-                                  style: TextStyle(
+                                  widget.product.subCategoryId.category.name,
+                                  style: const TextStyle(
                                     color: kBlueColor,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
@@ -149,7 +164,7 @@ class _ProductPageState extends State<ProductPage> {
                                 ),
                               ),
                             ),
-                            Expanded(
+                            const Expanded(
                               child: Text(
                                 'Inclusive taxes',
                                 textAlign: TextAlign.end,
@@ -324,9 +339,9 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                     kSizedBox,
-                    const Text(
-                      '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.''',
-                      style: TextStyle(
+                    Text(
+                      widget.product.description,
+                      style: const TextStyle(
                         color: Colors.black45,
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
