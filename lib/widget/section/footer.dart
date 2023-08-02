@@ -91,7 +91,6 @@ class Footer extends StatelessWidget {
                           items: [
                             ['About', AboutPage()],
                             ['Our Team', TeamPage()],
-                            ['Testimonials', null],
                             ['Products', CategoryPage()]
                           ],
                         ),
@@ -107,7 +106,6 @@ class Footer extends StatelessWidget {
                           head: 'Other pages',
                           items: [
                             ['FAQs', FAQsPage()],
-                            ['Gallery', null],
                             ['Contact us', ContactUs()],
                             ['Blogs', BlogsPage()]
                           ],

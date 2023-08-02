@@ -1,5 +1,8 @@
+import 'package:benji_frontend/app/store/categories.dart';
+import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/app/store/product.dart';
 import 'package:benji_frontend/widget/cards/product_card_lg.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:benji_frontend/widget/section/hero.dart';
 import 'package:benji_frontend/widget/text/fancy_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -197,7 +200,8 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           const EndToEndRow(
                             widget1: MyFancyText(text: 'Categories'),
-                            widget2: MyOutlinedButton(),
+                            widget2:
+                                MyOutlinedButton(navigate: CategoriesPage()),
                           ),
                           kSizedBox,
                           CarouselSlider(
@@ -214,9 +218,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                             items: categoriesData
                                 .map(
-                                  (item) => MyCicleCard(
-                                    image: 'assets/circle_card/category-1.jpg',
-                                    text: item.name,
+                                  (item) => MyClickable(
+                                    navigate: const CategoryPage(),
+                                    child: MyCicleCard(
+                                      image:
+                                          'assets/circle_card/category-1.jpg',
+                                      text: item.name,
+                                    ),
                                   ),
                                 )
                                 .toList(),
