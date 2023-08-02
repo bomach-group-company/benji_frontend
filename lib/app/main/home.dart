@@ -219,7 +219,8 @@ class _HomePageState extends State<HomePage> {
                             items: categoriesData
                                 .map(
                                   (item) => MyClickable(
-                                    navigate: const CategoryPage(),
+                                    navigate: CategoryPage(
+                                        activeCategories: item.name),
                                     child: MyCicleCard(
                                       image:
                                           'assets/circle_card/category-1.jpg',

@@ -96,7 +96,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         children: (snapshot.data as List)
                             .map(
                               (item) => MyClickable(
-                                navigate: const CategoryPage(),
+                                navigate:
+                                    CategoryPage(activeCategories: item.name),
                                 child: SizedBox(
                                   height: 220,
                                   width: 200,

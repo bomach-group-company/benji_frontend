@@ -15,7 +15,8 @@ import '../../widget/drawer/drawer.dart';
 import '../../widget/section/footer.dart';
 
 class CategoryPage extends StatefulWidget {
-  const CategoryPage({super.key});
+  final String activeCategories;
+  const CategoryPage({super.key, this.activeCategories = 'All'});
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
@@ -24,6 +25,7 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   bool _showBackToTopButton = false;
   late ScrollController _scrollController;
+  String activeCategories = '';
 
   @override
   void initState() {
@@ -38,10 +40,10 @@ class _CategoryPageState extends State<CategoryPage> {
         });
       });
 
+    activeCategories = widget.activeCategories;
+
     super.initState();
   }
-
-  String activeCategories = 'All';
 
   bool showCard = false;
   String productPopId = '';

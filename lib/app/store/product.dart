@@ -171,7 +171,7 @@ class _ProductPageState extends State<ProductPage> {
                                       children: [
                                         Expanded(
                                           child: MyClickable(
-                                            navigate: const CategoryPage(),
+                                            navigate: CategoryPage(),
                                             child: Text(
                                               snapshot.data['product']
                                                   .subCategoryId.category.name,
