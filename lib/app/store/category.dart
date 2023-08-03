@@ -90,8 +90,8 @@ class _CategoryPageState extends State<CategoryPage> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (!snapshot.hasData) {
               if (snapshot.hasError) {
-                return const Center(
-                  child: Text('Error occured refresh'),
+                return Center(
+                  child: Text(snapshot.error.toString()),
                 );
               }
               return const SpinKitChasingDots(
