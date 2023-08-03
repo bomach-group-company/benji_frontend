@@ -5,8 +5,8 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import '../../utils/constant.dart';
 import '../../widget/cards/blog_card.dart';
-import '../../widget/section/footer.dart';
 import '../../widget/drawer/drawer.dart';
+import '../../widget/section/footer.dart';
 
 class BlogsPage extends StatefulWidget {
   const BlogsPage({super.key});
@@ -55,10 +55,7 @@ class _BlogsPageState extends State<BlogsPage> {
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       backgroundColor: const Color(0xfffafafc),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, media.height * 0.11),
-        child: const MyAppbar(),
-      ),
+      appBar: const MyAppbar(),
       body: SafeArea(
         child: SingleChildScrollView(
           controller: _scrollController,

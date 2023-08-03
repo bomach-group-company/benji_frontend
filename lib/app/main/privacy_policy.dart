@@ -3,8 +3,8 @@ import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
-import '../../widget/section/footer.dart';
 import '../../widget/drawer/drawer.dart';
+import '../../widget/section/footer.dart';
 
 class PrivacyPolicyPage extends StatefulWidget {
   const PrivacyPolicyPage({super.key});
@@ -53,10 +53,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       backgroundColor: const Color(0xfffafafc),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, media.height * 0.11),
-        child: const MyAppbar(),
-      ),
+      appBar: const MyAppbar(),
       body: SafeArea(
         child: SingleChildScrollView(
           controller: _scrollController,

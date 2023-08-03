@@ -26,13 +26,14 @@ class MyTabletAppBar extends StatelessWidget {
             'assets/brand/logo.png',
             fit: BoxFit.cover,
           ),
-          IconButton(
-            icon: const Icon(
+          InkWell(
+            mouseCursor: SystemMouseCursors.click,
+            child: const Icon(
               Icons.menu,
               color: kGreenColor,
               size: 35,
             ),
-            onPressed: () {
+            onTap: () {
               // Open the drawer
               Scaffold.of(context).openEndDrawer();
             },
