@@ -32,8 +32,9 @@ class _MyDropDownState extends State<MyDropDown> {
       //   interactive: true,
       child: Container(
         constraints: BoxConstraints(
-            maxHeight: 40 *
-                (widget.items.length < 5 ? widget.items.length : 5).toDouble()),
+          maxHeight: 40 *
+              (widget.items.length < 5 ? widget.items.length : 5).toDouble(),
+        ),
         width: 200,
         decoration: BoxDecoration(
           color: Colors.white,

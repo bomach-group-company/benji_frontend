@@ -21,17 +21,6 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
   bool visible = false;
   bool isHovered = false;
 
-  final List items = [
-    'Meat',
-    'Beverage',
-    'Vegetables',
-    'Beverage',
-    'Meat',
-    'Vegetables',
-    'Meat',
-    'Beverage'
-  ];
-
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
