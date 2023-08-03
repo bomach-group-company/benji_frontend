@@ -41,9 +41,12 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/brand/logo.png',
-                  fit: BoxFit.cover,
+                MyClickable(
+                  navigate: const HomePage(),
+                  child: Image.asset(
+                    'assets/brand/logo.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

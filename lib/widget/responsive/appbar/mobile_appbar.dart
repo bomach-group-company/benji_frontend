@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../app/main/home.dart';
 import '../../../utils/constant.dart';
+import '../../clickable.dart';
 
 class MyMobileAppBar extends StatelessWidget {
   const MyMobileAppBar({super.key});
@@ -19,9 +21,12 @@ class MyMobileAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(
-            'assets/brand/logo.png',
-            fit: BoxFit.cover,
+          MyClickable(
+            navigate: const HomePage(),
+            child: Image.asset(
+              'assets/brand/logo.png',
+              fit: BoxFit.cover,
+            ),
           ),
           InkWell(
             mouseCursor: SystemMouseCursors.click,
