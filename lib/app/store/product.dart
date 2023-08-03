@@ -27,14 +27,14 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   bool _showBackToTopButton = false;
   late ScrollController _scrollController;
-  int? _selectedRadioValue;
+  // int? _selectedRadioValue;
   double price = 40.00;
   String productPopId = '';
   bool showCard = false;
 
   @override
   void initState() {
-    _selectedRadioValue = 1;
+    // _selectedRadioValue = 1;
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -67,14 +67,14 @@ class _ProductPageState extends State<ProductPage> {
         duration: const Duration(seconds: 1), curve: Curves.linear);
   }
 
-  void _handleRadioValueChanged(int? value) {
-    if (value != null) {
-      setState(() {
-        price = price == 40.00 ? 20.00 : 40.00;
-        _selectedRadioValue = value;
-      });
-    }
-  }
+  // void _handleRadioValueChanged(int? value) {
+  //   if (value != null) {
+  //     setState(() {
+  //       price = price == 40.00 ? 20.00 : 40.00;
+  //       _selectedRadioValue = value;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +171,7 @@ class _ProductPageState extends State<ProductPage> {
                                       children: [
                                         Expanded(
                                           child: MyClickable(
-                                            navigate: CategoryPage(),
+                                            navigate: const CategoryPage(),
                                             child: Text(
                                               snapshot.data['product']
                                                   .subCategoryId.category.name,
