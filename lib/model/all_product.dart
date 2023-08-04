@@ -29,7 +29,7 @@ class AllProduct {
 
 Future<AllProduct> fetchAllProduct(final int skip) async {
   final response =
-      await http.get(Uri.parse('${baseUrl}products/listProduct?skip=$skip'));
+      await http.get(Uri.parse('$baseUrl/products/listProduct?skip=$skip'));
 
   if (response.statusCode == 200) {
     return AllProduct.fromJson(jsonDecode(response.body));

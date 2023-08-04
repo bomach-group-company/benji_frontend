@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
             if (!snapshot.hasData) {
               if (snapshot.hasError) {
                 return Center(
-                  child: Text(snapshot.error.toString()),
+                  child: SelectableText(snapshot.error.toString()),
                 );
               }
               return const SpinKitChasingDots(

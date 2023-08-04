@@ -51,7 +51,7 @@ class Product {
 }
 
 Future<Product> fetchProduct(String id) async {
-  String url = '${baseUrl}products/product/$id';
+  String url = '$baseUrl/products/product/$id';
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
