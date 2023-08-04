@@ -256,6 +256,10 @@ class _HomePageState extends State<HomePage> {
                                         as List<Product>)
                                     .map(
                                       (item) => MyCard(
+                                        navigateCategory: CategoryPage(
+                                          activeCategories:
+                                              item.subCategoryId.category.name,
+                                        ),
                                         navigate: ProductPage(id: item.id),
                                         action: () {
                                           setState(() {
@@ -318,6 +322,10 @@ class _HomePageState extends State<HomePage> {
                                         as List<Product>)
                                     .map(
                                       (item) => MyCard(
+                                        navigateCategory: CategoryPage(
+                                          activeCategories:
+                                              item.subCategoryId.category.name,
+                                        ),
                                         navigate: ProductPage(id: item.id),
                                         action: () {
                                           setState(() {
@@ -400,6 +408,10 @@ class _HomePageState extends State<HomePage> {
                                         as List<Product>)
                                     .map(
                                       (item) => MyCard(
+                                        navigateCategory: CategoryPage(
+                                          activeCategories:
+                                              item.subCategoryId.category.name,
+                                        ),
                                         navigate: ProductPage(id: item.id),
                                         action: () {
                                           setState(() {
@@ -602,6 +614,9 @@ class _HomePageState extends State<HomePage> {
                                   .first,
                         );
                     return MyCardLg(
+                      navigateCategory: CategoryPage(
+                        activeCategories: data.subCategoryId.category.name,
+                      ),
                       navigate: ProductPage(id: data.id),
                       visible: showCard,
                       close: () {

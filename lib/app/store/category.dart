@@ -183,6 +183,12 @@ class _CategoryPageState extends State<CategoryPage> {
                                       rowSizes: List.filled(data.length, auto),
                                       children: (data)
                                           .map((item) => MyCard(
+                                                navigateCategory: CategoryPage(
+                                                  activeCategories: item
+                                                      .subCategoryId
+                                                      .category
+                                                      .name,
+                                                ),
                                                 navigate:
                                                     ProductPage(id: item.id),
                                                 action: () {
@@ -219,6 +225,9 @@ class _CategoryPageState extends State<CategoryPage> {
                           (snapshot.data['products'].first as Product),
                     );
                     return MyCardLg(
+                      navigateCategory: CategoryPage(
+                        activeCategories: data.subCategoryId.category.name,
+                      ),
                       navigate: ProductPage(id: data.id),
                       visible: showCard,
                       close: () {

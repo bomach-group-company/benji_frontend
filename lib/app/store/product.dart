@@ -93,8 +93,8 @@ class _ProductPageState extends State<ProductPage> {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (!snapshot.hasData) {
                 if (snapshot.hasError) {
-                  return const Center(
-                    child: Text('Error occured refresh'),
+                  return Center(
+                    child: Text(snapshot.error.toString()),
                   );
                 }
                 return const SpinKitChasingDots(
@@ -171,7 +171,13 @@ class _ProductPageState extends State<ProductPage> {
                                       children: [
                                         Expanded(
                                           child: MyClickable(
-                                            navigate: const CategoryPage(),
+                                            navigate: CategoryPage(
+                                              activeCategories: snapshot
+                                                  .data['product']
+                                                  .subCategoryId
+                                                  .category
+                                                  .name,
+                                            ),
                                             child: Text(
                                               snapshot.data['product']
                                                   .subCategoryId.category.name,
@@ -402,8 +408,15 @@ class _ProductPageState extends State<ProductPage> {
                                           auto,
                                           auto,
                                         ],
-                                        children: data
+                                        children: (data as List<Product>)
                                             .map((item) => MyCard(
+                                                  navigateCategory:
+                                                      CategoryPage(
+                                                    activeCategories: item
+                                                        .subCategoryId
+                                                        .category
+                                                        .name,
+                                                  ),
                                                   navigate:
                                                       ProductPage(id: item.id),
                                                   action: () {
@@ -440,6 +453,9 @@ class _ProductPageState extends State<ProductPage> {
                             (snapshot.data['related'].items.first as Product),
                       );
                       return MyCardLg(
+                        navigateCategory: CategoryPage(
+                          activeCategories: data.subCategoryId.category.name,
+                        ),
                         navigate: ProductPage(id: data.id),
                         visible: showCard,
                         close: () {

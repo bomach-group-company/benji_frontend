@@ -102,23 +102,27 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                         ),
                       ),
                       itemBuilder: (context) {
-                        return (snapshot.data as List)
+                        return List.generate((snapshot.data as List).length,
+                                (index) => index)
                             .map(
                               (item) => PopupMenuItem<int>(
-                                value: 0,
-                                child: Text(item.name),
+                                value: item,
+                                child: Text(
+                                    (snapshot.data as List<Category>)[item]
+                                        .name),
                               ),
                             )
                             .toList();
                       },
                       onSelected: (value) {
-                        if (value == 0) {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const CategoryPage(),
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => CategoryPage(
+                              activeCategories:
+                                  (snapshot.data as List<Category>)[value].name,
                             ),
-                          );
-                        }
+                          ),
+                        );
                       },
                     ),
                     kWidthSizedBox,

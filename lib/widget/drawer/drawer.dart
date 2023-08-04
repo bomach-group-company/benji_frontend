@@ -138,7 +138,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                           visible: visible,
                                           items:
                                               (snapshot.data as List<Category>)
-                                                  .map((item) => item.name)
+                                                  .map((item) => item)
                                                   .toList(),
                                         )
                                       : const SizedBox();

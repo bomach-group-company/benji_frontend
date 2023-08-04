@@ -2,10 +2,11 @@ import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 import '../app/store/category.dart';
+import '../model/category.dart';
 
 class MyDropDown extends StatefulWidget {
   final bool visible;
-  final List items;
+  final List<Category> items;
 
   const MyDropDown({super.key, required this.visible, required this.items});
 
@@ -71,13 +72,16 @@ class _MyDropDownState extends State<MyDropDown> {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) {
-                                return const CategoryPage();
+                                return CategoryPage(
+                                  activeCategories:
+                                      widget.items[index - 1].name,
+                                );
                               },
                             ),
                           );
                         },
                         child: Text(
-                          widget.items[index - 1],
+                          widget.items[index - 1].name,
                           style: const TextStyle(
                             fontWeight: FontWeight.w100,
                             fontSize: 16,
