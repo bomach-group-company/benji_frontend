@@ -11,6 +11,7 @@ import '../../model/all_product.dart';
 import '../../model/all_sub_category.dart';
 import '../../model/product.dart';
 import '../../widget/cards/product_card.dart';
+import '../../widget/cards/product_card_lg.dart';
 import '../../widget/drawer/drawer.dart';
 import '../../widget/section/footer.dart';
 
@@ -37,6 +38,11 @@ class _CategoryPageState extends State<CategoryPage> {
   String activeSubCategories = '';
   String activeSubCategoriesId = '';
 
+  bool showCard = false;
+
+  String productPopId = '';
+  List<Product>? _getDataList;
+
   @override
   void initState() {
     _scrollController = ScrollController()
@@ -54,22 +60,27 @@ class _CategoryPageState extends State<CategoryPage> {
     activeSubCategoriesId = widget.activeSubCategoriesId;
 
     super.initState();
+    _getData();
   }
 
-  bool showCard = false;
-  String productPopId = '';
+  _getData() async {
+    try {
+      AllProduct data;
+      if (activeSubCategories == 'All' && activeSubCategoriesId == '') {
+        data = await fetchAllProductFilterByCategory(
+            widget.activeCategoriesId, 1, 13);
 
-  Future<List<Product>> _getData() async {
-    AllProduct data;
-    if (activeSubCategories == 'All' && activeSubCategoriesId == '') {
-      data = await fetchAllProductFilterByCategory(
-          widget.activeCategoriesId, 1, 13);
-      return data.items;
-    }
-
-    data =
-        await fetchAllProductFilterBySubCategory(activeSubCategoriesId, 1, 13);
-    return data.items;
+        setState(() {
+          _getDataList = data.items;
+        });
+      } else {
+        data = await fetchAllProductFilterBySubCategory(
+            activeSubCategoriesId, 1, 13);
+        setState(() {
+          _getDataList = data.items;
+        });
+      }
+    } catch (e) {}
   }
 
   Future<List<List<String>>> _getSubCategory() async {
@@ -182,6 +193,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                                           item[1];
                                                       activeSubCategoriesId =
                                                           item[0];
+                                                      _getDataList = null;
+                                                      _getData();
                                                     });
                                                   },
                                                   child: Text(item[1]),
@@ -196,31 +209,24 @@ class _CategoryPageState extends State<CategoryPage> {
                                   }
                                 }),
                             kSizedBox,
-                            FutureBuilder(
-                                future: _getData(),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot snapshot) {
-                                  if (!snapshot.hasData) {
-                                    if (snapshot.hasError) {
-                                      return Center(
-                                        child: SelectableText(
-                                            snapshot.error.toString()),
-                                      );
-                                    }
-                                    return const SpinKitChasingDots(
-                                      color: kGreenColor,
-                                      size: 30,
-                                    );
-                                  } else {
-                                    return LayoutGrid(
+                            Builder(builder: (context) {
+                              if (_getDataList == null) {
+                                return const SpinKitChasingDots(
+                                  color: kGreenColor,
+                                  size: 30,
+                                );
+                              } else {
+                                return Column(
+                                  children: [
+                                    LayoutGrid(
                                       columnSizes: breakPointDynamic(
                                           media.width,
                                           [1.fr],
                                           [1.fr, 1.fr],
                                           [1.fr, 1.fr, 1.fr, 1.fr]),
                                       rowSizes: List.filled(
-                                          snapshot.data.length, auto),
-                                      children: (snapshot.data as List<Product>)
+                                          _getDataList!.length, auto),
+                                      children: (_getDataList!)
                                           .map((item) => MyCard(
                                                 navigateCategory: CategoryPage(
                                                   activeCategories: item
@@ -243,9 +249,11 @@ class _CategoryPageState extends State<CategoryPage> {
                                                 price: item.price.toString(),
                                               ))
                                           .toList(),
-                                    );
-                                  }
-                                }),
+                                    ),
+                                  ],
+                                );
+                              }
+                            }),
                           ],
                         ),
                       ],
@@ -258,30 +266,33 @@ class _CategoryPageState extends State<CategoryPage> {
                 ],
               ),
             ),
-            // Builder(builder: (context) {
-            //   Product data = snapshot.data['products'].firstWhere(
-            //     (element) => element.id == productPopId,
-            //     orElse: () =>
-            //         (snapshot.data['products'].first as Product),
-            //   );
-            //   return MyCardLg(
-            //     navigateCategory: CategoryPage(
-            //       activeCategories: data.subCategoryId.category.name,
-            //     ),
-            //     navigate: ProductPage(id: data.id),
-            //     visible: showCard,
-            //     close: () {
-            //       setState(() {
-            //         showCard = false;
-            //       });
-            //     },
-            //     image: '$mediaBaseUrl${data.productImage}',
-            //     title: data.name,
-            //     sub: data.subCategoryId.name,
-            //     price: data.price.toString(),
-            //     description: data.description,
-            //   );
-            // }),
+            Builder(builder: (context) {
+              if (_getDataList == null) {
+                return const Text('');
+              } else {
+                Product data = (_getDataList!).firstWhere(
+                  (element) => element.id == productPopId,
+                  orElse: () => (_getDataList!).first,
+                );
+                return MyCardLg(
+                  navigateCategory: CategoryPage(
+                    activeCategories: data.subCategoryId.category.name,
+                  ),
+                  navigate: ProductPage(id: data.id),
+                  visible: showCard,
+                  close: () {
+                    setState(() {
+                      showCard = false;
+                    });
+                  },
+                  image: '$mediaBaseUrl${data.productImage}',
+                  title: data.name,
+                  sub: data.subCategoryId.name,
+                  price: data.price.toString(),
+                  description: data.description,
+                );
+              }
+            }),
           ],
         ),
       ),
