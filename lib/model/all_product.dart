@@ -9,11 +9,15 @@ class AllProduct {
   final List<Product> items;
   final int total;
   final int perPage;
+  final int start;
+  final int end;
 
   AllProduct({
     required this.items,
     required this.total,
     required this.perPage,
+    required this.start,
+    required this.end,
   });
 
   factory AllProduct.fromJson(Map<String, dynamic> json) {
@@ -23,13 +27,54 @@ class AllProduct {
           .toList(),
       total: json['total'],
       perPage: json['per_page'],
+      start: json['start'],
+      end: json['end'],
     );
   }
 }
 
-Future<AllProduct> fetchAllProduct(final int skip) async {
-  final response =
-      await http.get(Uri.parse('$baseUrl/products/listProduct?skip=$skip'));
+Future<AllProduct> fetchAllProduct(
+    [final int start = 1, final int end = 9]) async {
+  final response = await http
+      .get(Uri.parse('$baseUrl/products/listProduct?start=$start&end=$end'));
+
+  if (response.statusCode == 200) {
+    return AllProduct.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load products');
+  }
+}
+
+Future<AllProduct> fetchAllProductFilterByCategory(final String categoryId,
+    [final int start = 1, final int end = 9]) async {
+  final response = await http.get(Uri.parse(
+      '$baseUrl/products/filterProductByCategory?category_id=$categoryId&start=$start&end=$end'));
+
+  if (response.statusCode == 200) {
+    return AllProduct.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load products');
+  }
+}
+
+Future<AllProduct> fetchAllProductFilterBySubCategory(
+    final String subCategoryId,
+    [final int start = 1,
+    final int end = 9]) async {
+  final response = await http.get(Uri.parse(
+      '$baseUrl/products/filterProductBySubCategory?sub_category_id=$subCategoryId&start=$start&end=$end'));
+
+  if (response.statusCode == 200) {
+    return AllProduct.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load products');
+  }
+}
+
+Future<AllProduct> fetchAllProductSearchByName(final String searchItem,
+    [final int start = 1, final int end = 9]) async {
+  final response = await http.get(Uri.parse(
+      '$baseUrl/products/SearchProductByName?search_item=$searchItem&start=$start&end=$end'));
 
   if (response.statusCode == 200) {
     return AllProduct.fromJson(jsonDecode(response.body));

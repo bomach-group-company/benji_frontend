@@ -1,4 +1,3 @@
-import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +21,7 @@ class MyCard extends StatefulWidget {
     this.navigate,
     // const ProductPage(id: '2f8f8557-e313-465c-979f-c42f4b7e36dd'),
     this.action,
-    this.navigateCategory = const CategoryPage(),
+    this.navigateCategory,
   });
 
   @override

@@ -31,9 +31,8 @@ class SubCategory {
   }
 }
 
-Future<List<SubCategory>> fetchCategories() async {
+Future<List<SubCategory>> fetchSubCategories() async {
   final response = await http.get(Uri.parse('$baseUrl/sub_categories/list'));
-
   if (response.statusCode == 200) {
     return (jsonDecode(response.body) as List)
         .map((item) => SubCategory.fromJson(item))

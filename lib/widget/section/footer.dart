@@ -1,4 +1,3 @@
-import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
@@ -91,7 +90,7 @@ class Footer extends StatelessWidget {
                           items: [
                             ['About', AboutPage()],
                             ['Our Team', TeamPage()],
-                            ['Products', CategoryPage()]
+                            ['Products', null]
                           ],
                         ),
                         FooterColumnText(

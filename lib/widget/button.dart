@@ -1,11 +1,13 @@
-import 'package:benji_frontend/app/store/category.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constant.dart';
 
 class MyOutlinedButton extends StatefulWidget {
   final Widget? navigate;
-  const MyOutlinedButton({super.key, this.navigate = const CategoryPage()});
+  const MyOutlinedButton({
+    super.key,
+    this.navigate,
+  });
 
   @override
   State<MyOutlinedButton> createState() => _MyOutlinedButtonState();

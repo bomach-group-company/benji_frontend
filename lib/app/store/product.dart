@@ -50,9 +50,11 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   Future<Map<String, dynamic>> _getData() async {
+    final Product product = await fetchProduct(widget.id);
     return {
-      'product': await fetchProduct(widget.id),
-      'related': await fetchAllProduct(0)
+      'product': product,
+      'related': await fetchAllProductFilterByCategory(
+          product.subCategoryId.category.id, 1, 6)
     };
   }
 
@@ -171,16 +173,10 @@ class _ProductPageState extends State<ProductPage> {
                                       children: [
                                         Expanded(
                                           child: MyClickable(
-                                            navigate: CategoryPage(
-                                              activeCategories: snapshot
-                                                  .data['product']
-                                                  .subCategoryId
-                                                  .category
-                                                  .name,
-                                            ),
+                                            navigate: const CategoryPage(),
                                             child: Text(
                                               snapshot.data['product']
-                                                  .subCategoryId.category.name,
+                                                  .subCategoryId.name,
                                               style: const TextStyle(
                                                 color: kBlueColor,
                                                 fontSize: 16,
@@ -386,8 +382,9 @@ class _ProductPageState extends State<ProductPage> {
                                     ),
                                     kSizedBox,
                                     Builder(builder: (context) {
-                                      List data = (snapshot
-                                              .data['related'].items as List)
+                                      List data = ((snapshot.data['related']
+                                                  as AllProduct)
+                                              .items)
                                           .where((element) =>
                                               element !=
                                               snapshot.data['product'].id)
@@ -447,10 +444,13 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                     ),
                     Builder(builder: (context) {
-                      Product data = snapshot.data['related'].items.firstWhere(
+                      Product data =
+                          ((snapshot.data['related'] as AllProduct).items)
+                              .firstWhere(
                         (element) => element.id == productPopId,
-                        orElse: () =>
-                            (snapshot.data['related'].items.first as Product),
+                        orElse: () => (snapshot.data['related'] as AllProduct)
+                            .items
+                            .first,
                       );
                       return MyCardLg(
                         navigateCategory: CategoryPage(

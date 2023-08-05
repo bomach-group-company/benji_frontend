@@ -62,23 +62,14 @@ class _HomePageState extends State<HomePage> {
 
   Future<Map<String, dynamic>> _getData() async {
     List<Category> categoriesData = await fetchCategories();
-    AllProduct productsData = await fetchAllProduct(0);
+    AllProduct productsData = await fetchAllProduct();
 
-    AllProduct extraProduct = await fetchAllProduct(1);
-    for (Product item in extraProduct.items) {
-      productsData.items.add(item);
-    }
-
-    productsData.items.shuffle();
-    List<Product> trendingProduct = productsData.items.sublist(0, 8);
-    List<Product> todayProduct = productsData.items.sublist(0, 8);
-    List<Product> recommendedProduct = productsData.items.sublist(0, 8);
     return {
       'productsData': productsData,
       'categoriesData': categoriesData,
-      'trendingProduct': trendingProduct,
-      'todayProduct': todayProduct,
-      'recommendedProduct': recommendedProduct
+      'trendingProduct': productsData.items,
+      'todayProduct': productsData.items,
+      'recommendedProduct': productsData.items
     };
   }
 
