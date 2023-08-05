@@ -19,6 +19,8 @@ class _SearchPageState extends State<SearchPage> {
   // scroll controller
   late ScrollController _scrollController;
 
+  late TextEditingController _searchController;
+
   @override
   void initState() {
     _scrollController = ScrollController()
@@ -31,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
           }
         });
       });
-
+    _searchController = TextEditingController();
     super.initState();
   }
 
@@ -90,10 +92,11 @@ class _SearchPageState extends State<SearchPage> {
                           horizontal: 50, vertical: 50),
                       child: Row(
                         children: [
-                          const Expanded(
-                            child: TextField(
-                              decoration:
-                                  InputDecoration(border: OutlineInputBorder()),
+                          Expanded(
+                            child: TextFormField(
+                              controller: _searchController,
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder()),
                             ),
                           ),
                           OutlinedButton.icon(
