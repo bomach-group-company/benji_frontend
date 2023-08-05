@@ -73,6 +73,8 @@ class _MyDropDownState extends State<MyDropDown> {
                             MaterialPageRoute(
                               builder: (context) {
                                 return CategoryPage(
+                                  activeCategoriesId:
+                                      widget.items[index - 1].id,
                                   activeCategories:
                                       widget.items[index - 1].name,
                                 );

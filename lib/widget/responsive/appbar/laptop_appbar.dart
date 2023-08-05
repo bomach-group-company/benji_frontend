@@ -118,6 +118,8 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => CategoryPage(
+                              activeCategoriesId:
+                                  (snapshot.data as List<Category>)[value].id,
                               activeCategories:
                                   (snapshot.data as List<Category>)[value].name,
                             ),

@@ -211,6 +211,7 @@ class _HomePageState extends State<HomePage> {
                                     .map(
                                       (item) => MyClickable(
                                         navigate: CategoryPage(
+                                            activeCategoriesId: item.id,
                                             activeCategories: item.name),
                                         child: MyCicleCard(
                                           image:
@@ -248,6 +249,8 @@ class _HomePageState extends State<HomePage> {
                                     .map(
                                       (item) => MyCard(
                                         navigateCategory: CategoryPage(
+                                          activeCategoriesId:
+                                              item.subCategoryId.category.id,
                                           activeCategories:
                                               item.subCategoryId.category.name,
                                         ),
@@ -314,6 +317,8 @@ class _HomePageState extends State<HomePage> {
                                     .map(
                                       (item) => MyCard(
                                         navigateCategory: CategoryPage(
+                                          activeCategoriesId:
+                                              item.subCategoryId.category.id,
                                           activeCategories:
                                               item.subCategoryId.category.name,
                                         ),
@@ -400,6 +405,8 @@ class _HomePageState extends State<HomePage> {
                                     .map(
                                       (item) => MyCard(
                                         navigateCategory: CategoryPage(
+                                          activeCategoriesId:
+                                              item.subCategoryId.category.id,
                                           activeCategories:
                                               item.subCategoryId.category.name,
                                         ),
@@ -606,6 +613,7 @@ class _HomePageState extends State<HomePage> {
                         );
                     return MyCardLg(
                       navigateCategory: CategoryPage(
+                        activeCategoriesId: data.subCategoryId.category.id,
                         activeCategories: data.subCategoryId.category.name,
                       ),
                       navigate: ProductPage(id: data.id),

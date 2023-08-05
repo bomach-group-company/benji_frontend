@@ -22,8 +22,8 @@ class CategoryPage extends StatefulWidget {
   final String activeSubCategoriesId;
   const CategoryPage({
     super.key,
-    this.activeCategories = 'Electronics',
-    this.activeCategoriesId = 'fa4c4831-5ae8-4430-9b18-59d90108aa9a',
+    required this.activeCategories,
+    required this.activeCategoriesId,
     this.activeSubCategories = 'All',
     this.activeSubCategoriesId = '',
   });
@@ -229,6 +229,10 @@ class _CategoryPageState extends State<CategoryPage> {
                                       children: (_getDataList!)
                                           .map((item) => MyCard(
                                                 navigateCategory: CategoryPage(
+                                                  activeCategoriesId: item
+                                                      .subCategoryId
+                                                      .category
+                                                      .id,
                                                   activeCategories: item
                                                       .subCategoryId
                                                       .category
@@ -276,6 +280,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 );
                 return MyCardLg(
                   navigateCategory: CategoryPage(
+                    activeCategoriesId: data.subCategoryId.category.id,
                     activeCategories: data.subCategoryId.category.name,
                   ),
                   navigate: ProductPage(id: data.id),

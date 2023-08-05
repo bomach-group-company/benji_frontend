@@ -90,11 +90,13 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         horizontal: breakPoint(media.width, 25, 50, 50),
                       ),
                       child: Wrap(
-                        children: (snapshot.data as List)
+                        children: (snapshot.data as List<Category>)
                             .map(
                               (item) => MyClickable(
-                                navigate:
-                                    CategoryPage(activeCategories: item.name),
+                                navigate: CategoryPage(
+                                  activeCategoriesId: item.id,
+                                  activeCategories: item.name,
+                                ),
                                 child: SizedBox(
                                   height: 220,
                                   width: 200,

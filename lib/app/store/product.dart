@@ -173,7 +173,16 @@ class _ProductPageState extends State<ProductPage> {
                                       children: [
                                         Expanded(
                                           child: MyClickable(
-                                            navigate: const CategoryPage(),
+                                            navigate: CategoryPage(
+                                              activeCategoriesId:
+                                                  (snapshot.data['product']
+                                                          as Product)
+                                                      .id,
+                                              activeCategories:
+                                                  (snapshot.data['product']
+                                                          as Product)
+                                                      .name,
+                                            ),
                                             child: Text(
                                               snapshot.data['product']
                                                   .subCategoryId.name,
@@ -409,6 +418,10 @@ class _ProductPageState extends State<ProductPage> {
                                             .map((item) => MyCard(
                                                   navigateCategory:
                                                       CategoryPage(
+                                                    activeCategoriesId: item
+                                                        .subCategoryId
+                                                        .category
+                                                        .id,
                                                     activeCategories: item
                                                         .subCategoryId
                                                         .category
@@ -454,6 +467,7 @@ class _ProductPageState extends State<ProductPage> {
                       );
                       return MyCardLg(
                         navigateCategory: CategoryPage(
+                          activeCategoriesId: data.subCategoryId.category.id,
                           activeCategories: data.subCategoryId.category.name,
                         ),
                         navigate: ProductPage(id: data.id),
