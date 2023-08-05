@@ -174,13 +174,27 @@ class _ProductPageState extends State<ProductPage> {
                                         Expanded(
                                           child: MyClickable(
                                             navigate: CategoryPage(
+                                              activeSubCategoriesId:
+                                                  (snapshot.data['product']
+                                                          as Product)
+                                                      .subCategoryId
+                                                      .id,
+                                              activeSubCategories:
+                                                  (snapshot.data['product']
+                                                          as Product)
+                                                      .subCategoryId
+                                                      .name,
                                               activeCategoriesId:
                                                   (snapshot.data['product']
                                                           as Product)
+                                                      .subCategoryId
+                                                      .category
                                                       .id,
                                               activeCategories:
                                                   (snapshot.data['product']
                                                           as Product)
+                                                      .subCategoryId
+                                                      .category
                                                       .name,
                                             ),
                                             child: Text(
@@ -467,6 +481,8 @@ class _ProductPageState extends State<ProductPage> {
                       );
                       return MyCardLg(
                         navigateCategory: CategoryPage(
+                          activeSubCategories: data.subCategoryId.name,
+                          activeSubCategoriesId: data.subCategoryId.id,
                           activeCategoriesId: data.subCategoryId.category.id,
                           activeCategories: data.subCategoryId.category.name,
                         ),

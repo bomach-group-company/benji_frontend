@@ -90,7 +90,7 @@ class Footer extends StatelessWidget {
                           items: [
                             ['About', AboutPage()],
                             ['Our Team', TeamPage()],
-                            ['Products', null]
+                            ['FAQs', FAQsPage()]
                           ],
                         ),
                         FooterColumnText(
@@ -104,7 +104,6 @@ class Footer extends StatelessWidget {
                         FooterColumnText(
                           head: 'Other pages',
                           items: [
-                            ['FAQs', FAQsPage()],
                             ['Contact us', ContactUs()],
                             ['Blogs', BlogsPage()]
                           ],

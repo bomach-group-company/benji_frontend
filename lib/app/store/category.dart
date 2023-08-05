@@ -229,6 +229,10 @@ class _CategoryPageState extends State<CategoryPage> {
                                       children: (_getDataList!)
                                           .map((item) => MyCard(
                                                 navigateCategory: CategoryPage(
+                                                  activeSubCategories:
+                                                      item.subCategoryId.name,
+                                                  activeSubCategoriesId:
+                                                      item.subCategoryId.id,
                                                   activeCategoriesId: item
                                                       .subCategoryId
                                                       .category
@@ -280,6 +284,8 @@ class _CategoryPageState extends State<CategoryPage> {
                 );
                 return MyCardLg(
                   navigateCategory: CategoryPage(
+                    activeSubCategories: data.subCategoryId.name,
+                    activeSubCategoriesId: data.subCategoryId.id,
                     activeCategoriesId: data.subCategoryId.category.id,
                     activeCategories: data.subCategoryId.category.name,
                   ),
