@@ -48,6 +48,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
 
   @override
   Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       backgroundColor: const Color(0xfffafafc),
@@ -65,7 +66,8 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                   const MyBreadcrumb(text: 'Privacy Policy'),
                   kSizedBox,
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 50),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: breakPoint(media.width, 25, 50, 50)),
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,

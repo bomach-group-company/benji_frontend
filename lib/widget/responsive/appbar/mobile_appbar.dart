@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../app/main/home.dart';
+import '../../../app/store/search.dart';
 import '../../../utils/constant.dart';
 import '../../clickable.dart';
 
@@ -28,17 +29,30 @@ class MyMobileAppBar extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          InkWell(
-            mouseCursor: SystemMouseCursors.click,
-            child: const Icon(
-              Icons.menu,
-              color: kGreenColor,
-              size: 35,
-            ),
-            onTap: () {
-              // Open the drawer
-              Scaffold.of(context).openEndDrawer();
-            },
+          Row(
+            children: [
+              const MyClickable(
+                navigate: SearchPage(),
+                child: Icon(
+                  Icons.search,
+                  color: kGreenColor,
+                  size: 30,
+                ),
+              ),
+              kHalfWidthSizedBox,
+              InkWell(
+                mouseCursor: SystemMouseCursors.click,
+                child: const Icon(
+                  Icons.menu,
+                  color: kGreenColor,
+                  size: 35,
+                ),
+                onTap: () {
+                  // Open the drawer
+                  Scaffold.of(context).openEndDrawer();
+                },
+              ),
+            ],
           ),
         ],
       ),
