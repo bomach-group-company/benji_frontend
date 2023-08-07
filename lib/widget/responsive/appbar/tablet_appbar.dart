@@ -6,7 +6,9 @@ import '../../../utils/constant.dart';
 import '../../clickable.dart';
 
 class MyTabletAppBar extends StatelessWidget {
-  const MyTabletAppBar({super.key});
+  final bool hideSearch;
+
+  const MyTabletAppBar({super.key, this.hideSearch = true});
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +36,16 @@ class MyTabletAppBar extends StatelessWidget {
           ),
           Row(
             children: [
-              const MyClickable(
-                navigate: SearchPage(),
-                child: Icon(
-                  Icons.search,
-                  color: kGreenColor,
-                  size: 30,
-                ),
-              ),
+              hideSearch
+                  ? const SizedBox()
+                  : const MyClickable(
+                      navigate: SearchPage(),
+                      child: Icon(
+                        Icons.search,
+                        color: kGreenColor,
+                        size: 30,
+                      ),
+                    ),
               kWidthSizedBox,
               InkWell(
                 mouseCursor: SystemMouseCursors.click,

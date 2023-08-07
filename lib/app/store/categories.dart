@@ -56,7 +56,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       backgroundColor: const Color(0xfffafafc),
-      appBar: const MyAppbar(),
+      appBar: const MyAppbar(hideSearch: false),
       body: SafeArea(
         child: FutureBuilder(
           future: fetchCategories(),

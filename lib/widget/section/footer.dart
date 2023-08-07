@@ -57,7 +57,7 @@ class Footer extends StatelessWidget {
                     ),
                     kSizedBox,
                     Text(
-                      'The Best Grocery Store in Your Town.',
+                      'Seamless Shopping and Delivery.',
                       style: GoogleFonts.oleoScript(
                           color: Colors.white,
                           fontSize: media.width * 0.035 + 20,
@@ -65,7 +65,7 @@ class Footer extends StatelessWidget {
                     ),
                     kSizedBox,
                     const Text(
-                      'Lorem ipsum dolor sit amet, ectetur adipiscing elit. Pharetra, a phasellus mattis mi arcu urna Pharetra, a phasellu Lorem ipsum dolor sit amet, ectetur adipiscing elit. Pharetra, a phasellus mattis mi arcu urna Pharetra, a phasellu',
+                      'Shop smarter, happier, and get all your needs in one place. Welcome to Benji, your ultimate convenience hub for a wide range of products.',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,

@@ -87,7 +87,7 @@ class _ProductPageState extends State<ProductPage> {
       backgroundColor: const Color(0xfffafafc),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, media.height * 0.11),
-        child: const MyAppbar(),
+        child: const MyAppbar(hideSearch: false),
       ),
       body: SafeArea(
         child: FutureBuilder(

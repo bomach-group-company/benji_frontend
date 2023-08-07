@@ -6,7 +6,8 @@ import '../../../utils/constant.dart';
 import '../../clickable.dart';
 
 class MyMobileAppBar extends StatelessWidget {
-  const MyMobileAppBar({super.key});
+  final bool hideSearch;
+  const MyMobileAppBar({super.key, this.hideSearch = true});
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +32,16 @@ class MyMobileAppBar extends StatelessWidget {
           ),
           Row(
             children: [
-              const MyClickable(
-                navigate: SearchPage(),
-                child: Icon(
-                  Icons.search,
-                  color: kGreenColor,
-                  size: 30,
-                ),
-              ),
+              hideSearch
+                  ? const SizedBox()
+                  : const MyClickable(
+                      navigate: SearchPage(),
+                      child: Icon(
+                        Icons.search,
+                        color: kGreenColor,
+                        size: 30,
+                      ),
+                    ),
               kWidthSizedBox,
               InkWell(
                 mouseCursor: SystemMouseCursors.click,

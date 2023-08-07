@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       backgroundColor: const Color(0xfffafafc),
-      appBar: const MyAppbar(),
+      appBar: const MyAppbar(hideSearch: false),
       body: SafeArea(
         child: FutureBuilder(
           future: _getData(),
