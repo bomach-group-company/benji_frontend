@@ -41,7 +41,8 @@ class _CategoryPageState extends State<CategoryPage> {
   bool showCard = false;
 
   String productPopId = '';
-  List<Product>? _getDataList;
+  Future<List<Product>>? _getDataList;
+  List<Product>? productsData;
 
   @override
   void initState() {
@@ -60,27 +61,20 @@ class _CategoryPageState extends State<CategoryPage> {
     activeSubCategoriesId = widget.activeSubCategoriesId;
 
     super.initState();
-    _getData();
+    _getDataList = _getData();
   }
 
-  _getData() async {
-    try {
-      AllProduct data;
-      if (activeSubCategories == 'All' && activeSubCategoriesId == '') {
-        data = await fetchAllProductFilterByCategory(
-            widget.activeCategoriesId, 1, 13);
+  Future<List<Product>> _getData() async {
+    AllProduct data;
+    if (activeSubCategories == 'All' && activeSubCategoriesId == '') {
+      data = await fetchAllProductFilterByCategory(
+          widget.activeCategoriesId, 1, 13);
+      return data.items;
+    }
 
-        setState(() {
-          _getDataList = data.items;
-        });
-      } else {
-        data = await fetchAllProductFilterBySubCategory(
-            activeSubCategoriesId, 1, 13);
-        setState(() {
-          _getDataList = data.items;
-        });
-      }
-    } catch (e) {}
+    data =
+        await fetchAllProductFilterBySubCategory(activeSubCategoriesId, 1, 13);
+    return data.items;
   }
 
   Future<List<List<String>>> _getSubCategory() async {
@@ -197,7 +191,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                                           activeSubCategoriesId =
                                                               item[0];
                                                           _getDataList = null;
-                                                          _getData();
+                                                          _getDataList =
+                                                              _getData();
                                                         });
                                                       },
                                                       child: Text(item[1]),
@@ -212,62 +207,82 @@ class _CategoryPageState extends State<CategoryPage> {
                                       }
                                     }),
                                 kSizedBox,
-                                Builder(builder: (context) {
-                                  if (_getDataList == null) {
-                                    return const SpinKitChasingDots(
-                                      color: kGreenColor,
-                                      size: 30,
-                                    );
-                                  } else {
-                                    return Column(
-                                      children: [
-                                        LayoutGrid(
-                                          columnSizes: breakPointDynamic(
-                                              media.width,
-                                              [1.fr],
-                                              [1.fr, 1.fr],
-                                              [1.fr, 1.fr, 1.fr, 1.fr]),
-                                          rowSizes: List.filled(
-                                              _getDataList!.length, auto),
-                                          children: (_getDataList!)
-                                              .map((item) => MyCard(
-                                                    navigateCategory:
-                                                        CategoryPage(
-                                                      activeSubCategories: item
+                                FutureBuilder(
+                                  future: _getDataList,
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot snapshot) {
+                                    if (!snapshot.hasData ||
+                                        snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                      if (snapshot.hasError) {
+                                        return Center(
+                                          child: SelectableText(
+                                              snapshot.error.toString()),
+                                        );
+                                      }
+                                      return const SpinKitChasingDots(
+                                        color: kGreenColor,
+                                        size: 30,
+                                      );
+                                    } else {
+                                      productsData =
+                                          (snapshot.data as List<Product>);
+                                      return Column(
+                                        children: [
+                                          LayoutGrid(
+                                            columnSizes: breakPointDynamic(
+                                                media.width,
+                                                [1.fr],
+                                                [1.fr, 1.fr],
+                                                [1.fr, 1.fr, 1.fr, 1.fr]),
+                                            rowSizes: List.filled(
+                                                (snapshot.data as List<Product>)
+                                                    .length,
+                                                auto),
+                                            children: (snapshot.data
+                                                    as List<Product>)
+                                                .map((item) => MyCard(
+                                                      navigateCategory:
+                                                          CategoryPage(
+                                                        activeSubCategories:
+                                                            item.subCategoryId
+                                                                .name,
+                                                        activeSubCategoriesId:
+                                                            item.subCategoryId
+                                                                .id,
+                                                        activeCategoriesId: item
+                                                            .subCategoryId
+                                                            .category
+                                                            .id,
+                                                        activeCategories: item
+                                                            .subCategoryId
+                                                            .category
+                                                            .name,
+                                                      ),
+                                                      navigate: ProductPage(
+                                                          id: item.id),
+                                                      action: () {
+                                                        setState(() {
+                                                          showCard = true;
+                                                          productPopId =
+                                                              item.id;
+                                                        });
+                                                      },
+                                                      image:
+                                                          '$mediaBaseUrl${item.productImage}',
+                                                      title: item.name,
+                                                      sub: item
                                                           .subCategoryId.name,
-                                                      activeSubCategoriesId:
-                                                          item.subCategoryId.id,
-                                                      activeCategoriesId: item
-                                                          .subCategoryId
-                                                          .category
-                                                          .id,
-                                                      activeCategories: item
-                                                          .subCategoryId
-                                                          .category
-                                                          .name,
-                                                    ),
-                                                    navigate: ProductPage(
-                                                        id: item.id),
-                                                    action: () {
-                                                      setState(() {
-                                                        showCard = true;
-                                                        productPopId = item.id;
-                                                      });
-                                                    },
-                                                    image:
-                                                        '$mediaBaseUrl${item.productImage}',
-                                                    title: item.name,
-                                                    sub:
-                                                        item.subCategoryId.name,
-                                                    price:
-                                                        item.price.toString(),
-                                                  ))
-                                              .toList(),
-                                        ),
-                                      ],
-                                    );
-                                  }
-                                }),
+                                                      price:
+                                                          item.price.toString(),
+                                                    ))
+                                                .toList(),
+                                          ),
+                                        ],
+                                      );
+                                    }
+                                  },
+                                ),
                               ],
                             ),
                           ],
@@ -283,12 +298,12 @@ class _CategoryPageState extends State<CategoryPage> {
               ],
             ),
             Builder(builder: (context) {
-              if (_getDataList == null) {
+              if (productsData == null) {
                 return const Text('');
               } else {
-                Product data = (_getDataList!).firstWhere(
+                Product data = (productsData!).firstWhere(
                   (element) => element.id == productPopId,
-                  orElse: () => (_getDataList!).first,
+                  orElse: () => (productsData!).first,
                 );
                 return MyCardLg(
                   navigateCategory: CategoryPage(
