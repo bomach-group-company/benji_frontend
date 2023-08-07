@@ -1,3 +1,4 @@
+import 'package:benji_frontend/app/main/blogs.dart';
 import 'package:benji_frontend/app/store/categories.dart';
 import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/app/store/product.dart';
@@ -226,7 +227,8 @@ class _HomePageState extends State<HomePage> {
                               kSizedBox,
                               const EndToEndRow(
                                 widget1: MyFancyText(text: 'Trending'),
-                                widget2: MyOutlinedButton(),
+                                widget2: MyOutlinedButton(
+                                    navigate: CategoriesPage()),
                               ),
                               kSizedBox,
                               LayoutGrid(
@@ -297,7 +299,8 @@ class _HomePageState extends State<HomePage> {
                                 child: EndToEndRow(
                                   widget1:
                                       MyFancyText(text: 'Today\'s Special'),
-                                  widget2: MyOutlinedButton(),
+                                  widget2: MyOutlinedButton(
+                                      navigate: CategoriesPage()),
                                 ),
                               ),
                               kSizedBox,
@@ -390,7 +393,8 @@ class _HomePageState extends State<HomePage> {
                                   padding: EdgeInsets.all(15.0),
                                   child: EndToEndRow(
                                     widget1: MyFancyText(text: 'Recommended'),
-                                    widget2: MyOutlinedButton(),
+                                    widget2: MyOutlinedButton(
+                                        navigate: CategoriesPage()),
                                   )),
                               kSizedBox,
                               LayoutGrid(
@@ -535,7 +539,8 @@ class _HomePageState extends State<HomePage> {
                                 padding: EdgeInsets.all(15.0),
                                 child: EndToEndRow(
                                   widget1: MyFancyText(text: 'Latest Blogs'),
-                                  widget2: MyOutlinedButton(),
+                                  widget2:
+                                      MyOutlinedButton(navigate: BlogsPage()),
                                 ),
                               ),
                               kSizedBox,

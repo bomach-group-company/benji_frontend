@@ -59,81 +59,84 @@ class _FAQsPageState extends State<FAQsPage> {
       backgroundColor: const Color(0xfffafafc),
       appBar: const MyAppbar(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const MyBreadcrumb(
-                text: 'FAQs',
-                current: 'faqs',
-                hasBeadcrumb: true,
-                back: 'home',
-              ),
-              kSizedBox,
-              Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: breakPoint(media.width, 25, 50, 50),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: items.map((e) {
-                        return Column(
-                          children: [
-                            Container(
-                              decoration: const BoxDecoration(boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  blurRadius: 1,
-                                )
-                              ]),
-                              child: ExpansionTile(
-                                iconColor: Colors.black45,
-                                collapsedBackgroundColor: Colors.white,
-                                backgroundColor: Colors.white30,
-                                title: const Text(
-                                  "FAQ QUESTION ONE",
-                                  style: TextStyle(
-                                    color: kBlueColor,
-                                  ),
-                                ),
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.symmetric(
-                                        horizontal: BorderSide(
-                                          width: 1,
-                                          color: Colors.black12,
-                                        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  const MyBreadcrumb(
+                    text: 'FAQs',
+                    current: 'faqs',
+                    hasBeadcrumb: true,
+                    back: 'home',
+                  ),
+                  kSizedBox,
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: breakPoint(media.width, 25, 50, 50),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: items.map((e) {
+                            return Column(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      blurRadius: 1,
+                                    )
+                                  ]),
+                                  child: ExpansionTile(
+                                    iconColor: Colors.black45,
+                                    collapsedBackgroundColor: Colors.white,
+                                    backgroundColor: Colors.white30,
+                                    title: const Text(
+                                      "FAQ QUESTION ONE",
+                                      style: TextStyle(
+                                        color: kBlueColor,
                                       ),
                                     ),
-                                    padding: const EdgeInsets.all(20),
-                                    width: double.infinity,
-                                    child:
-                                        const Text("Answers for Question One"),
-                                  )
-                                ],
-                              ),
-                            ),
-                            kSizedBox,
-                          ],
-                        );
-                      }).toList(),
+                                    children: [
+                                      Container(
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.symmetric(
+                                            horizontal: BorderSide(
+                                              width: 1,
+                                              color: Colors.black12,
+                                            ),
+                                          ),
+                                        ),
+                                        padding: const EdgeInsets.all(20),
+                                        width: double.infinity,
+                                        child: const Text(
+                                            "Answers for Question One"),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                kSizedBox,
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  kSizedBox,
+                  kSizedBox,
+                  kSizedBox,
+                  const Footer(),
+                ],
               ),
-              kSizedBox,
-              kSizedBox,
-              kSizedBox,
-              const Footer(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       endDrawer: const MyDrawer(),

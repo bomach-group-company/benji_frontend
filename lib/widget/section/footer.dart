@@ -11,6 +11,7 @@ import '../../app/main/privacy_policy.dart';
 import '../../app/main/refund_policy.dart';
 import '../../app/main/team.dart';
 import '../../app/main/term_condition.dart';
+import '../../app/store/categories.dart';
 import '../footer_column_text.dart';
 
 class Footer extends StatelessWidget {
@@ -104,6 +105,7 @@ class Footer extends StatelessWidget {
                         FooterColumnText(
                           head: 'Other pages',
                           items: [
+                            ['Products', CategoriesPage()],
                             ['Contact us', ContactUs()],
                             ['Blogs', BlogsPage()]
                           ],
