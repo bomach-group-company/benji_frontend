@@ -114,165 +114,172 @@ class _CategoryPageState extends State<CategoryPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  MyBreadcrumb(
-                    text: widget.activeCategories,
-                    current: widget.activeCategories,
-                    hasBeadcrumb: true,
-                    back: 'categories',
-                    backNav: const CategoriesPage(),
-                  ),
-                  kSizedBox,
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: breakPoint(media.width, 25, 50, 50),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: ListView(
+                    controller: _scrollController,
+                    children: [
+                      MyBreadcrumb(
+                        text: widget.activeCategories,
+                        current: widget.activeCategories,
+                        hasBeadcrumb: true,
+                        back: 'categories',
+                        backNav: const CategoriesPage(),
+                      ),
+                      kSizedBox,
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: breakPoint(media.width, 25, 50, 50),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            FutureBuilder(
-                                future: _getSubCategory(),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot snapshot) {
-                                  if (!snapshot.hasData) {
-                                    return Row(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                FutureBuilder(
+                                    future: _getSubCategory(),
+                                    builder: (BuildContext context,
+                                        AsyncSnapshot snapshot) {
+                                      if (!snapshot.hasData) {
+                                        return Row(
+                                          children: [
+                                            OutlinedButton(
+                                              style: OutlinedButton.styleFrom(
+                                                minimumSize: const Size(10, 50),
+                                                backgroundColor: kGreenColor,
+                                                foregroundColor: Colors.white,
+                                              ),
+                                              onPressed: () {},
+                                              child: const SpinKitCircle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      } else {
+                                        return Container(
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              children: (snapshot.data
+                                                      as List<List<String>>)
+                                                  .map((item) {
+                                                return Row(
+                                                  children: [
+                                                    OutlinedButton(
+                                                      style: OutlinedButton
+                                                          .styleFrom(
+                                                        minimumSize:
+                                                            const Size(10, 50),
+                                                        backgroundColor:
+                                                            activeSubCategoriesId ==
+                                                                    item[0]
+                                                                ? kGreenColor
+                                                                : Colors.white,
+                                                        foregroundColor:
+                                                            activeSubCategoriesId ==
+                                                                    item[0]
+                                                                ? Colors.white
+                                                                : kGreenColor,
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          activeSubCategories =
+                                                              item[1];
+                                                          activeSubCategoriesId =
+                                                              item[0];
+                                                          _getDataList = null;
+                                                          _getData();
+                                                        });
+                                                      },
+                                                      child: Text(item[1]),
+                                                    ),
+                                                    kHalfWidthSizedBox,
+                                                  ],
+                                                );
+                                              }).toList(),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    }),
+                                kSizedBox,
+                                Builder(builder: (context) {
+                                  if (_getDataList == null) {
+                                    return const SpinKitChasingDots(
+                                      color: kGreenColor,
+                                      size: 30,
+                                    );
+                                  } else {
+                                    return Column(
                                       children: [
-                                        OutlinedButton(
-                                          style: OutlinedButton.styleFrom(
-                                            minimumSize: const Size(10, 50),
-                                            backgroundColor: kGreenColor,
-                                            foregroundColor: Colors.white,
-                                          ),
-                                          onPressed: () {},
-                                          child: const SpinKitCircle(
-                                            color: Colors.white,
-                                          ),
+                                        LayoutGrid(
+                                          columnSizes: breakPointDynamic(
+                                              media.width,
+                                              [1.fr],
+                                              [1.fr, 1.fr],
+                                              [1.fr, 1.fr, 1.fr, 1.fr]),
+                                          rowSizes: List.filled(
+                                              _getDataList!.length, auto),
+                                          children: (_getDataList!)
+                                              .map((item) => MyCard(
+                                                    navigateCategory:
+                                                        CategoryPage(
+                                                      activeSubCategories: item
+                                                          .subCategoryId.name,
+                                                      activeSubCategoriesId:
+                                                          item.subCategoryId.id,
+                                                      activeCategoriesId: item
+                                                          .subCategoryId
+                                                          .category
+                                                          .id,
+                                                      activeCategories: item
+                                                          .subCategoryId
+                                                          .category
+                                                          .name,
+                                                    ),
+                                                    navigate: ProductPage(
+                                                        id: item.id),
+                                                    action: () {
+                                                      setState(() {
+                                                        showCard = true;
+                                                        productPopId = item.id;
+                                                      });
+                                                    },
+                                                    image:
+                                                        '$mediaBaseUrl${item.productImage}',
+                                                    title: item.name,
+                                                    sub:
+                                                        item.subCategoryId.name,
+                                                    price:
+                                                        item.price.toString(),
+                                                  ))
+                                              .toList(),
                                         ),
                                       ],
                                     );
-                                  } else {
-                                    return Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 15),
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          children: (snapshot.data
-                                                  as List<List<String>>)
-                                              .map((item) {
-                                            return Row(
-                                              children: [
-                                                OutlinedButton(
-                                                  style:
-                                                      OutlinedButton.styleFrom(
-                                                    minimumSize:
-                                                        const Size(10, 50),
-                                                    backgroundColor:
-                                                        activeSubCategoriesId ==
-                                                                item[0]
-                                                            ? kGreenColor
-                                                            : Colors.white,
-                                                    foregroundColor:
-                                                        activeSubCategoriesId ==
-                                                                item[0]
-                                                            ? Colors.white
-                                                            : kGreenColor,
-                                                  ),
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      activeSubCategories =
-                                                          item[1];
-                                                      activeSubCategoriesId =
-                                                          item[0];
-                                                      _getDataList = null;
-                                                      _getData();
-                                                    });
-                                                  },
-                                                  child: Text(item[1]),
-                                                ),
-                                                kHalfWidthSizedBox,
-                                              ],
-                                            );
-                                          }).toList(),
-                                        ),
-                                      ),
-                                    );
                                   }
                                 }),
-                            kSizedBox,
-                            Builder(builder: (context) {
-                              if (_getDataList == null) {
-                                return const SpinKitChasingDots(
-                                  color: kGreenColor,
-                                  size: 30,
-                                );
-                              } else {
-                                return Column(
-                                  children: [
-                                    LayoutGrid(
-                                      columnSizes: breakPointDynamic(
-                                          media.width,
-                                          [1.fr],
-                                          [1.fr, 1.fr],
-                                          [1.fr, 1.fr, 1.fr, 1.fr]),
-                                      rowSizes: List.filled(
-                                          _getDataList!.length, auto),
-                                      children: (_getDataList!)
-                                          .map((item) => MyCard(
-                                                navigateCategory: CategoryPage(
-                                                  activeSubCategories:
-                                                      item.subCategoryId.name,
-                                                  activeSubCategoriesId:
-                                                      item.subCategoryId.id,
-                                                  activeCategoriesId: item
-                                                      .subCategoryId
-                                                      .category
-                                                      .id,
-                                                  activeCategories: item
-                                                      .subCategoryId
-                                                      .category
-                                                      .name,
-                                                ),
-                                                navigate:
-                                                    ProductPage(id: item.id),
-                                                action: () {
-                                                  setState(() {
-                                                    showCard = true;
-                                                    productPopId = item.id;
-                                                  });
-                                                },
-                                                image:
-                                                    '$mediaBaseUrl${item.productImage}',
-                                                title: item.name,
-                                                sub: item.subCategoryId.name,
-                                                price: item.price.toString(),
-                                              ))
-                                          .toList(),
-                                    ),
-                                  ],
-                                );
-                              }
-                            }),
+                              ],
+                            ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      kSizedBox,
+                      kSizedBox,
+                      kSizedBox,
+                      const Footer(),
+                    ],
                   ),
-                  kSizedBox,
-                  kSizedBox,
-                  kSizedBox,
-                  const Footer(),
-                ],
-              ),
+                ),
+              ],
             ),
             Builder(builder: (context) {
               if (_getDataList == null) {

@@ -61,6 +61,7 @@ class _AboutPageState extends State<AboutPage> {
           children: [
             Expanded(
               child: ListView(
+                controller: _scrollController,
                 children: [
                   const MyBreadcrumb(
                     text: 'About Us',

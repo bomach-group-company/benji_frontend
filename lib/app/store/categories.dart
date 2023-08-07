@@ -72,50 +72,55 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 size: 30,
               );
             } else {
-              return SingleChildScrollView(
-                controller: _scrollController,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const MyBreadcrumb(
-                      text: 'Categories',
-                      current: 'Categories',
-                      hasBeadcrumb: true,
-                      back: 'home',
-                    ),
-                    kSizedBox,
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: breakPoint(media.width, 25, 50, 50),
-                      ),
-                      child: Wrap(
-                        children: (snapshot.data as List<Category>)
-                            .map(
-                              (item) => MyClickable(
-                                navigate: CategoryPage(
-                                  activeCategoriesId: item.id,
-                                  activeCategories: item.name,
-                                ),
-                                child: SizedBox(
-                                  height: 220,
-                                  width: 200,
-                                  child: MyCicleCard(
-                                    image: 'assets/circle_card/category-1.jpg',
-                                    text: item.name.toString(),
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: ListView(
+                      controller: _scrollController,
+                      children: [
+                        const MyBreadcrumb(
+                          text: 'Categories',
+                          current: 'Categories',
+                          hasBeadcrumb: true,
+                          back: 'home',
+                        ),
+                        kSizedBox,
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: breakPoint(media.width, 25, 50, 50),
+                          ),
+                          child: Wrap(
+                            children: (snapshot.data as List<Category>)
+                                .map(
+                                  (item) => MyClickable(
+                                    navigate: CategoryPage(
+                                      activeCategoriesId: item.id,
+                                      activeCategories: item.name,
+                                    ),
+                                    child: SizedBox(
+                                      height: 220,
+                                      width: 200,
+                                      child: MyCicleCard(
+                                        image:
+                                            'assets/circle_card/category-1.jpg',
+                                        text: item.name.toString(),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            )
-                            .toList(),
-                      ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                        kSizedBox,
+                        kSizedBox,
+                        kSizedBox,
+                        const Footer(),
+                      ],
                     ),
-                    kSizedBox,
-                    kSizedBox,
-                    kSizedBox,
-                    const Footer(),
-                  ],
-                ),
+                  ),
+                ],
               );
             }
           },

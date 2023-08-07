@@ -58,217 +58,224 @@ class _ContactUsState extends State<ContactUs> {
       appBar: const MyAppbar(),
       body: SafeArea(
         maintainBottomViewPadding: true,
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const MyBreadcrumb(
-                text: 'Help & Contact Us',
-                current: 'Help & Contact Us',
-                hasBeadcrumb: true,
-                back: 'home',
-              ),
-              kSizedBox,
-              Container(
-                width: media.width,
-                margin: EdgeInsets.symmetric(
-                  horizontal: breakPoint(media.width, 25, 50, 50),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Wrap(
-                      spacing: media.width * 0.0135,
-                      runSpacing: 15,
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        SimpleCard(
-                          title: 'Working Hours',
-                          sub: 'infotechgravity@gmail.com',
-                        ),
-                        SimpleCard(
-                          title: 'Working Hours',
-                          sub: 'infotechgravity@gmail.com',
-                        ),
-                        SimpleCard(
-                          title: 'Working Hours',
-                          sub: 'infotechgravity@gmail.com',
-                        ),
-                        SimpleCard(
-                          title: 'Working Hours',
-                          sub: 'infotechgravity@gmail.com',
-                        ),
-                      ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(
+                controller: _scrollController,
+                children: [
+                  const MyBreadcrumb(
+                    text: 'Help & Contact Us',
+                    current: 'Help & Contact Us',
+                    hasBeadcrumb: true,
+                    back: 'home',
+                  ),
+                  kSizedBox,
+                  Container(
+                    width: media.width,
+                    margin: EdgeInsets.symmetric(
+                      horizontal: breakPoint(media.width, 25, 50, 50),
                     ),
-                    kSizedBox,
-                    kSizedBox,
-                    Container(
-                      width: media.width,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: breakPoint(media.width, 25, 50, 50),
-                        vertical: 50,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5),
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 5,
-                            blurStyle: BlurStyle.outer,
-                            color: Colors.grey,
-                            offset: Offset(0, 4),
-                          )
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Drop us a line',
-                            style: TextStyle(
-                              color: kBlueColor,
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Wrap(
+                          spacing: media.width * 0.0135,
+                          runSpacing: 15,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            SimpleCard(
+                              title: 'Working Hours',
+                              sub: 'infotechgravity@gmail.com',
                             ),
-                          ),
-                          kSizedBox,
-                          const Text(
-                            'Please feel free to contact me if you have any further questions or concerns',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w400,
+                            SimpleCard(
+                              title: 'Working Hours',
+                              sub: 'infotechgravity@gmail.com',
                             ),
+                            SimpleCard(
+                              title: 'Working Hours',
+                              sub: 'infotechgravity@gmail.com',
+                            ),
+                            SimpleCard(
+                              title: 'Working Hours',
+                              sub: 'infotechgravity@gmail.com',
+                            ),
+                          ],
+                        ),
+                        kSizedBox,
+                        kSizedBox,
+                        Container(
+                          width: media.width,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: breakPoint(media.width, 25, 50, 50),
+                            vertical: 50,
                           ),
-                          kSizedBox,
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                kSizedBox,
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: const [
+                              BoxShadow(
+                                blurRadius: 5,
+                                blurStyle: BlurStyle.outer,
+                                color: Colors.grey,
+                                offset: Offset(0, 4),
+                              )
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              const Text(
+                                'Drop us a line',
+                                style: TextStyle(
+                                  color: kBlueColor,
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              kSizedBox,
+                              const Text(
+                                'Please feel free to contact me if you have any further questions or concerns',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              kSizedBox,
+                              Form(
+                                key: _formKey,
+                                child: Column(
                                   children: [
-                                    Expanded(
-                                      child: TextFormField(
-                                        cursorColor: Colors.black,
-                                        cursorHeight: 20,
-                                        cursorWidth: 1,
-                                        decoration: const InputDecoration(
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 16.0,
+                                    kSizedBox,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: TextFormField(
+                                            cursorColor: Colors.black,
+                                            cursorHeight: 20,
+                                            cursorWidth: 1,
+                                            decoration: const InputDecoration(
+                                              fillColor: Colors.white,
+                                              filled: true,
+                                              contentPadding:
+                                                  EdgeInsets.symmetric(
+                                                horizontal: 16.0,
+                                              ),
+                                              hintText: "First Name",
+                                              border: OutlineInputBorder(),
+                                            ),
+                                            validator: (value) {
+                                              if (value == null) {
+                                                return 'Please enter your First name';
+                                              }
+                                              return null;
+                                            },
                                           ),
-                                          hintText: "First Name",
-                                          border: OutlineInputBorder(),
                                         ),
-                                        validator: (value) {
-                                          if (value == null) {
-                                            return 'Please enter your First name';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                    ),
-                                    kWidthSizedBox,
-                                    Expanded(
-                                      child: TextFormField(
-                                        cursorColor: Colors.black,
-                                        cursorHeight: 20,
-                                        cursorWidth: 1,
-                                        decoration: const InputDecoration(
-                                          fillColor: Colors.white,
-                                          filled: true,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 16.0,
+                                        kWidthSizedBox,
+                                        Expanded(
+                                          child: TextFormField(
+                                            cursorColor: Colors.black,
+                                            cursorHeight: 20,
+                                            cursorWidth: 1,
+                                            decoration: const InputDecoration(
+                                              fillColor: Colors.white,
+                                              filled: true,
+                                              contentPadding:
+                                                  EdgeInsets.symmetric(
+                                                horizontal: 16.0,
+                                              ),
+                                              hintText: "Last Name",
+                                              border: OutlineInputBorder(),
+                                            ),
+                                            validator: (value) {
+                                              if (value == null) {
+                                                return 'Please enter your Last name';
+                                              }
+                                              return null;
+                                            },
                                           ),
-                                          hintText: "Last Name",
-                                          border: OutlineInputBorder(),
                                         ),
-                                        validator: (value) {
-                                          if (value == null) {
-                                            return 'Please enter your Last name';
-                                          }
-                                          return null;
-                                        },
-                                      ),
+                                      ],
                                     ),
+                                    kSizedBox,
+                                    TextFormField(
+                                      cursorColor: Colors.black,
+                                      cursorHeight: 20,
+                                      cursorWidth: 1,
+                                      decoration: const InputDecoration(
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        hintText: 'Email',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please enter your Email';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    kSizedBox,
+                                    TextFormField(
+                                      cursorColor: Colors.black,
+                                      cursorHeight: 20,
+                                      cursorWidth: 1,
+                                      keyboardType: TextInputType.multiline,
+                                      minLines: 4,
+                                      maxLines: 20,
+                                      decoration: const InputDecoration(
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                        hintText: 'Message',
+                                        border: OutlineInputBorder(),
+                                      ),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please enter your Email';
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    kSizedBox,
+                                    Container(
+                                      alignment: Alignment.centerRight,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            fixedSize: const Size(90, 40),
+                                            backgroundColor: kGreenColor),
+                                        onPressed: () {},
+                                        child: const Text(
+                                          'Submit',
+                                          style: TextStyle(fontSize: 17),
+                                        ),
+                                      ),
+                                    )
                                   ],
                                 ),
-                                kSizedBox,
-                                TextFormField(
-                                  cursorColor: Colors.black,
-                                  cursorHeight: 20,
-                                  cursorWidth: 1,
-                                  decoration: const InputDecoration(
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                    hintText: 'Email',
-                                    border: OutlineInputBorder(),
-                                  ),
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return 'Please enter your Email';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                kSizedBox,
-                                TextFormField(
-                                  cursorColor: Colors.black,
-                                  cursorHeight: 20,
-                                  cursorWidth: 1,
-                                  keyboardType: TextInputType.multiline,
-                                  minLines: 4,
-                                  maxLines: 20,
-                                  decoration: const InputDecoration(
-                                    fillColor: Colors.white,
-                                    filled: true,
-                                    hintText: 'Message',
-                                    border: OutlineInputBorder(),
-                                  ),
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return 'Please enter your Email';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                kSizedBox,
-                                Container(
-                                  alignment: Alignment.centerRight,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        fixedSize: const Size(90, 40),
-                                        backgroundColor: kGreenColor),
-                                    onPressed: () {},
-                                    child: const Text(
-                                      'Submit',
-                                      style: TextStyle(fontSize: 17),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  kSizedBox,
+                  kSizedBox,
+                  kSizedBox,
+                  const Footer(),
+                ],
               ),
-              kSizedBox,
-              kSizedBox,
-              kSizedBox,
-              const Footer(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       endDrawer: const MyDrawer(),

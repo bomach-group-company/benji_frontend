@@ -65,6 +65,8 @@ class _FAQsPageState extends State<FAQsPage> {
           children: [
             Expanded(
               child: ListView(
+                controller: _scrollController,
+                physics: const BouncingScrollPhysics(),
                 children: [
                   const MyBreadcrumb(
                     text: 'FAQs',

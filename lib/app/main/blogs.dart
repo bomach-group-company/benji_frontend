@@ -57,154 +57,158 @@ class _BlogsPageState extends State<BlogsPage> {
       backgroundColor: const Color(0xfffafafc),
       appBar: const MyAppbar(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const MyBreadcrumb(
-                text: 'Blogs',
-                current: 'Blogs',
-                hasBeadcrumb: true,
-                back: 'home',
-              ),
-              kSizedBox,
-              Container(
-                margin: EdgeInsets.symmetric(
-                    horizontal: breakPoint(media.width, 25, 50, 50)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LayoutGrid(
-                      columnSizes: breakPointDynamic(media.width, [1.fr],
-                          [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
-                      rowSizes: const [
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto,
-                        auto
-                      ],
-                      children: const [
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-2.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
-                        ),
-                        MyBlogCard(
-                          date: '1 July 2022',
-                          from: 'Admin',
-                          title:
-                              'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
-                          image: 'assets/blog/blog-1.jpeg',
-                          description:
-                              'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(
+                controller: _scrollController,
+                children: [
+                  const MyBreadcrumb(
+                    text: 'Blogs',
+                    current: 'Blogs',
+                    hasBeadcrumb: true,
+                    back: 'home',
+                  ),
+                  kSizedBox,
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                        horizontal: breakPoint(media.width, 25, 50, 50)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        LayoutGrid(
+                          columnSizes: breakPointDynamic(media.width, [1.fr],
+                              [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
+                          rowSizes: const [
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto
+                          ],
+                          children: const [
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-2.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                            MyBlogCard(
+                              date: '1 July 2022',
+                              from: 'Admin',
+                              title:
+                                  'The Ultimate Hangover Burger: Egg in a Hole Burger Grilled Cheese',
+                              image: 'assets/blog/blog-1.jpeg',
+                              description:
+                                  'Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy ipsum text. Lorem is dummy',
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  kSizedBox,
+                  kSizedBox,
+                  kSizedBox,
+                  const Footer(),
+                ],
               ),
-              kSizedBox,
-              kSizedBox,
-              kSizedBox,
-              const Footer(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       endDrawer: const MyDrawer(),
