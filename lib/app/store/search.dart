@@ -99,7 +99,8 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                       kSizedBox,
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 50),
+                        margin: EdgeInsets.symmetric(
+                            horizontal: breakPoint(media.width, 25, 50, 50)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,14 +117,17 @@ class _SearchPageState extends State<SearchPage> {
                                         spreadRadius: 5,
                                         color: Colors.grey.shade300)
                                   ]),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 50, vertical: 50),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      breakPoint(media.width, 15, 50, 50),
+                                  vertical: 50),
                               child: Row(
                                 children: [
                                   Expanded(
                                     child: TextFormField(
                                       controller: _searchController,
                                       decoration: const InputDecoration(
+                                          hintText: 'Product name',
                                           border: OutlineInputBorder()),
                                     ),
                                   ),

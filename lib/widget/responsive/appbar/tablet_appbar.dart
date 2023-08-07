@@ -42,7 +42,7 @@ class MyTabletAppBar extends StatelessWidget {
                   size: 30,
                 ),
               ),
-              kHalfWidthSizedBox,
+              kWidthSizedBox,
               InkWell(
                 mouseCursor: SystemMouseCursors.click,
                 child: const Icon(
