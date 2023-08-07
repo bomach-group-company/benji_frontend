@@ -161,7 +161,8 @@ class _SearchPageState extends State<SearchPage> {
                                   color: kGreenColor,
                                   size: 30,
                                 );
-                              } else if (_getDataList == null) {
+                              } else if (_getDataList == null ||
+                                  _getDataList!.isEmpty) {
                                 return Container(
                                   height:
                                       breakPoint(media.width, 400, 500, 700),
@@ -223,7 +224,7 @@ class _SearchPageState extends State<SearchPage> {
               ],
             ),
             Builder(builder: (context) {
-              if (_getDataList == null) {
+              if (_getDataList == null || _getDataList!.isEmpty) {
                 return const Text('');
               } else {
                 Product data = (_getDataList!).firstWhere(
