@@ -83,6 +83,7 @@ class _MyCardState extends State<MyCard> {
                   child: Center(
                     child: Container(
                       decoration: BoxDecoration(
+                        color: Colors.grey,
                         borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(10),
                         ),

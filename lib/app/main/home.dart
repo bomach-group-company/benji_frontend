@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<Map<String, dynamic>> _getData() async {
     List<Category> categoriesData = await fetchCategories();
-    AllProduct productsData = await fetchAllProduct();
+    AllProduct productsData = await fetchAllProduct(1, 5);
 
     return {
       'productsData': productsData,
