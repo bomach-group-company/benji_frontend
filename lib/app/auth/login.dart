@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 35, vertical: 40),
                           decoration: BoxDecoration(
-                            color: Colors.grey[900],
+                            color: Colors.grey[500],
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 5,
@@ -63,18 +63,19 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: 95,
-                                width: 95,
+                                height: 150,
+                                width: 150,
                                 child: MyClickable(
                                   navigate: const HomePage(),
-                                  child: Image.asset('assets/brand/logo.png'),
+                                  child: Image.asset(
+                                      'assets/brand/benji-logo-resized-nobg.png'),
                                 ),
                               ),
                               kSizedBox,
                               const Text(
-                                'Single Grocery',
+                                'Benji Login',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: Colors.black,
                                   fontSize: 25,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -166,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                                             child: DottedLine(
                                               dashGapLength: 2,
                                               dashLength: 2,
-                                              dashColor: Colors.white,
+                                              dashColor: Colors.black,
                                             ),
                                           ),
                                           Padding(
@@ -175,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                                             child: Text(
                                               'OR',
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color: Colors.black,
                                               ),
                                             ),
                                           ),
@@ -183,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                                             child: DottedLine(
                                               dashGapLength: 2,
                                               dashLength: 2,
-                                              dashColor: Colors.white,
+                                              dashColor: Colors.black,
                                             ),
                                           ),
                                         ],
@@ -212,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                                         Text(
                                           'Don\'t have an account?',
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 18,
                                               fontWeight: FontWeight.w100),
                                         ),
@@ -222,7 +223,7 @@ class _LoginPageState extends State<LoginPage> {
                                         Text(
                                           'Signup',
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 18,
                                               fontWeight: FontWeight.w900),
                                         ),

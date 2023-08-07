@@ -12,7 +12,7 @@ class MyMobileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(

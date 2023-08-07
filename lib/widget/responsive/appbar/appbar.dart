@@ -11,7 +11,7 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppbar({super.key, this.hideSearch = true});
 
   @override
-  Size get preferredSize => const Size(double.infinity, 80);
+  Size get preferredSize => const Size(double.infinity, 120);
 
   @override
   Widget build(BuildContext context) {

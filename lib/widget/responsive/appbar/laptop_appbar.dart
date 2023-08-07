@@ -30,7 +30,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
-                vertical: 12, horizontal: media.width * 0.07),
+                vertical: 0, horizontal: media.width * 0.07),
             decoration: const BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -53,7 +53,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                   navigate: const HomePage(),
                   child: Image.asset(
                     'assets/brand/benji-logo-resized-nobg.png',
-                    fit: BoxFit.cover,
+                    // fit: BoxFit.cover,
                   ),
                 ),
                 Row(
@@ -72,12 +72,13 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                     kWidthSizedBox,
                     kWidthSizedBox,
                     PopupMenuButton(
+                      offset: const Offset(0, -25),
                       shadowColor: Colors.grey,
                       constraints:
                           const BoxConstraints(maxHeight: 170, maxWidth: 200),
                       tooltip: '',
                       position: PopupMenuPosition.under,
-                      elevation: 0,
+                      elevation: 5,
                       splashRadius: 0,
                       child: Center(
                         child: Row(
@@ -111,25 +112,17 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                         ),
                       ),
                       itemBuilder: (context) {
-                        if (!snapshot.hasData) {
-                          return [
-                            const PopupMenuItem<int>(
-                              child: Text(''),
+                        return List.generate((snapshot.data as List).length,
+                                (index) => index)
+                            .map(
+                              (item) => PopupMenuItem<int>(
+                                value: item,
+                                child: Text(
+                                    (snapshot.data as List<Category>)[item]
+                                        .name),
+                              ),
                             )
-                          ];
-                        } else {
-                          return List.generate((snapshot.data as List).length,
-                                  (index) => index)
-                              .map(
-                                (item) => PopupMenuItem<int>(
-                                  value: item,
-                                  child: Text(
-                                      (snapshot.data as List<Category>)[item]
-                                          .name),
-                                ),
-                              )
-                              .toList();
-                        }
+                            .toList();
                       },
                       onSelected: (value) {
                         Navigator.of(context).pushReplacement(

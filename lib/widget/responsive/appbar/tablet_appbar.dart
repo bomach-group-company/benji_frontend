@@ -15,8 +15,7 @@ class MyTabletAppBar extends StatelessWidget {
     final media = MediaQuery.of(context).size;
 
     return Container(
-      padding:
-          EdgeInsets.symmetric(vertical: 12, horizontal: media.width * 0.1),
+      padding: EdgeInsets.symmetric(vertical: 0, horizontal: media.width * 0.1),
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(

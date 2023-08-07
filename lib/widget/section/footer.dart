@@ -53,7 +53,7 @@ class Footer extends StatelessWidget {
                     Image.asset(
                       'assets/brand/benji-logo-resized-nobg.png',
                       fit: BoxFit.cover,
-                      height: 80,
+                      height: 150,
                     ),
                     kSizedBox,
                     Text(
