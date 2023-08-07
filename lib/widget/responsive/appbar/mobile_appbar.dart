@@ -14,10 +14,18 @@ class MyMobileAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
       decoration: const BoxDecoration(
-        color: Colors.black,
-        border: Border(
-          bottom: BorderSide(color: kGreenColor, width: 1),
-        ),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(1, 1),
+            color: Colors.grey,
+            blurRadius: 1,
+            spreadRadius: 1,
+          )
+        ],
+        color: Color(0xfffafafc),
+        // border: Border(
+        //   bottom: BorderSide(color: kGreenColor, width: 1),
+        // ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +34,7 @@ class MyMobileAppBar extends StatelessWidget {
           MyClickable(
             navigate: const HomePage(),
             child: Image.asset(
-              'assets/brand/logo.png',
+              'assets/brand/benji-logo-resized-nobg.png',
               fit: BoxFit.cover,
             ),
           ),

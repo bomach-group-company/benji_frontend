@@ -28,7 +28,7 @@ class _MyDrawerState extends State<MyDrawer> {
         return Drawer(
           elevation: 20,
           shadowColor: Colors.red,
-          backgroundColor: Colors.black,
+          backgroundColor: const Color(0xfffafafc),
           width: 300,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +116,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                           style: TextStyle(
                                             color: isHovered
                                                 ? kGreenColor
-                                                : Colors.white,
+                                                : Colors.black,
                                             fontWeight: FontWeight.w200,
                                             fontSize: 18,
                                           ),
@@ -125,7 +125,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                           Icons.arrow_drop_down,
                                           color: isHovered
                                               ? kGreenColor
-                                              : Colors.white,
+                                              : Colors.black,
                                         )
                                       ],
                                     ),

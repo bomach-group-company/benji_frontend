@@ -38,6 +38,14 @@ class _MyDropDownState extends State<MyDropDown> {
         ),
         width: 200,
         decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(
+              offset: Offset(1, 1),
+              color: Colors.grey,
+              blurRadius: 1,
+              spreadRadius: 1,
+            )
+          ],
           color: Colors.white,
           borderRadius: BorderRadius.circular(3),
         ),

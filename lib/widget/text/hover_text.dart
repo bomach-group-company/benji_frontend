@@ -17,7 +17,7 @@ class HoverColorText extends StatefulWidget {
     super.key,
     required this.text,
     required this.style,
-    this.defaultColor = Colors.white,
+    this.defaultColor = Colors.black,
     this.hoverColor = kGreenColor,
     this.active = false,
     this.noHover = false,

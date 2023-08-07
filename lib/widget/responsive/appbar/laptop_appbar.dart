@@ -32,10 +32,18 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
             padding: EdgeInsets.symmetric(
                 vertical: 12, horizontal: media.width * 0.07),
             decoration: const BoxDecoration(
-              color: Colors.black,
-              border: Border(
-                bottom: BorderSide(color: kGreenColor, width: 1),
-              ),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(1, 1),
+                  color: Colors.grey,
+                  blurRadius: 1,
+                  spreadRadius: 1,
+                )
+              ],
+              color: Color(0xfffafafc),
+              // border: Border(
+              //   bottom: BorderSide(color: kGreenColor, width: 1),
+              // ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,7 +52,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                 MyClickable(
                   navigate: const HomePage(),
                   child: Image.asset(
-                    'assets/brand/logo.png',
+                    'assets/brand/benji-logo-resized-nobg.png',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -64,6 +72,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                     kWidthSizedBox,
                     kWidthSizedBox,
                     PopupMenuButton(
+                      shadowColor: Colors.grey,
                       constraints:
                           const BoxConstraints(maxHeight: 170, maxWidth: 200),
                       tooltip: '',
@@ -88,7 +97,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                               child: Text(
                                 'Menu',
                                 style: TextStyle(
-                                  color: isHovered ? kGreenColor : Colors.white,
+                                  color: isHovered ? kGreenColor : Colors.black,
                                   fontWeight: FontWeight.w200,
                                   fontSize: 16,
                                 ),
@@ -96,7 +105,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                             ),
                             Icon(
                               Icons.arrow_drop_down,
-                              color: isHovered ? kGreenColor : Colors.white,
+                              color: isHovered ? kGreenColor : Colors.black,
                             )
                           ],
                         ),
@@ -156,14 +165,14 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                       navigate: SearchPage(),
                       child: Icon(
                         Icons.search,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     kWidthSizedBox,
                     const Text(
                       '|',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 30,
                         fontWeight: FontWeight.w100,
                       ),
@@ -172,7 +181,7 @@ class _MyLaptopAppBarState extends State<MyLaptopAppBar> {
                     Stack(
                       clipBehavior: Clip.none,
                       children: [
-                        const Icon(Icons.shopping_cart, color: Colors.white),
+                        const Icon(Icons.shopping_cart, color: Colors.black),
                         Positioned(
                           right: -8,
                           top: -8,

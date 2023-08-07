@@ -51,7 +51,7 @@ class Footer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
-                      'assets/brand/logo.png',
+                      'assets/brand/benji-logo-resized-nobg.png',
                       fit: BoxFit.cover,
                       height: 80,
                     ),
