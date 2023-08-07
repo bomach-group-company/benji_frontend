@@ -59,6 +59,7 @@ class _TermConditionPageState extends State<TermConditionPage> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 children: [
                   const MyBreadcrumb(text: 'Terms & Conditions'),

@@ -59,6 +59,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 children: [
                   const MyBreadcrumb(text: 'Privacy Policy'),

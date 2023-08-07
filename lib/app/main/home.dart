@@ -113,6 +113,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Expanded(
                         child: ListView(
+                          physics: const BouncingScrollPhysics(),
                           controller: _scrollController,
                           children: [
                             CarouselSlider(

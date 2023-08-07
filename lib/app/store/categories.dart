@@ -78,6 +78,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 children: [
                   Expanded(
                     child: ListView(
+                      physics: const BouncingScrollPhysics(),
                       controller: _scrollController,
                       children: [
                         const MyBreadcrumb(

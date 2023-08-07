@@ -64,6 +64,7 @@ class _ContactUsState extends State<ContactUs> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 children: [
                   const MyBreadcrumb(

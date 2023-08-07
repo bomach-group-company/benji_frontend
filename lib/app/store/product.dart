@@ -112,6 +112,7 @@ class _ProductPageState extends State<ProductPage> {
                       children: [
                         Expanded(
                           child: ListView(
+                            physics: const BouncingScrollPhysics(),
                             controller: _scrollController,
                             children: [
                               kSizedBox,

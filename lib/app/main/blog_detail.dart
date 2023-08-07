@@ -69,6 +69,7 @@ final String description Lorem is dummy ipsum text. Lorem is dummy ipsum text. L
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 children: [
                   const MyBreadcrumb(

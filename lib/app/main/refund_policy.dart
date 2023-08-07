@@ -59,6 +59,7 @@ class _RefundPolicyPageState extends State<RefundPolicyPage> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   const MyBreadcrumb(text: 'Refund Policy'),
                   kSizedBox,

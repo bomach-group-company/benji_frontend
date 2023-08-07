@@ -63,6 +63,7 @@ class _BlogsPageState extends State<BlogsPage> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 children: [
                   const MyBreadcrumb(

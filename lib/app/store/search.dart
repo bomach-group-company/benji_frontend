@@ -88,6 +88,7 @@ class _SearchPageState extends State<SearchPage> {
               children: [
                 Expanded(
                   child: ListView(
+                    physics: const BouncingScrollPhysics(),
                     controller: _scrollController,
                     children: [
                       const MyBreadcrumb(
