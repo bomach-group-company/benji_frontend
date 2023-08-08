@@ -1,5 +1,5 @@
-import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +12,7 @@ import '../../app/main/privacy_policy.dart';
 import '../../app/main/refund_policy.dart';
 import '../../app/main/team.dart';
 import '../../app/main/term_condition.dart';
+import '../../app/store/categories.dart';
 import '../footer_column_text.dart';
 
 class Footer extends StatelessWidget {
@@ -20,6 +21,8 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
+    DateTime now = DateTime.now();
+    int currentYear = now.year;
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -50,14 +53,15 @@ class Footer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    kHalfSizedBox,
                     Image.asset(
-                      'assets/brand/logo.png',
-                      fit: BoxFit.cover,
-                      height: 80,
+                      'assets/brand/benji-logo-resized.jpg',
+                      // fit: BoxFit.cover,
+                      // height: 150,
                     ),
                     kSizedBox,
                     Text(
-                      'The Best Grocery Store in Your Town.',
+                      'Seamless Shopping and Delivery.',
                       style: GoogleFonts.oleoScript(
                           color: Colors.white,
                           fontSize: media.width * 0.035 + 20,
@@ -65,7 +69,7 @@ class Footer extends StatelessWidget {
                     ),
                     kSizedBox,
                     const Text(
-                      'Lorem ipsum dolor sit amet, ectetur adipiscing elit. Pharetra, a phasellus mattis mi arcu urna Pharetra, a phasellu Lorem ipsum dolor sit amet, ectetur adipiscing elit. Pharetra, a phasellus mattis mi arcu urna Pharetra, a phasellu',
+                      'Shop smarter, happier, and get all your needs in one place. Welcome to Benji, your ultimate convenience hub for a wide range of products.',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -91,8 +95,7 @@ class Footer extends StatelessWidget {
                           items: [
                             ['About', AboutPage()],
                             ['Our Team', TeamPage()],
-                            ['Testimonials', null],
-                            ['Products', CategoryPage()]
+                            ['FAQs', FAQsPage()]
                           ],
                         ),
                         FooterColumnText(
@@ -106,8 +109,7 @@ class Footer extends StatelessWidget {
                         FooterColumnText(
                           head: 'Other pages',
                           items: [
-                            ['FAQs', FAQsPage()],
-                            ['Gallery', null],
+                            ['Products', CategoriesPage()],
                             ['Contact us', ContactUs()],
                             ['Blogs', BlogsPage()]
                           ],
@@ -120,16 +122,18 @@ class Footer extends StatelessWidget {
                       children: [
                         Container(
                           constraints: BoxConstraints.loose(
-                            const Size(90, 50),
+                            const Size(150, 90),
                           ),
-                          child: Image.asset('assets/store/playstore.png'),
+                          child: MyClickable(
+                              child: Image.asset('assets/store/playstore.png')),
                         ),
                         kWidthSizedBox,
                         Container(
                           constraints: BoxConstraints.loose(
-                            const Size(90, 30),
+                            const Size(160, 100),
                           ),
-                          child: Image.asset('assets/store/appstore.png'),
+                          child: MyClickable(
+                              child: Image.asset('assets/store/appstore.png')),
                         ),
                       ],
                     ),
@@ -165,7 +169,7 @@ class Footer extends StatelessWidget {
             color: const Color(0xffdc3545).withOpacity(0.2),
           ),
           Text(
-            'Copyright @ 2023 . All rights reserved',
+            'Copyright @ $currentYear. All rights reserved',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,

@@ -22,11 +22,13 @@ class MyCicleCard extends StatelessWidget {
             ),
             // ),
           ),
-          Text(
-            text,
-            style: const TextStyle(
-              fontSize: 18,
-              height: 2.4,
+          Expanded(
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 18,
+                height: 2.4,
+              ),
             ),
           )
         ],

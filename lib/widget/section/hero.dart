@@ -1,3 +1,5 @@
+import 'package:benji_frontend/app/store/categories.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:carousel_slider/carousel_controller.dart' as hero_carousel;
 import 'package:flutter/material.dart';
 
@@ -90,10 +92,13 @@ class MyHero extends StatelessWidget {
                     onPressed: () {},
                     child: const Row(
                       children: [
-                        Text(
-                          'Explore',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w900, fontSize: 15),
+                        MyClickable(
+                          navigate: CategoriesPage(),
+                          child: Text(
+                            'Explore',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w900, fontSize: 15),
+                          ),
                         ),
                         Icon(
                           Icons.arrow_circle_right,

@@ -26,7 +26,7 @@ class AllVendor {
 
 Future<AllVendor> fetchAllVendor(final int skip) async {
   final response =
-      await http.get(Uri.parse('${baseUrl}products/getAllVendor?skip=$skip'));
+      await http.get(Uri.parse('$baseUrl/products/getAllVendor?skip=$skip'));
 
   if (response.statusCode == 200) {
     return AllVendor.fromJson(jsonDecode(response.body));

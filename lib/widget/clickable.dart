@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class MyClickable extends StatelessWidget {
   final Widget child;
   final Widget? navigate;
+
   const MyClickable({super.key, required this.child, this.navigate});
 
   @override

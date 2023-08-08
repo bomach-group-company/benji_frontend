@@ -28,7 +28,7 @@ class Category {
 }
 
 Future<List<Category>> fetchCategories() async {
-  final response = await http.get(Uri.parse('${baseUrl}categories/list'));
+  final response = await http.get(Uri.parse('$baseUrl/categories/list'));
 
   if (response.statusCode == 200) {
     return (jsonDecode(response.body) as List)
@@ -41,7 +41,7 @@ Future<List<Category>> fetchCategories() async {
 
 Future<Category> fetchCategory(id) async {
   final response =
-      await http.get(Uri.parse('${baseUrl}categories/category/$id'));
+      await http.get(Uri.parse('$baseUrl/categories/category/$id'));
 
   if (response.statusCode == 200) {
     return Category.fromJson(jsonDecode(response.body));

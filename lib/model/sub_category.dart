@@ -25,15 +25,14 @@ class SubCategory {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      category: json['category'],
+      category: Category.fromJson(json['category']),
       isActive: json['is_active'],
     );
   }
 }
 
-Future<List<SubCategory>> fetchCategories() async {
-  final response = await http.get(Uri.parse('${baseUrl}sub_categories/list'));
-
+Future<List<SubCategory>> fetchSubCategories() async {
+  final response = await http.get(Uri.parse('$baseUrl/sub_categories/list'));
   if (response.statusCode == 200) {
     return (jsonDecode(response.body) as List)
         .map((item) => SubCategory.fromJson(item))
@@ -45,7 +44,7 @@ Future<List<SubCategory>> fetchCategories() async {
 
 Future<SubCategory> fetchSubCategory(id) async {
   final response =
-      await http.get(Uri.parse('${baseUrl}sub_categories/category/$id'));
+      await http.get(Uri.parse('$baseUrl/sub_categories/category/$id'));
 
   if (response.statusCode == 200) {
     return SubCategory.fromJson(jsonDecode(response.body));

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import '../utils/constant.dart';
 
 class MyOutlinedButton extends StatefulWidget {
-  final void Function()? nav;
-  const MyOutlinedButton({super.key, this.nav});
+  final Widget? navigate;
+  const MyOutlinedButton({
+    super.key,
+    this.navigate,
+  });
 
   @override
   State<MyOutlinedButton> createState() => _MyOutlinedButtonState();
@@ -27,7 +30,15 @@ class _MyOutlinedButtonState extends State<MyOutlinedButton> {
         backgroundColor: btnHover ? kGreenColor : Colors.transparent,
       ),
       onPressed: () {
-        widget.nav;
+        if (widget.navigate != null) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) {
+                return widget.navigate!;
+              },
+            ),
+          );
+        }
       },
       child: const Text(
         'View All',

@@ -31,7 +31,7 @@ class _MyBreadcrumbState extends State<MyBreadcrumb> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/paragraph_bg/breadcrumb_bg_image.png'),
-          fit: BoxFit.fitHeight,
+          fit: BoxFit.cover,
         ),
       ),
       child: Center(

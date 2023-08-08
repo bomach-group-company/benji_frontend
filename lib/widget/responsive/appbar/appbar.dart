@@ -5,16 +5,21 @@ import 'package:flutter/material.dart';
 
 import '../layout.dart';
 
-class MyAppbar extends StatelessWidget {
-  const MyAppbar({super.key});
+class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
+  final bool hideSearch;
+
+  const MyAppbar({super.key, this.hideSearch = true});
+
+  @override
+  Size get preferredSize => const Size(double.infinity, 120);
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       child: MyLayout(
-        mobile: MyMobileAppBar(),
-        tablet: MyTabletAppBar(),
-        laptop: MyLaptopAppBar(),
+        mobile: MyMobileAppBar(hideSearch: hideSearch),
+        tablet: MyTabletAppBar(hideSearch: hideSearch),
+        laptop: const MyLaptopAppBar(),
       ),
     );
   }

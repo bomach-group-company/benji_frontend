@@ -1,8 +1,6 @@
-import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/utils/constant.dart';
 import 'package:flutter/material.dart';
 
-import '../../app/store/product.dart';
 import '../clickable.dart';
 
 class MyCard extends StatefulWidget {
@@ -11,6 +9,7 @@ class MyCard extends StatefulWidget {
   final String sub;
   final String price;
   final Widget? navigate;
+  final Function()? action;
   final Widget? navigateCategory;
 
   const MyCard({
@@ -19,8 +18,10 @@ class MyCard extends StatefulWidget {
     required this.title,
     required this.sub,
     required this.price,
-    this.navigate = const ProductPage(),
-    this.navigateCategory = const CategoryPage(),
+    this.navigate,
+    // const ProductPage(id: '2f8f8557-e313-465c-979f-c42f4b7e36dd'),
+    this.action,
+    this.navigateCategory,
   });
 
   @override
@@ -75,14 +76,32 @@ class _MyCardState extends State<MyCard> {
           children: [
             Expanded(
               flex: 2,
-              child: MyClickable(
-                navigate: widget.navigate,
-                child: Center(child: Image.asset(widget.image)),
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: widget.action,
+                  child: Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(10),
+                        ),
+                        image: DecorationImage(
+                            image: NetworkImage(
+                              widget.image,
+                            ),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
             Expanded(
               flex: 1,
               child: Container(
+                margin: const EdgeInsets.only(top: 15),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,

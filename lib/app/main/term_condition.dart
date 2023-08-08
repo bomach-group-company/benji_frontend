@@ -3,8 +3,8 @@ import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
-import '../../widget/section/footer.dart';
 import '../../widget/drawer/drawer.dart';
+import '../../widget/section/footer.dart';
 
 class TermConditionPage extends StatefulWidget {
   const TermConditionPage({super.key});
@@ -53,52 +53,57 @@ class _TermConditionPageState extends State<TermConditionPage> {
     return Scaffold(
       drawerScrimColor: Colors.transparent,
       backgroundColor: const Color(0xfffafafc),
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, media.height * 0.11),
-        child: const MyAppbar(),
-      ),
+      appBar: const MyAppbar(),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const MyBreadcrumb(text: 'Terms & Conditions'),
-              kSizedBox,
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 50),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Lorem is Terms & Conditions',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xff2d2942),
-                        fontWeight: FontWeight.bold,
-                      ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                controller: _scrollController,
+                children: [
+                  const MyBreadcrumb(text: 'Terms & Conditions'),
+                  kSizedBox,
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                        horizontal: breakPoint(media.width, 25, 50, 50)),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Lorem is Terms & Conditions',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xff2d2942),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        kSizedBox,
+                        kHalfSizedBox,
+                        Text(
+                          '''Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
+            Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
+            Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
+            Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. ''',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xff2d2942),
+                              height: 1.5),
+                        ),
+                      ],
                     ),
-                    kSizedBox,
-                    kHalfSizedBox,
-                    Text(
-                      '''Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
-Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
-Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
-Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. ''',
-                      style: TextStyle(
-                          fontSize: 18, color: Color(0xff2d2942), height: 1.5),
-                    ),
-                  ],
-                ),
+                  ),
+                  kSizedBox,
+                  kSizedBox,
+                  kSizedBox,
+                  const Footer(),
+                ],
               ),
-              kSizedBox,
-              kSizedBox,
-              kSizedBox,
-              const Footer(),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       endDrawer: const MyDrawer(),
