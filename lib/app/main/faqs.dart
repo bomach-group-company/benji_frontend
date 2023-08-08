@@ -39,6 +39,38 @@ class _FAQsPageState extends State<FAQsPage> {
       'Is my payment information safe on Benji?',
       'Absolutely. Benji employs state-of-the-art encryption and security protocols to safeguard your payment information. Your financial data is protected at all times, ensuring a secure and worry-free shopping experience.',
     ],
+    [
+      'Can I track my order in real-time?',
+      'Yes, you can! Benji advanced tracking system allows you to monitor the status of your order in real-time. From the moment your order is placed to its final delivery, you\'ll receive regular updates, ensuring transparency and peace of mind.',
+    ],
+    [
+      'Does Benji offer customer support?',
+      'Certainly! Benji provides dedicated customer support to address any queries or concerns you may have. You can reach out to the support team through the app or their website, and we will be more than happy to assist you.',
+    ],
+    [
+      'Are there any membership fees or subscriptions to use Benji?',
+      'No, Benji is free to download and use. There are no membership fees or subscriptions required to access the platform. You only pay for the products you purchase and any associated delivery charges.',
+    ],
+    [
+      'What is Alpha Logistics, and how is it related to Benji?',
+      'Alpha Logistics is the logistics arm of the Benji app, responsible for handling the efficient and seamless delivery of goods purchased through the e-commerce platform. It works in partnership with the renowned Bomach Group to provide top-notch logistics services',
+    ],
+    [
+      'What types of logistics services does Alpha Logistics offer?',
+      'Alpha Logistics offers a wide range of logistics services, including last-mile delivery, order fulfillment, inventory management, warehousing, courier shipping, freight shipping, package tracking, and efficient transportation solutions.',
+    ],
+    [
+      'How reliable is Alpha Logistics\' delivery network?',
+      'Alpha Logistics boasts a highly reliable delivery network, designed to ensure timely and secure deliveries. The logistics system is equipped with advanced tracking technology, enabling customers to monitor their orders in real-time.',
+    ],
+    [
+      'What is last-mile delivery, and how does Alpha Logistics handle it?',
+      'Last-mile delivery refers to the final leg of the delivery process, from the distribution center to the customer\'s doorstep. Alpha Logistics optimizes last-mile delivery by using efficient routing algorithms and well-trained delivery personnel to ensure quick and accurate deliveries.',
+    ],
+    [
+      'Are there any delivery options for urgent orders?',
+      'Yes, Alpha Logistics understands the importance of urgent deliveries. The app offers express delivery options for customers who require their orders to be delivered within a shorter timeframe.',
+    ],
   ];
 
   bool _showBackToTopButton = false;

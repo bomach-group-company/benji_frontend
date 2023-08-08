@@ -3,7 +3,6 @@ import 'package:benji_frontend/widget/section/breadcrumb.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
-import '../../widget/cards/simple_card.dart';
 import '../../widget/drawer/drawer.dart';
 import '../../widget/section/footer.dart';
 
@@ -83,32 +82,32 @@ class _ContactUsState extends State<ContactUs> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Wrap(
-                          spacing: media.width * 0.0135,
-                          runSpacing: 15,
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            SimpleCard(
-                              title: 'Working Hours',
-                              sub: 'infotechgravity@gmail.com',
-                            ),
-                            SimpleCard(
-                              title: 'Working Hours',
-                              sub: 'infotechgravity@gmail.com',
-                            ),
-                            SimpleCard(
-                              title: 'Working Hours',
-                              sub: 'infotechgravity@gmail.com',
-                            ),
-                            SimpleCard(
-                              title: 'Working Hours',
-                              sub: 'infotechgravity@gmail.com',
-                            ),
-                          ],
-                        ),
-                        kSizedBox,
-                        kSizedBox,
+                        // Wrap(
+                        //   spacing: media.width * 0.0135,
+                        //   runSpacing: 15,
+                        //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   // crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: const [
+                        //     SimpleCard(
+                        //       title: 'Working Hours',
+                        //       sub: 'infotechgravity@gmail.com',
+                        //     ),
+                        //     SimpleCard(
+                        //       title: 'Working Hours',
+                        //       sub: 'infotechgravity@gmail.com',
+                        //     ),
+                        //     SimpleCard(
+                        //       title: 'Working Hours',
+                        //       sub: 'infotechgravity@gmail.com',
+                        //     ),
+                        //     SimpleCard(
+                        //       title: 'Working Hours',
+                        //       sub: 'infotechgravity@gmail.com',
+                        //     ),
+                        //   ],
+                        // ),
+                        // kSizedBox,
+                        // kSizedBox,
                         Container(
                           width: media.width,
                           padding: EdgeInsets.symmetric(
