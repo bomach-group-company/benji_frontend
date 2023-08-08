@@ -101,6 +101,26 @@ The collaboration between Bomach Group of Company and Alpha Logistics has given 
                           content: '''
 Discover an extensive range of products on Benji, carefully curated from reputable vendors. Our user-friendly interface ensures a delightful shopping experience as you browse and find what you need effortlessly.''',
                         ),
+                        MyContentText(
+                          title: 'Efficient and Reliable Logistics:',
+                          content: '''
+Our trusted logistics arm, guarantees efficient and reliable delivery services. With real-time tracking, you stay updated on your package&#39;s journey from the vendor to your doorstep, ensuring a secure and timely delivery.''',
+                        ),
+                        MyContentText(
+                          title: 'Supporting Local Businesses:',
+                          content: '''
+Benji fosters a community of local vendors, promoting their products and giving them a wider audience. By choosing Benji, you contribute to the growth of your community while enjoying unique and high-quality offerings.''',
+                        ),
+                        MyContentText(
+                          title: 'OUR MISSION',
+                          content: '''
+Our mission is clear - to provide you with the most convenient, reliable, and enjoyable shopping and logistics experience. We are committed to supporting local businesses, ensuring timely deliveries, and exceeding your expectations with every interaction.''',
+                        ),
+                        MyContentText(
+                          title: 'Supporting Local Businesses:',
+                          content: '''
+Benji fosters a community of local vendors, promoting their products and giving them a wider audience. By choosing Benji, you contribute to the growth of your community while enjoying unique and high-quality offerings.''',
+                        ),
                       ],
                     ),
                   ),

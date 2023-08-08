@@ -15,9 +15,30 @@ class FAQsPage extends StatefulWidget {
 
 class _FAQsPageState extends State<FAQsPage> {
   List items = [
-    ['FAQs 1', 'Answer 1'],
-    ['FAQs 2', 'Answer 2'],
-    ['FAQs 3', 'Answer 3']
+    [
+      'What is Benji?',
+      'Benji is an advanced multi-vendor e-commerce and logistics app developed by the renowned Bomach Group in collaboration with Alpha Logistics. It is designed to revolutionize online shopping and seamless delivery of goods, offering a game-changing experience in the e-commerce and logistics industry.',
+    ],
+    [
+      'How does Benji work?',
+      'Benji brings together multiple vendors and their products on a single platform, providing users with a wide variety of options. Customers can browse through various products; compare prices, and place orders directly through the app. The app&#39;s advanced logistics system then facilitates efficient delivery of the purchased goods to the customers&#39; specified locations.',
+    ],
+    [
+      'What are the key features of Benji?',
+      'Benji boasts several innovative features, including a user-friendly interface, a diverse range of products from multiple vendors, real-time product tracking, secure payment options personalized recommendations, and a seamless and efficient delivery network.',
+    ],
+    [
+      'Can I trust the vendors on Benji?',
+      'Absolutely! Bomach Group and Alpha Logistics have carefully curated and on-boarded vendors to ensure the highest quality and credibility. Vendors are thoroughly vetted before being allowed to list their products on the platform. Additionally, user reviews and ratings contribute to building a trustworthy and reliable shopping experience.',
+    ],
+    [
+      'What sets Benji apart from other e-commerce apps?',
+      'Benji&#39;s key differentiator lies in its seamless integration of e-commerce and logistics. Unlike traditional e-commerce apps, Benji&#39;s partnership with Alpha Logistics ensures quick and reliable deliveries, reducing the risk of delays and order mishaps. The app&#39;s ability to handle multiple vendors also provides users with an extensive selection of products, all in one place.',
+    ],
+    [
+      'Is my payment information safe on Benji?',
+      'Absolutely. Benji employs state-of-the-art encryption and security protocols to safeguard your payment information. Your financial data is protected at all times, ensuring a secure and worry-free shopping experience.',
+    ],
   ];
 
   bool _showBackToTopButton = false;
@@ -84,7 +105,7 @@ class _FAQsPageState extends State<FAQsPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
-                          children: items.map((e) {
+                          children: items.map((item) {
                             return Column(
                               children: [
                                 Container(
@@ -98,9 +119,9 @@ class _FAQsPageState extends State<FAQsPage> {
                                     iconColor: Colors.black45,
                                     collapsedBackgroundColor: Colors.white,
                                     backgroundColor: Colors.white30,
-                                    title: const Text(
-                                      "FAQ QUESTION ONE",
-                                      style: TextStyle(
+                                    title: Text(
+                                      item[0],
+                                      style: const TextStyle(
                                         color: kBlueColor,
                                       ),
                                     ),
@@ -117,8 +138,7 @@ class _FAQsPageState extends State<FAQsPage> {
                                         ),
                                         padding: const EdgeInsets.all(20),
                                         width: double.infinity,
-                                        child: const Text(
-                                            "Answers for Question One"),
+                                        child: Text(item[1]),
                                       )
                                     ],
                                   ),

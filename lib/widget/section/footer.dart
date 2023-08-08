@@ -1,4 +1,5 @@
 import 'package:benji_frontend/utils/constant.dart';
+import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,8 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
+    DateTime now = DateTime.now();
+    int currentYear = now.year;
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -51,8 +54,8 @@ class Footer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
-                      'assets/brand/benji-logo-resized-nobg.png',
-                      fit: BoxFit.cover,
+                      'assets/brand/benji-logo-resized.jpg',
+                      // fit: BoxFit.cover,
                       height: 150,
                     ),
                     kSizedBox,
@@ -118,16 +121,18 @@ class Footer extends StatelessWidget {
                       children: [
                         Container(
                           constraints: BoxConstraints.loose(
-                            const Size(90, 50),
+                            const Size(150, 90),
                           ),
-                          child: Image.asset('assets/store/playstore.png'),
+                          child: MyClickable(
+                              child: Image.asset('assets/store/playstore.png')),
                         ),
                         kWidthSizedBox,
                         Container(
                           constraints: BoxConstraints.loose(
-                            const Size(90, 30),
+                            const Size(160, 100),
                           ),
-                          child: Image.asset('assets/store/appstore.png'),
+                          child: MyClickable(
+                              child: Image.asset('assets/store/appstore.png')),
                         ),
                       ],
                     ),
@@ -163,7 +168,7 @@ class Footer extends StatelessWidget {
             color: const Color(0xffdc3545).withOpacity(0.2),
           ),
           Text(
-            'Copyright @ 2023 . All rights reserved',
+            'Copyright @ $currentYear. All rights reserved',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
