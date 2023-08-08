@@ -21,7 +21,7 @@ class _FAQsPageState extends State<FAQsPage> {
     ],
     [
       'How does Benji work?',
-      'Benji brings together multiple vendors and their products on a single platform, providing users with a wide variety of options. Customers can browse through various products; compare prices, and place orders directly through the app. The app&#39;s advanced logistics system then facilitates efficient delivery of the purchased goods to the customers&#39; specified locations.',
+      'Benji brings together multiple vendors and their products on a single platform, providing users with a wide variety of options. Customers can browse through various products compare prices, and place orders directly through the app. The app advanced logistics system then facilitates efficient delivery of the purchased goods to the customers specified locations.',
     ],
     [
       'What are the key features of Benji?',
@@ -33,7 +33,7 @@ class _FAQsPageState extends State<FAQsPage> {
     ],
     [
       'What sets Benji apart from other e-commerce apps?',
-      'Benji&#39;s key differentiator lies in its seamless integration of e-commerce and logistics. Unlike traditional e-commerce apps, Benji&#39;s partnership with Alpha Logistics ensures quick and reliable deliveries, reducing the risk of delays and order mishaps. The app&#39;s ability to handle multiple vendors also provides users with an extensive selection of products, all in one place.',
+      'Benji key differentiator lies in its seamless integration of e-commerce and logistics. Unlike traditional e-commerce apps, Benji partnership with Alpha Logistics ensures quick and reliable deliveries, reducing the risk of delays and order mishaps. The app ability to handle multiple vendors also provides users with an extensive selection of products, all in one place.',
     ],
     [
       'Is my payment information safe on Benji?',
