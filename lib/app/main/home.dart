@@ -98,8 +98,8 @@ class _HomePageState extends State<HomePage> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (!snapshot.hasData) {
               if (snapshot.hasError) {
-                return Center(
-                  child: SelectableText(snapshot.error.toString()),
+                return const Center(
+                  child: Text('Error occured refresh'),
                 );
               }
               return const SpinKitChasingDots(

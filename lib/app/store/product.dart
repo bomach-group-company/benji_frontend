@@ -95,8 +95,8 @@ class _ProductPageState extends State<ProductPage> {
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (!snapshot.hasData) {
                 if (snapshot.hasError) {
-                  return Center(
-                    child: Text(snapshot.error.toString()),
+                  return const Center(
+                    child: Text('Error occured refresh'),
                   );
                 }
                 return const SpinKitChasingDots(

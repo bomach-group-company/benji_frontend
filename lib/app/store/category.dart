@@ -215,9 +215,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                         snapshot.connectionState ==
                                             ConnectionState.waiting) {
                                       if (snapshot.hasError) {
-                                        return Center(
-                                          child: SelectableText(
-                                              snapshot.error.toString()),
+                                        return const Center(
+                                          child: Text('Error occured refresh'),
                                         );
                                       }
                                       return const SpinKitChasingDots(
