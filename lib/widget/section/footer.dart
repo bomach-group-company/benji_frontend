@@ -2,6 +2,7 @@ import 'package:benji_frontend/utils/constant.dart';
 import 'package:benji_frontend/widget/clickable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../app/main/about.dart';
@@ -141,19 +142,19 @@ class Footer extends StatelessWidget {
                     const Row(
                       children: [
                         Icon(
-                          Icons.facebook,
+                          FontAwesomeIcons.facebook,
                           color: Colors.white,
                           size: 40,
                         ),
                         kWidthSizedBox,
                         Icon(
-                          Icons.facebook,
+                          FontAwesomeIcons.twitter,
                           color: Colors.white,
                           size: 40,
                         ),
                         kWidthSizedBox,
                         Icon(
-                          Icons.facebook,
+                          FontAwesomeIcons.youtube,
                           color: Colors.white,
                           size: 40,
                         ),
