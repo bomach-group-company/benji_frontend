@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-const String baseUrl =
-    'https://benji-app-one-9146d01ad651.herokuapp.com/api/v1/frontend';
+const String baseUrl = 'https://benji-app.onrender.com/api/v1/frontend';
 
-const String mediaBaseUrl = 'https://benji-app-one-9146d01ad651.herokuapp.com';
+const String mediaBaseUrl = 'https://benji-app.onrender.com';
 
 const double laptopSize = 992;
 const double tabletSize = 768;

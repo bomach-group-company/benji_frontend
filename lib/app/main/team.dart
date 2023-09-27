@@ -60,6 +60,7 @@ class _TeamPageState extends State<TeamPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListView(
+              shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               controller: _scrollController,
               children: [
