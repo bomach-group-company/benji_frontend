@@ -234,10 +234,15 @@ class _CategoryPageState extends State<CategoryPage> {
                                                 [1.fr],
                                                 [1.fr, 1.fr],
                                                 [1.fr, 1.fr, 1.fr, 1.fr]),
-                                            rowSizes: List.filled(
-                                                (snapshot.data as List<Product>)
-                                                    .length,
-                                                auto),
+                                            rowSizes: (snapshot.data
+                                                        as List<Product>)
+                                                    .isEmpty
+                                                ? [auto]
+                                                : List.filled(
+                                                    (snapshot.data
+                                                            as List<Product>)
+                                                        .length,
+                                                    auto),
                                             children: (snapshot.data
                                                     as List<Product>)
                                                 .map((item) => MyCard(

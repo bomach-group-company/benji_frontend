@@ -63,8 +63,14 @@ class _HomePageState extends State<HomePage> {
 
   Future<Map<String, dynamic>> _getData() async {
     List<Category> categoriesData = await fetchCategories();
-    AllProduct productsData = await fetchAllProduct(1, 5);
-
+    AllProduct productsData = await fetchAllProduct(8);
+    print({
+      'productsData': productsData,
+      'categoriesData': categoriesData,
+      'trendingProduct': productsData.items,
+      'todayProduct': productsData.items,
+      'recommendedProduct': productsData.items
+    });
     return {
       'productsData': productsData,
       'categoriesData': categoriesData,

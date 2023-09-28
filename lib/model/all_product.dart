@@ -33,10 +33,9 @@ class AllProduct {
   }
 }
 
-Future<AllProduct> fetchAllProduct(
-    [final int start = 1, final int end = 9]) async {
-  final response = await http
-      .get(Uri.parse('$baseUrl/products/listProduct?start=$start&end=$end'));
+Future<AllProduct> fetchAllProduct([final int limit = 8]) async {
+  final response =
+      await http.get(Uri.parse('$baseUrl/products/listProduct?limit=$limit'));
 
   if (response.statusCode == 200) {
     return AllProduct.fromJson(jsonDecode(response.body));
