@@ -93,6 +93,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                             horizontal: breakPoint(media.width, 25, 50, 50),
                           ),
                           child: Wrap(
+                            alignment: WrapAlignment.center,
                             children: (snapshot.data as List<Category>)
                                 .map(
                                   (item) => MyClickable(
