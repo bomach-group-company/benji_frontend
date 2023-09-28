@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:benji_frontend/app/store/category.dart';
 import 'package:benji_frontend/model/product.dart';
 import 'package:benji_frontend/widget/clickable.dart';
@@ -423,9 +425,8 @@ class _ProductPageState extends State<ProductPage> {
                                                   element !=
                                                   snapshot.data['product'].id)
                                               .toList();
-                                          data = data.length == 4
-                                              ? data
-                                              : data.sublist(0, 4);
+                                          data = data.sublist(
+                                              0, min(data.length, 4));
 
                                           return LayoutGrid(
                                             columnSizes: breakPointDynamic(
