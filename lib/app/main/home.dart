@@ -207,6 +207,7 @@ class _HomePageState extends State<HomePage> {
                                   kSizedBox,
                                   CarouselSlider(
                                     options: CarouselOptions(
+                                      pageSnapping: false,
                                       // enableInfiniteScroll: false,
                                       scrollPhysics:
                                           const BouncingScrollPhysics(),

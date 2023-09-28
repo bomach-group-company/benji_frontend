@@ -52,12 +52,19 @@ class _SearchPageState extends State<SearchPage> {
   List<Product>? _getDataList;
 
   _getData(final String searchItem) async {
-    AllProduct data = await fetchAllProductSearchByName(searchItem);
+    if (searchItem != '') {
+      AllProduct data = await fetchAllProductSearchByName(searchItem);
 
-    setState(() {
-      _getDataList = data.items;
-      isLoading = false;
-    });
+      setState(() {
+        _getDataList = data.items;
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        _getDataList = [];
+        isLoading = false;
+      });
+    }
   }
 
   @override
