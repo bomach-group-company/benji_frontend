@@ -74,8 +74,6 @@ class _CategoryPageState extends State<CategoryPage> {
 
     data =
         await fetchAllProductFilterBySubCategory(activeSubCategoriesId, 1, 13);
-    print(data.items);
-    print('its value');
     return data.items;
   }
 
@@ -251,17 +249,16 @@ class _CategoryPageState extends State<CategoryPage> {
                                                       navigateCategory:
                                                           CategoryPage(
                                                         activeSubCategories:
-                                                            item.subCategoryId
+                                                            item.subCategory
                                                                 .name,
                                                         activeSubCategoriesId:
-                                                            item.subCategoryId
-                                                                .id,
+                                                            item.subCategory.id,
                                                         activeCategoriesId: item
-                                                            .subCategoryId
+                                                            .subCategory
                                                             .category
                                                             .id,
                                                         activeCategories: item
-                                                            .subCategoryId
+                                                            .subCategory
                                                             .category
                                                             .name,
                                                       ),
@@ -277,8 +274,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                                       image:
                                                           '$mediaBaseUrl${item.productImage}',
                                                       title: item.name,
-                                                      sub: item
-                                                          .subCategoryId.name,
+                                                      sub:
+                                                          item.subCategory.name,
                                                       price:
                                                           item.price.toString(),
                                                     ))
@@ -313,10 +310,10 @@ class _CategoryPageState extends State<CategoryPage> {
                 );
                 return MyCardLg(
                   navigateCategory: CategoryPage(
-                    activeSubCategories: data.subCategoryId.name,
-                    activeSubCategoriesId: data.subCategoryId.id,
-                    activeCategoriesId: data.subCategoryId.category.id,
-                    activeCategories: data.subCategoryId.category.name,
+                    activeSubCategories: data.subCategory.name,
+                    activeSubCategoriesId: data.subCategory.id,
+                    activeCategoriesId: data.subCategory.category.id,
+                    activeCategories: data.subCategory.category.name,
                   ),
                   navigate: ProductPage(id: data.id),
                   visible: showCard,
@@ -327,7 +324,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   },
                   image: '$mediaBaseUrl${data.productImage}',
                   title: data.name,
-                  sub: data.subCategoryId.name,
+                  sub: data.subCategory.name,
                   price: data.price.toString(),
                   description: data.description,
                 );

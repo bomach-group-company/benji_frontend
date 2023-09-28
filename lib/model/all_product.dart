@@ -9,15 +9,11 @@ class AllProduct {
   final List<Product> items;
   final int total;
   final int perPage;
-  final int start;
-  final int end;
 
   AllProduct({
     required this.items,
     required this.total,
     required this.perPage,
-    required this.start,
-    required this.end,
   });
 
   factory AllProduct.fromJson(Map<String, dynamic> json) {
@@ -27,8 +23,6 @@ class AllProduct {
           .toList(),
       total: json['total'],
       perPage: json['per_page'],
-      start: json['start'],
-      end: json['end'],
     );
   }
 }

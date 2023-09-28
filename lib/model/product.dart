@@ -11,13 +11,13 @@ class Product {
   final String name;
   final String description;
   final double price;
-  final int quantityAvailable;
+  final int? quantityAvailable;
   final String? productImage;
   final bool isAvailable;
   final bool isTrending;
   final bool isRecommended;
-  final Vendor vendorId;
-  final SubCategory subCategoryId;
+  final Vendor vendor;
+  final SubCategory subCategory;
 
   Product({
     required this.id,
@@ -29,8 +29,8 @@ class Product {
     required this.isAvailable,
     required this.isTrending,
     required this.isRecommended,
-    required this.vendorId,
-    required this.subCategoryId,
+    required this.vendor,
+    required this.subCategory,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -44,8 +44,8 @@ class Product {
       isAvailable: json['is_available'],
       isTrending: json['is_trending'],
       isRecommended: json['is_recommended'],
-      vendorId: Vendor.fromJson(json['vendor']),
-      subCategoryId: SubCategory.fromJson(json['sub_category']),
+      vendor: Vendor.fromJson(json['vendor']),
+      subCategory: SubCategory.fromJson(json['sub_category']),
     );
   }
 }

@@ -129,7 +129,7 @@ class _ContactUsState extends State<ContactUs> {
                           child: Column(
                             children: [
                               const Text(
-                                'Drop us a line',
+                                'Reach Out',
                                 style: TextStyle(
                                   color: kBlueColor,
                                   fontSize: 50,
@@ -138,7 +138,7 @@ class _ContactUsState extends State<ContactUs> {
                               ),
                               kSizedBox,
                               const Text(
-                                'Please feel free to contact me if you have any further questions or concerns',
+                                'Please feel free to contact us if you have any questions or concerns',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 22,

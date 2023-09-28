@@ -148,6 +148,12 @@ class Footer extends StatelessWidget {
                         ),
                         kWidthSizedBox,
                         Icon(
+                          FontAwesomeIcons.instagram,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                        kWidthSizedBox,
+                        Icon(
                           FontAwesomeIcons.twitter,
                           color: Colors.white,
                           size: 40,

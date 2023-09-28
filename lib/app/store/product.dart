@@ -56,7 +56,7 @@ class _ProductPageState extends State<ProductPage> {
     return {
       'product': product,
       'related': await fetchAllProductFilterByCategory(
-          product.subCategoryId.category.id, 1, 6)
+          product.subCategory.category.id, 1, 6)
     };
   }
 
@@ -187,29 +187,29 @@ class _ProductPageState extends State<ProductPage> {
                                                   activeSubCategoriesId:
                                                       (snapshot.data['product']
                                                               as Product)
-                                                          .subCategoryId
+                                                          .subCategory
                                                           .id,
                                                   activeSubCategories:
                                                       (snapshot.data['product']
                                                               as Product)
-                                                          .subCategoryId
+                                                          .subCategory
                                                           .name,
                                                   activeCategoriesId:
                                                       (snapshot.data['product']
                                                               as Product)
-                                                          .subCategoryId
+                                                          .subCategory
                                                           .category
                                                           .id,
                                                   activeCategories:
                                                       (snapshot.data['product']
                                                               as Product)
-                                                          .subCategoryId
+                                                          .subCategory
                                                           .category
                                                           .name,
                                                 ),
                                                 child: Text(
                                                   snapshot.data['product']
-                                                      .subCategoryId.name,
+                                                      .subCategory.name,
                                                   style: const TextStyle(
                                                     color: kBlueColor,
                                                     fontSize: 16,
@@ -445,11 +445,11 @@ class _ProductPageState extends State<ProductPage> {
                                                       navigateCategory:
                                                           CategoryPage(
                                                         activeCategoriesId: item
-                                                            .subCategoryId
+                                                            .subCategory
                                                             .category
                                                             .id,
                                                         activeCategories: item
-                                                            .subCategoryId
+                                                            .subCategory
                                                             .category
                                                             .name,
                                                       ),
@@ -465,8 +465,8 @@ class _ProductPageState extends State<ProductPage> {
                                                       image:
                                                           '$mediaBaseUrl${item.productImage}',
                                                       title: item.name,
-                                                      sub: item
-                                                          .subCategoryId.name,
+                                                      sub:
+                                                          item.subCategory.name,
                                                       price:
                                                           item.price.toString(),
                                                     ))
@@ -498,10 +498,10 @@ class _ProductPageState extends State<ProductPage> {
                       );
                       return MyCardLg(
                         navigateCategory: CategoryPage(
-                          activeSubCategories: data.subCategoryId.name,
-                          activeSubCategoriesId: data.subCategoryId.id,
-                          activeCategoriesId: data.subCategoryId.category.id,
-                          activeCategories: data.subCategoryId.category.name,
+                          activeSubCategories: data.subCategory.name,
+                          activeSubCategoriesId: data.subCategory.id,
+                          activeCategoriesId: data.subCategory.category.id,
+                          activeCategories: data.subCategory.category.name,
                         ),
                         navigate: ProductPage(id: data.id),
                         visible: showCard,
@@ -512,7 +512,7 @@ class _ProductPageState extends State<ProductPage> {
                         },
                         image: '$mediaBaseUrl${data.productImage}',
                         title: data.name,
-                        sub: data.subCategoryId.name,
+                        sub: data.subCategory.name,
                         price: data.price.toString(),
                         description: data.description,
                       );

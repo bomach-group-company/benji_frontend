@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
           }
         });
       });
-
     super.initState();
   }
 
@@ -64,13 +63,7 @@ class _HomePageState extends State<HomePage> {
   Future<Map<String, dynamic>> _getData() async {
     List<Category> categoriesData = await fetchCategories();
     AllProduct productsData = await fetchAllProduct(8);
-    print({
-      'productsData': productsData,
-      'categoriesData': categoriesData,
-      'trendingProduct': productsData.items,
-      'todayProduct': productsData.items,
-      'recommendedProduct': productsData.items
-    });
+
     return {
       'productsData': productsData,
       'categoriesData': categoriesData,
@@ -104,8 +97,8 @@ class _HomePageState extends State<HomePage> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (!snapshot.hasData) {
               if (snapshot.hasError) {
-                return const Center(
-                  child: Text('Error occured refresh'),
+                return Center(
+                  child: Text(snapshot.error.toString()),
                 );
               }
               return const SpinKitChasingDots(
@@ -113,6 +106,9 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
               );
             } else {
+              // if (1 == 5) {
+              //   return const SizedBox();
+              // } else {
               return Stack(
                 children: [
                   Column(
@@ -268,13 +264,13 @@ class _HomePageState extends State<HomePage> {
                                           (item) => MyCard(
                                             navigateCategory: CategoryPage(
                                               activeSubCategories:
-                                                  item.subCategoryId.name,
+                                                  item.subCategory.name,
                                               activeSubCategoriesId:
-                                                  item.subCategoryId.id,
-                                              activeCategoriesId: item
-                                                  .subCategoryId.category.id,
+                                                  item.subCategory.id,
+                                              activeCategoriesId:
+                                                  item.subCategory.category.id,
                                               activeCategories: item
-                                                  .subCategoryId.category.name,
+                                                  .subCategory.category.name,
                                             ),
                                             navigate: ProductPage(id: item.id),
                                             action: () {
@@ -286,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                                             image:
                                                 '$mediaBaseUrl${item.productImage}',
                                             title: item.name,
-                                            sub: item.subCategoryId.name,
+                                            sub: item.subCategory.name,
                                             price: item.price.toString(),
                                           ),
                                         )
@@ -342,13 +338,13 @@ class _HomePageState extends State<HomePage> {
                                           (item) => MyCard(
                                             navigateCategory: CategoryPage(
                                               activeSubCategories:
-                                                  item.subCategoryId.name,
+                                                  item.subCategory.name,
                                               activeSubCategoriesId:
-                                                  item.subCategoryId.id,
-                                              activeCategoriesId: item
-                                                  .subCategoryId.category.id,
+                                                  item.subCategory.id,
+                                              activeCategoriesId:
+                                                  item.subCategory.category.id,
                                               activeCategories: item
-                                                  .subCategoryId.category.name,
+                                                  .subCategory.category.name,
                                             ),
                                             navigate: ProductPage(id: item.id),
                                             action: () {
@@ -360,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                                             image:
                                                 '$mediaBaseUrl${item.productImage}',
                                             title: item.name,
-                                            sub: item.subCategoryId.name,
+                                            sub: item.subCategory.name,
                                             price: item.price.toString(),
                                           ),
                                         )
@@ -441,13 +437,13 @@ class _HomePageState extends State<HomePage> {
                                           (item) => MyCard(
                                             navigateCategory: CategoryPage(
                                               activeSubCategories:
-                                                  item.subCategoryId.name,
+                                                  item.subCategory.name,
                                               activeSubCategoriesId:
-                                                  item.subCategoryId.id,
-                                              activeCategoriesId: item
-                                                  .subCategoryId.category.id,
+                                                  item.subCategory.id,
+                                              activeCategoriesId:
+                                                  item.subCategory.category.id,
                                               activeCategories: item
-                                                  .subCategoryId.category.name,
+                                                  .subCategory.category.name,
                                             ),
                                             navigate: ProductPage(id: item.id),
                                             action: () {
@@ -459,7 +455,7 @@ class _HomePageState extends State<HomePage> {
                                             image:
                                                 '$mediaBaseUrl${item.productImage}',
                                             title: item.name,
-                                            sub: item.subCategoryId.name,
+                                            sub: item.subCategory.name,
                                             price: item.price.toString(),
                                           ),
                                         )
@@ -665,10 +661,10 @@ class _HomePageState extends State<HomePage> {
                         );
                     return MyCardLg(
                       navigateCategory: CategoryPage(
-                        activeSubCategories: data.subCategoryId.name,
-                        activeSubCategoriesId: data.subCategoryId.id,
-                        activeCategoriesId: data.subCategoryId.category.id,
-                        activeCategories: data.subCategoryId.category.name,
+                        activeSubCategories: data.subCategory.name,
+                        activeSubCategoriesId: data.subCategory.id,
+                        activeCategoriesId: data.subCategory.category.id,
+                        activeCategories: data.subCategory.category.name,
                       ),
                       navigate: ProductPage(id: data.id),
                       visible: showCard,
@@ -679,7 +675,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       image: '$mediaBaseUrl${data.productImage}',
                       title: data.name,
-                      sub: data.subCategoryId.name,
+                      sub: data.subCategory.name,
                       price: data.price.toString(),
                       description: data.description,
                     );
