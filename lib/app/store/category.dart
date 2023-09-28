@@ -74,6 +74,8 @@ class _CategoryPageState extends State<CategoryPage> {
 
     data =
         await fetchAllProductFilterBySubCategory(activeSubCategoriesId, 1, 13);
+    print(data.items);
+    print('its value');
     return data.items;
   }
 
@@ -302,7 +304,7 @@ class _CategoryPageState extends State<CategoryPage> {
               ],
             ),
             Builder(builder: (context) {
-              if (productsData == null) {
+              if (productsData == null || productsData!.isEmpty) {
                 return const Text('');
               } else {
                 Product data = (productsData!).firstWhere(
