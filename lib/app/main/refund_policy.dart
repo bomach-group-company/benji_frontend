@@ -1,5 +1,6 @@
 import 'package:benji_frontend/widget/responsive/appbar/appbar.dart';
 import 'package:benji_frontend/widget/section/breadcrumb.dart';
+import 'package:benji_frontend/widget/section/title_body.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constant.dart';
@@ -62,43 +63,25 @@ class _RefundPolicyPageState extends State<RefundPolicyPage> {
             Expanded(
               child: ListView(
                 physics: const BouncingScrollPhysics(),
-                children: [
-                  const MyBreadcrumb(text: 'Refund Policy'),
+                children: const [
+                  MyBreadcrumb(text: 'Refund Policy'),
                   kSizedBox,
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: breakPoint(media.width, 25, 50, 50)),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Lorem is Refund Policy',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color(0xff2d2942),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        kSizedBox,
-                        kHalfSizedBox,
-                        Text(
-                          '''Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
-            Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
-            Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. 
-            Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. Lorem ispum is dummy text to type setting the industry. ''',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Color(0xff2d2942),
-                              height: 1.5),
-                        ),
-                      ],
-                    ),
+                  TitleBody(
+                    title: 'Returns and Refunds',
+                    body: '''
+- Returns of products by buyers and acceptance of returned products by sellers will be managed by us in accordance with the returns page on the marketplace, subject to compliance with applicable laws in the territory.
+- Refunds for returned products will be managed in accordance with the refunds page on the marketplace, subject to applicable laws in the territory. We may offer refunds at our discretion:
+- In respect of the product price.
+- Local and/or international shipping fees (as stated on the refunds page).
+- By way of store credits, vouchers, mobile money transfer, bank transfers, or other methods as determined by us.
+- Returned products will be accepted, and refunds will be issued by Benji on behalf of the seller. However, in respect of digital products or services and fresh food, Benji will issue refunds only for delivery failures. Refunds for these products for other reasons will be subject to the seller's terms and conditions of sale.
+- Changes to our returns page or refunds page will apply to all purchases made from the date of the change's publication on our website.
+                  ''',
                   ),
                   kSizedBox,
                   kSizedBox,
                   kSizedBox,
-                  const Footer(),
+                  Footer(),
                 ],
               ),
             ),
