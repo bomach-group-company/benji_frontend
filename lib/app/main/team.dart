@@ -55,64 +55,59 @@ class _TeamPageState extends State<TeamPage> {
       backgroundColor: const Color(0xfffafafc),
       appBar: const MyAppbar(),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          controller: _scrollController,
           children: [
-            ListView(
-              physics: const BouncingScrollPhysics(),
-              controller: _scrollController,
-              children: [
-                const MyBreadcrumb(
-                  text: 'Our Team',
-                  current: 'Our Team',
-                  hasBeadcrumb: true,
-                  back: 'home',
-                ),
-                kSizedBox,
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: breakPoint(media.width, 25, 50, 50),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      LayoutGrid(
-                        columnSizes: breakPointDynamic(media.width, [1.fr],
-                            [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
-                        rowSizes: const [
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto,
-                          auto
-                        ],
-                        children: const [
-                          MyTeamCard(),
-                          MyTeamCard(),
-                          MyTeamCard(),
-                          MyTeamCard(),
-                          MyTeamCard(),
-                          MyTeamCard(),
-                        ],
-                      ),
+            const MyBreadcrumb(
+              text: 'Our Team',
+              current: 'Our Team',
+              hasBeadcrumb: true,
+              back: 'home',
+            ),
+            kSizedBox,
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: breakPoint(media.width, 25, 50, 50),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LayoutGrid(
+                    columnSizes: breakPointDynamic(
+                        media.width, [1.fr], [1.fr, 1.fr], [1.fr, 1.fr, 1.fr]),
+                    rowSizes: const [
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                      auto
+                    ],
+                    children: const [
+                      MyTeamCard(),
+                      MyTeamCard(),
+                      MyTeamCard(),
+                      MyTeamCard(),
+                      MyTeamCard(),
+                      MyTeamCard(),
                     ],
                   ),
-                ),
-                kSizedBox,
-                kSizedBox,
-                kSizedBox,
-                const Footer(),
-              ],
+                ],
+              ),
             ),
+            kSizedBox,
+            kSizedBox,
+            kSizedBox,
+            const Footer(),
           ],
         ),
       ),

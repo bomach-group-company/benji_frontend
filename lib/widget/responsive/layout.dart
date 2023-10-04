@@ -19,16 +19,11 @@ class MyLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth <= mobileSize) {
-          return mobile;
-        } else if (constraints.maxWidth <= laptopSize) {
-          return tablet;
-        } else {
-          return laptop;
-        }
-      },
-    );
+    final mediaWidth = MediaQuery.of(context).size.width;
+    return mediaWidth <= mobileSize
+        ? mobile
+        : mediaWidth <= laptopSize
+            ? tablet
+            : laptop;
   }
 }

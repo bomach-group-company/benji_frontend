@@ -94,7 +94,7 @@ Our vision is to create a platform that seamlessly integrates e-commerce and log
                         MyContentText(
                           title: 'The Power of Integration',
                           content: '''
-The collaboration between Bomach Group of Company and Alpha Logistics has given birth to Benji - your all-in-one solution for e-commerce and seamless logistics. By integrating Alpha Logistics&#39; expertise in courier services with Bomach Group&#39;s experience in diverse sectors, we have created a unique ecosystem where efficiency meets excellence.''',
+The collaboration between Bomach Group of Company and Alpha Logistics has given birth to Benji - your all-in-one solution for e-commerce and seamless logistics. By integrating Alpha Logistics' expertise in courier services with Bomach Group's experience in diverse sectors, we have created a unique ecosystem where efficiency meets excellence.''',
                         ),
                         MyContentText(
                           title: 'Convenient Online Shopping:',
@@ -104,7 +104,7 @@ Discover an extensive range of products on Benji, carefully curated from reputab
                         MyContentText(
                           title: 'Efficient and Reliable Logistics:',
                           content: '''
-Our trusted logistics arm, guarantees efficient and reliable delivery services. With real-time tracking, you stay updated on your package&#39;s journey from the vendor to your doorstep, ensuring a secure and timely delivery.''',
+Our trusted logistics arm, guarantees efficient and reliable delivery services. With real-time tracking, you stay updated on your package's journey from the vendor to your doorstep, ensuring a secure and timely delivery.''',
                         ),
                         MyContentText(
                           title: 'Supporting Local Businesses:',

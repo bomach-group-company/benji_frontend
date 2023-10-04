@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "benji-web-app"
-  }
+    "default": "benji-express",
+    "benji-express": "benji-express"
+  },
+  "targets": {},
+  "etags": {}
 }

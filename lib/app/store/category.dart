@@ -215,9 +215,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                         snapshot.connectionState ==
                                             ConnectionState.waiting) {
                                       if (snapshot.hasError) {
-                                        return Center(
-                                          child: SelectableText(
-                                              snapshot.error.toString()),
+                                        return const Center(
+                                          child: Text('Error occured refresh'),
                                         );
                                       }
                                       return const SpinKitChasingDots(
@@ -235,27 +234,31 @@ class _CategoryPageState extends State<CategoryPage> {
                                                 [1.fr],
                                                 [1.fr, 1.fr],
                                                 [1.fr, 1.fr, 1.fr, 1.fr]),
-                                            rowSizes: List.filled(
-                                                (snapshot.data as List<Product>)
-                                                    .length,
-                                                auto),
+                                            rowSizes: (snapshot.data
+                                                        as List<Product>)
+                                                    .isEmpty
+                                                ? [auto]
+                                                : List.filled(
+                                                    (snapshot.data
+                                                            as List<Product>)
+                                                        .length,
+                                                    auto),
                                             children: (snapshot.data
                                                     as List<Product>)
                                                 .map((item) => MyCard(
                                                       navigateCategory:
                                                           CategoryPage(
                                                         activeSubCategories:
-                                                            item.subCategoryId
+                                                            item.subCategory
                                                                 .name,
                                                         activeSubCategoriesId:
-                                                            item.subCategoryId
-                                                                .id,
+                                                            item.subCategory.id,
                                                         activeCategoriesId: item
-                                                            .subCategoryId
+                                                            .subCategory
                                                             .category
                                                             .id,
                                                         activeCategories: item
-                                                            .subCategoryId
+                                                            .subCategory
                                                             .category
                                                             .name,
                                                       ),
@@ -271,8 +274,8 @@ class _CategoryPageState extends State<CategoryPage> {
                                                       image:
                                                           '$mediaBaseUrl${item.productImage}',
                                                       title: item.name,
-                                                      sub: item
-                                                          .subCategoryId.name,
+                                                      sub:
+                                                          item.subCategory.name,
                                                       price:
                                                           item.price.toString(),
                                                     ))
@@ -298,7 +301,7 @@ class _CategoryPageState extends State<CategoryPage> {
               ],
             ),
             Builder(builder: (context) {
-              if (productsData == null) {
+              if (productsData == null || productsData!.isEmpty) {
                 return const Text('');
               } else {
                 Product data = (productsData!).firstWhere(
@@ -307,10 +310,10 @@ class _CategoryPageState extends State<CategoryPage> {
                 );
                 return MyCardLg(
                   navigateCategory: CategoryPage(
-                    activeSubCategories: data.subCategoryId.name,
-                    activeSubCategoriesId: data.subCategoryId.id,
-                    activeCategoriesId: data.subCategoryId.category.id,
-                    activeCategories: data.subCategoryId.category.name,
+                    activeSubCategories: data.subCategory.name,
+                    activeSubCategoriesId: data.subCategory.id,
+                    activeCategoriesId: data.subCategory.category.id,
+                    activeCategories: data.subCategory.category.name,
                   ),
                   navigate: ProductPage(id: data.id),
                   visible: showCard,
@@ -321,7 +324,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   },
                   image: '$mediaBaseUrl${data.productImage}',
                   title: data.name,
-                  sub: data.subCategoryId.name,
+                  sub: data.subCategory.name,
                   price: data.price.toString(),
                   description: data.description,
                 );
